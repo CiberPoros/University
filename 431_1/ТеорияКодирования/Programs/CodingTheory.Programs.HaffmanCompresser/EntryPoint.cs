@@ -26,6 +26,8 @@ namespace CodingTheory.Programs.HaffmanCompresser
             Console.WriteLine("Результат разархивирования: ");
             Console.WriteLine(decode);
             Console.WriteLine();
+
+            Console.WriteLine("Изменения!");
         }
 
         private static string ReadText()
