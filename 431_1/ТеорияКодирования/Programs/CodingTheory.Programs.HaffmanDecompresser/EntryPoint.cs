@@ -44,8 +44,7 @@ namespace CodingTheory.Programs.HaffmanDecompresser
 
             foreach (var s in input)
             {
-                var splited = s.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                result.Add(splited[1], splited[0].First());
+                result.Add(s.Substring(2, s.Length - 2), s[0]);
             }
 
             return result;
