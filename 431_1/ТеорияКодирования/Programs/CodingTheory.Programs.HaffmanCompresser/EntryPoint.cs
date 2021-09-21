@@ -52,7 +52,7 @@ namespace CodingTheory.Programs.HaffmanCompresser
             Console.WriteLine($"Коеффициент сжатия: {(((compressedText.Length + .0) / 16) / text.Length) * 100}%");
             Console.WriteLine();
 
-            Console.WriteLine($"Скорость сжатия: {(text.Length + .0) / executionTime.TotalMilliseconds:n4} символов/сек.");
+            Console.WriteLine($"Скорость сжатия: {(text.Length + .0) / executionTime.TotalMilliseconds:n4} символов / мсек.");
         }
 
         private static void SaveFrequenciesToFile(Dictionary<char, double> frequencies)
