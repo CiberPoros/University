@@ -9,8 +9,13 @@ namespace CodingTheory.Common
     {
         private readonly Dictionary<char, double> _frequencies;
 
-        private Dictionary<char, string> _codes;
-        private Dictionary<string, char> _codesInverted;
+        public Dictionary<char, string> Codes { get; set; }
+        public Dictionary<string, char> CodesInverted { get; set; }
+
+        public CompressionByHaffman()
+        {
+
+        }
 
         public CompressionByHaffman(Dictionary<char, double> frequencies)
         {
@@ -25,13 +30,13 @@ namespace CodingTheory.Common
 
             foreach (var c in text)
             {
-                sb.Append(_codes[c]);
+                sb.Append(Codes[c]);
             }
 
             return sb.ToString();
         }
 
-        public string DeCompress(string compressedText)
+        public string Decompress(string compressedText)
         {
             var sb = new StringBuilder();
             var currentString = string.Empty;
@@ -40,7 +45,7 @@ namespace CodingTheory.Common
             {
                 currentString += compressedText[i];
 
-                if (_codesInverted.TryGetValue(currentString, out var value))
+                if (CodesInverted.TryGetValue(currentString, out var value))
                 {
                     sb.Append(value);
                     currentString = string.Empty;
@@ -52,13 +57,13 @@ namespace CodingTheory.Common
 
         private void MakeCodes()
         {
-            _codes = new Dictionary<char, string>();
-            _codesInverted = new Dictionary<string, char>();
+            Codes = new Dictionary<char, string>();
+            CodesInverted = new Dictionary<string, char>();
 
             if (_frequencies.Count == 1)
             {
-                _codes.Add(_frequencies.First().Key, "0");
-                _codesInverted.Add("0", _frequencies.First().Key);
+                Codes.Add(_frequencies.First().Key, "0");
+                CodesInverted.Add("0", _frequencies.First().Key);
 
                 return;
             }
@@ -86,8 +91,8 @@ namespace CodingTheory.Common
                 tree.Add(newNode);
             }
 
-            _codes = Dfs(tree.Min);
-            _codesInverted = _codes.ToDictionary(x => x.Value, x => x.Key);
+            Codes = Dfs(tree.Min);
+            CodesInverted = Codes.ToDictionary(x => x.Value, x => x.Key);
         }
 
         private static Dictionary<char, string> Dfs(Node<(double freq, string value)> root)
