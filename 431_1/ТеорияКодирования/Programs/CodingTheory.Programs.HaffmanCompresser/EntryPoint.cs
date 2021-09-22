@@ -43,7 +43,7 @@ namespace CodingTheory.Programs.HaffmanCompresser
             Console.WriteLine();
 
             (var compressedText, var executionTime) = SpeedMeter.Run(text, compressor.Compress);
-            File.WriteAllText(PathSettings.HaffmanCompressedTextFileName, compressedText);
+            SaveCodesAndtextToFile(compressor.Codes, compressedText);
             Console.WriteLine("Текст сжат и сохранен в файл.");
             Console.WriteLine("Результат сжатия:");
             Console.WriteLine(compressedText);
@@ -83,6 +83,26 @@ namespace CodingTheory.Programs.HaffmanCompresser
             }
 
             File.WriteAllText(PathSettings.HaffmanEncodingMapFileName, sb.ToString());
+        }
+
+        private static void SaveCodesAndtextToFile(Dictionary<char, string> codes, string text)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var kvp in codes)
+            {
+                sb.Append(kvp.Key);
+                sb.Append(' ');
+                sb.Append(kvp.Value);
+                sb.Append(Environment.NewLine);
+            }
+
+            sb.Append(PathSettings.SeparationString);
+            sb.Append(Environment.NewLine);
+            sb.Append(text);
+            sb.Append(Environment.NewLine);
+
+            File.WriteAllText(PathSettings.HaffmanCompressedTextFileName, sb.ToString());
         }
     }
 }

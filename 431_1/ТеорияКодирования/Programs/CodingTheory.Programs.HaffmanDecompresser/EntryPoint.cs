@@ -14,7 +14,7 @@ namespace CodingTheory.Programs.HaffmanDecompresser
             Console.OutputEncoding = Encoding.Unicode;
 
             Console.WriteLine("Считывание архивированного текста с файла...");
-            var compressedText = File.ReadAllText(PathSettings.HaffmanCompressedTextFileName);
+            var compressedText = File.ReadAllText(PathSettings.HaffmanCompressedTextFileName).Split(PathSettings.SeparationString)[1].Trim();
             Console.WriteLine("Архивированный текст считан с файла.");
             Console.WriteLine();
 
