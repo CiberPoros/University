@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using CodingTheory.Common;
 using Common;
@@ -9,49 +10,21 @@ namespace CodingTheory.Programs.HaffmanCompresser
 {
     class EntryPoint
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.OutputEncoding = Encoding.Unicode;
 
-            Console.WriteLine("Считывание текста с файла...");
             var text = File.ReadAllText(PathSettings.HaffmanTextFileName);
-            Console.WriteLine("Текст считан с файла.");
-            Console.WriteLine();
-
-            Console.WriteLine("Подсчитаны частоты символов в тексте:");
             var frequencies = Frequencies.CalculateFrequencies(text);
-            foreach (var kvp in frequencies)
-            {
-                Console.WriteLine($"{kvp.Key} {kvp.Value}");
-            }
-            Console.WriteLine();
-
             SaveFrequenciesToFile(frequencies);
-            Console.WriteLine("Частоты сохранены в файл.");
-            Console.WriteLine();
 
             var compressor = new CompressionByHaffman(frequencies);
-            Console.WriteLine("Создана таблица кодов:");
-            foreach (var kvp in compressor.Codes)
-            {
-                Console.WriteLine($"{kvp.Key} {kvp.Value}");
-            }
-            Console.WriteLine();
-
-            SaveCodesToFile(compressor.Codes);
-            Console.WriteLine("Таблица кодов сохранена в файл.");
-            Console.WriteLine();
-
             (var compressedText, var executionTime) = SpeedMeter.Run(text, compressor.Compress);
-            SaveCodesAndtextToFile(compressor.Codes, compressedText);
-            Console.WriteLine("Текст сжат и сохранен в файл.");
-            Console.WriteLine("Результат сжатия:");
-            Console.WriteLine(compressedText);
+            SaveCodesAndTextToFile(compressor.Codes, compressedText);
+            Console.WriteLine($"Текст сжат и сохранен в файл \"{Path.GetFileName(PathSettings.HaffmanCompressedTextFileName)}\"");
             Console.WriteLine();
 
             Console.WriteLine($"Коеффициент сжатия: {(((compressedText.Length + .0) / 16) / text.Length) * 100}%");
-            Console.WriteLine();
-
             Console.WriteLine($"Скорость сжатия: {(text.Length + .0) / executionTime.TotalMilliseconds:n4} символов / мсек.");
         }
 
@@ -67,25 +40,10 @@ namespace CodingTheory.Programs.HaffmanCompresser
                 sb.Append(Environment.NewLine);
             }
 
-            File.WriteAllText(PathSettings.HaffmanFrequenciesFileName, sb.ToString());
+            File.WriteAllText(PathSettings.HaffmanFrequenciesFileName, sb.ToString(), Encoding.Unicode);
         }
 
-        private static void SaveCodesToFile(Dictionary<char, string> codes)
-        {
-            var sb = new StringBuilder();
-
-            foreach (var kvp in codes)
-            {
-                sb.Append(kvp.Key);
-                sb.Append(' ');
-                sb.Append(kvp.Value);
-                sb.Append(Environment.NewLine);
-            }
-
-            File.WriteAllText(PathSettings.HaffmanEncodingMapFileName, sb.ToString());
-        }
-
-        private static void SaveCodesAndtextToFile(Dictionary<char, string> codes, string text)
+        private static void SaveCodesAndTextToFile(Dictionary<char, string> codes, string text)
         {
             var sb = new StringBuilder();
 
@@ -98,11 +56,12 @@ namespace CodingTheory.Programs.HaffmanCompresser
             }
 
             sb.Append(PathSettings.SeparationString);
-            sb.Append(Environment.NewLine);
-            sb.Append(text);
-            sb.Append(Environment.NewLine);
 
-            File.WriteAllText(PathSettings.HaffmanCompressedTextFileName, sb.ToString());
+            var result = Encoding.Unicode.GetBytes(sb.ToString())
+                                      .Concat(Utils.ConvertBitsSequenceToByteArray(text))
+                                      .ToArray();
+
+            File.WriteAllBytes(PathSettings.HaffmanCompressedTextFileName, result);
         }
     }
 }

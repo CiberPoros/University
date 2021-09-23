@@ -4,50 +4,45 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using CodingTheory.Common;
+using Common;
 
 namespace CodingTheory.Programs.HaffmanDecompresser
 {
     class EntryPoint
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.OutputEncoding = Encoding.Unicode;
 
-            Console.WriteLine("Считывание архивированного текста с файла...");
-            var compressedText = File.ReadAllText(PathSettings.HaffmanCompressedTextFileName).Split(PathSettings.SeparationString)[1].Trim();
-            Console.WriteLine("Архивированный текст считан с файла.");
-            Console.WriteLine();
-
-            Console.WriteLine("Считывание таблицы кодов символов...");
-            var codes = ReadCodesFromFile();
-            Console.WriteLine("Таблица кодов символов считана.");
-            Console.WriteLine();
+            (var compressedText, var codes) = ReadTextAndCodes();
 
             var compressor = new CompressionByHaffman
             {
                 CodesInverted = codes
             };
             var decompressedText = compressor.Decompress(compressedText);
-            File.WriteAllText(PathSettings.HaffmanDecompressedTextFileName, decompressedText);
-            Console.WriteLine("Текст разархивирован и результат сохранен в файл.");
-            Console.WriteLine("Результат разархивирования: ");
-            Console.WriteLine(decompressedText);
+            File.WriteAllText(PathSettings.HaffmanDecompressedTextFileName, decompressedText, Encoding.Unicode);
+            Console.WriteLine($"Текст разархивирован и результат сохранен в файл \"{Path.GetFileName(PathSettings.HaffmanDecompressedTextFileName)}\"");
         }
 
-        private static Dictionary<string, char> ReadCodesFromFile()
+        private static (string compressedText, Dictionary<string, char> codes) ReadTextAndCodes()
         {
-            var result = new Dictionary<string, char>();
+            var input = File.ReadAllBytes(PathSettings.HaffmanCompressedTextFileName);
+            var codes = new Dictionary<string, char>();
 
-            var input = File.ReadAllLines(PathSettings.HaffmanEncodingMapFileName)
-                            .Where(x => !string.IsNullOrWhiteSpace(x))
-                            .ToArray();
+            var tableAndText = Encoding.Unicode.GetString(input).Split(PathSettings.SeparationString, StringSplitOptions.RemoveEmptyEntries);
+            var table = tableAndText[0].Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (var s in input)
+            foreach (var s in table)
             {
-                result.Add(s.Substring(2, s.Length - 2), s[0]);
+                codes.Add(s[2..], s[0]);
             }
 
-            return result;
+            var byteArray = input.Skip(tableAndText[0].Length * 2 + PathSettings.SeparationString.Length * 2).ToArray();
+
+            var compressedText = Utils.ConvertByteArrayToBitsSequence(byteArray).Trim();
+
+            return (compressedText, codes);
         }
     }
 }
