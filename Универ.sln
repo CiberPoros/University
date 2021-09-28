@@ -17,7 +17,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.Haffm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common\Common.csproj", "{130F2CA7-B2CB-4843-B7EF-C11D9EF970B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.HaffmanDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.HaffmanDecompresser\CodingTheory.Programs.HaffmanDecompresser.csproj", "{37A0C0C6-74C0-400C-B709-CEFD820040E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.HaffmanDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.HaffmanDecompresser\CodingTheory.Programs.HaffmanDecompresser.csproj", "{37A0C0C6-74C0-400C-B709-CEFD820040E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "КСЗИ", "КСЗИ", "{7F7EFFCF-62D3-40CE-A449-D2A79567F5D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{886C9B94-61EA-455A-B546-D51E98E0AC27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "СMIP.Common", "431_1\КСЗИ\Programs\СMIP.Common\СMIP.Common.csproj", "{934E5910-BDC1-4FF3-BCD7-1049EF2C2E7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMIP.Programs.Task2", "431_1\КСЗИ\Programs\CMIP.Programs.Task2\CMIP.Programs.Task2.csproj", "{577E8BBB-2FFC-45D7-807B-6346C62A5C49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +49,14 @@ Global
 		{37A0C0C6-74C0-400C-B709-CEFD820040E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37A0C0C6-74C0-400C-B709-CEFD820040E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37A0C0C6-74C0-400C-B709-CEFD820040E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{934E5910-BDC1-4FF3-BCD7-1049EF2C2E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{934E5910-BDC1-4FF3-BCD7-1049EF2C2E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{934E5910-BDC1-4FF3-BCD7-1049EF2C2E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{934E5910-BDC1-4FF3-BCD7-1049EF2C2E7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{577E8BBB-2FFC-45D7-807B-6346C62A5C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{577E8BBB-2FFC-45D7-807B-6346C62A5C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{577E8BBB-2FFC-45D7-807B-6346C62A5C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{577E8BBB-2FFC-45D7-807B-6346C62A5C49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +68,10 @@ Global
 		{AE5FBE85-9C7F-46A5-BC29-0EE04BCBEBF5} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{130F2CA7-B2CB-4843-B7EF-C11D9EF970B9} = {2EE09F56-C592-45EF-8F90-C41199D5F744}
 		{37A0C0C6-74C0-400C-B709-CEFD820040E4} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{7F7EFFCF-62D3-40CE-A449-D2A79567F5D6} = {DEEB929D-80B3-4F88-ACEF-14656FA8D4CE}
+		{886C9B94-61EA-455A-B546-D51E98E0AC27} = {7F7EFFCF-62D3-40CE-A449-D2A79567F5D6}
+		{934E5910-BDC1-4FF3-BCD7-1049EF2C2E7B} = {7F7EFFCF-62D3-40CE-A449-D2A79567F5D6}
+		{577E8BBB-2FFC-45D7-807B-6346C62A5C49} = {886C9B94-61EA-455A-B546-D51E98E0AC27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}

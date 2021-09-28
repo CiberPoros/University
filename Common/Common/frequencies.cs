@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Common
 {
@@ -28,6 +30,64 @@ namespace Common
             }
 
             return result;
+        }
+
+        public static Dictionary<char, double> CalculateFrequencies(string[] text, string alpfabet)
+        {
+            var counter = new Dictionary<char, long>();
+
+            foreach (var c in alpfabet)
+            {
+                counter.Add(c, 0);
+            }
+
+            var cnt = 0L;
+            foreach (var s in text)
+            {
+                foreach (var c in s)
+                {
+                    if (!counter.ContainsKey(c))
+                    {
+                        continue;
+                    }
+
+                    counter[c]++;
+                    cnt++;
+                }
+            }
+
+            return counter.ToDictionary(x => x.Key, x => (x.Value + .0) / cnt);
+        }
+
+        public static Dictionary<char, double> CalculateFrequenciesByBooks(string booksPath, string alpfabet)
+        {
+            var counter = new Dictionary<char, long>();
+
+            foreach (var c in alpfabet)
+            {
+                counter.Add(c, 0);
+            }
+
+            var cnt = 0L;
+            foreach (var filename in Directory.EnumerateFiles(booksPath, "*.txt"))
+            {
+                string[] text = File.ReadAllLines(filename);
+                foreach (string s in text)
+                {
+                    foreach (var c in s)
+                    {
+                        if (!counter.ContainsKey(c))
+                        {
+                            continue;
+                        }
+
+                        counter[c]++;
+                        cnt++;
+                    }
+                }
+            }
+
+            return counter.ToDictionary(x => x.Key, x => (x.Value + .0) / cnt);
         }
     }
 }
