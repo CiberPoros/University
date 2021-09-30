@@ -12,6 +12,8 @@ namespace CMIP.Programs.Task2
     {
         static void Main()
         {
+            Console.OutputEncoding = Encoding.Unicode;
+
             for (; ; )
             {
                 var mode = ReadWorkMode();
@@ -26,7 +28,7 @@ namespace CMIP.Programs.Task2
                         break;
                     case WorkMode.DECRYPT:
                         Decrypt();
-                        break;
+                        break;  
                     case WorkMode.CLOSE_PROGRAM:
                         return;
                     case WorkMode.NONE:
@@ -77,8 +79,8 @@ namespace CMIP.Programs.Task2
             var bigramsInput = File.ReadAllLines(PathSettings.Task2_Bigrams);
             var etalonBigrams = bigramsInput.ToDictionary(x => x.Substring(0, 2), x => double.Parse(x[3..]));
 
-            var text = File.ReadAllLines(PathSettings.Task2_CodedText).Select(x => x.ToLower()).ToArray();
-            var frequencies = Frequencies.CalculateFrequencies(text, alphabet);
+            var encryptedText = File.ReadAllLines(PathSettings.Task2_CodedText).Select(x => x.ToLower()).ToArray();
+            var frequencies = Frequencies.CalculateFrequencies(encryptedText, alphabet);
 
             var freq1 = etalonFrequencies.OrderByDescending(x => x.Value).Select(x => x.Key).ToArray();
             var freq2 = frequencies.OrderByDescending(x => x.Value).Select(x => x.Key).ToArray();
@@ -91,7 +93,7 @@ namespace CMIP.Programs.Task2
 
             var alphabetSet = new HashSet<char>(alphabet);
 
-            var decodedText = DecodeText(text, alphabetSet, map);
+            var decodedText = DecodeText(encryptedText, alphabetSet, map);
             var bigrams = BigramsAnylize.CalcBigramsFrequenciesByText(decodedText, alphabet);
             var deviation = etalonBigrams.Select(x => (bigrams[x.Key] - x.Value) * (bigrams[x.Key] - x.Value)).Sum();
 
@@ -114,7 +116,7 @@ namespace CMIP.Programs.Task2
                             map[i].Second = map[j].Second;
                             map[j].Second = temp;
 
-                            decodedText = DecodeText(text, alphabetSet, map);
+                            decodedText = DecodeText(encryptedText, alphabetSet, map);
                             var currentBigrams = BigramsAnylize.CalcBigramsFrequenciesByText(decodedText, alphabet);
                             var currentDeviation = etalonBigrams.Select(x => (currentBigrams[x.Key] - x.Value) * (currentBigrams[x.Key] - x.Value)).Sum();
 
@@ -137,7 +139,7 @@ namespace CMIP.Programs.Task2
             }
             while (haveChange);
 
-            decodedText = DecodeText(text, alphabetSet, map);
+            decodedText = DecodeText(encryptedText, alphabetSet, map);
 
             File.WriteAllLines(PathSettings.Task2_DecodedText, decodedText);
             Console.WriteLine($"Шифрограмма была расшифрована и записана в файл \"{Path.GetFileName(PathSettings.Task2_DecodedText)}\"");
