@@ -4,7 +4,7 @@ using System.Text;
 using CodingTheory.Common;
 using Common;
 
-namespace CodingTheory.Programs.HaffmanCompresser
+namespace CodingTheory.Programs.FanoCompresser
 {
     class EntryPoint
     {
@@ -12,14 +12,14 @@ namespace CodingTheory.Programs.HaffmanCompresser
         {
             Console.OutputEncoding = Encoding.Unicode;
 
-            var text = File.ReadAllText(PathSettings.HaffmanTextFileName);
+            var text = File.ReadAllText(PathSettings.FanoTextFileName);
             var frequencies = Frequencies.CalculateFrequencies(text);
-            IOUtils.SaveFrequenciesToFile(frequencies, PathSettings.HaffmanFrequenciesFileName);
+            IOUtils.SaveFrequenciesToFile(frequencies, PathSettings.FanoFrequenciesFileName);
 
-            var compressor = new CompressionByHaffman(frequencies);
+            var compressor = new CompressionByFano(frequencies);
             (var compressedText, var executionTime) = SpeedMeter.Run(text, compressor.Compress);
-            IOUtils.SaveCodesAndTextToFile(compressor.Codes, compressedText, PathSettings.HaffmanCompressedTextFileName);
-            Console.WriteLine($"Текст сжат и сохранен в файл \"{Path.GetFileName(PathSettings.HaffmanCompressedTextFileName)}\"");
+            IOUtils.SaveCodesAndTextToFile(compressor.Codes, compressedText, PathSettings.FanoCompressedTextFileName);
+            Console.WriteLine($"Текст сжат и сохранен в файл \"{Path.GetFileName(PathSettings.FanoCompressedTextFileName)}\"");
             Console.WriteLine();
 
             Console.WriteLine($"Коеффициент сжатия: {(((compressedText.Length + .0) / 16) / text.Length) * 100}%");
