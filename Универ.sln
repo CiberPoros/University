@@ -31,9 +31,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "АлгоритмыАлге�
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{A5466C84-B0A1-4DD5-8DCD-D0B866B0BF9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgebraAlgorithmsAndNTH.Common", "431_1\АлгоритмыАлгебрыИТЧ\AlgebraAlgorithmsAndNTH.Common\AlgebraAlgorithmsAndNTH.Common.csproj", "{8E65F9D0-CF49-4DF9-B41F-555DB37F81FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgebraAlgorithmsAndNTH.Common", "431_1\АлгоритмыАлгебрыИТЧ\AlgebraAlgorithmsAndNTH.Common\AlgebraAlgorithmsAndNTH.Common.csproj", "{8E65F9D0-CF49-4DF9-B41F-555DB37F81FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgebraAlgorithmsAndNTH.Programs.Task1", "431_1\АлгоритмыАлгебрыИТЧ\Programs\AlgebraAlgorithmsAndNTH.Programs.Task1\AlgebraAlgorithmsAndNTH.Programs.Task1.csproj", "{4E6611B2-5541-44E4-8EAD-5025B5F13229}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgebraAlgorithmsAndNTH.Programs.Task1", "431_1\АлгоритмыАлгебрыИТЧ\Programs\AlgebraAlgorithmsAndNTH.Programs.Task1\AlgebraAlgorithmsAndNTH.Programs.Task1.csproj", "{4E6611B2-5541-44E4-8EAD-5025B5F13229}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgebraAlgorithmsAndNTH.Programs.Task2", "431_1\АлгоритмыАлгебрыИТЧ\Programs\AlgebraAlgorithmsAndNTH.Programs.Task2\AlgebraAlgorithmsAndNTH.Programs.Task2.csproj", "{8C75BD5F-2084-4F5F-B142-5896B6D3C0A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{4E6611B2-5541-44E4-8EAD-5025B5F13229}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E6611B2-5541-44E4-8EAD-5025B5F13229}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E6611B2-5541-44E4-8EAD-5025B5F13229}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C75BD5F-2084-4F5F-B142-5896B6D3C0A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C75BD5F-2084-4F5F-B142-5896B6D3C0A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C75BD5F-2084-4F5F-B142-5896B6D3C0A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C75BD5F-2084-4F5F-B142-5896B6D3C0A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{A5466C84-B0A1-4DD5-8DCD-D0B866B0BF9A} = {ED0AD924-8898-412B-9483-62012051F3C1}
 		{8E65F9D0-CF49-4DF9-B41F-555DB37F81FF} = {ED0AD924-8898-412B-9483-62012051F3C1}
 		{4E6611B2-5541-44E4-8EAD-5025B5F13229} = {A5466C84-B0A1-4DD5-8DCD-D0B866B0BF9A}
+		{8C75BD5F-2084-4F5F-B142-5896B6D3C0A7} = {A5466C84-B0A1-4DD5-8DCD-D0B866B0BF9A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}
