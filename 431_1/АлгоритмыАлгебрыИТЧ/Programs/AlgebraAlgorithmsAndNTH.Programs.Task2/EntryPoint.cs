@@ -8,7 +8,7 @@ using Common.IsPrimeChecking;
 
 namespace AlgebraAlgorithmsAndNTH.Programs.Task2
 {
-    class Program
+    class EntryPoint
     {
         static async Task Main()
         {
