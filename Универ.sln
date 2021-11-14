@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.FanoD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMIP.Programs.Task6", "431_1\КСЗИ\Programs\CMIP.Programs.Task6\CMIP.Programs.Task6.csproj", "{2518EE73-B7F0-4C2E-9971-61C3F339AD3F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMIP.Programs.Task8", "431_1\КСЗИ\Programs\CMIP.Programs.Task8\CMIP.Programs.Task8.csproj", "{99598485-F122-41E8-85E9-37631F3D83F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{2518EE73-B7F0-4C2E-9971-61C3F339AD3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2518EE73-B7F0-4C2E-9971-61C3F339AD3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2518EE73-B7F0-4C2E-9971-61C3F339AD3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99598485-F122-41E8-85E9-37631F3D83F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99598485-F122-41E8-85E9-37631F3D83F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99598485-F122-41E8-85E9-37631F3D83F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99598485-F122-41E8-85E9-37631F3D83F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +126,7 @@ Global
 		{A7F69A2A-DBB2-497B-A1CF-367EB41A4B37} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{34C56CBA-A8B8-4AF5-B80F-321DEC7D28EA} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{2518EE73-B7F0-4C2E-9971-61C3F339AD3F} = {886C9B94-61EA-455A-B546-D51E98E0AC27}
+		{99598485-F122-41E8-85E9-37631F3D83F2} = {886C9B94-61EA-455A-B546-D51E98E0AC27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}

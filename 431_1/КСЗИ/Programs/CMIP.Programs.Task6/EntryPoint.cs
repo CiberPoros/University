@@ -7,7 +7,7 @@ namespace CMIP.Programs.Task6
 {
     class EntryPoint
     {
-        static void Main(string[] args)
+        static void Main()
         {
             for (; ; )
             {
@@ -109,7 +109,8 @@ namespace CMIP.Programs.Task6
             Console.WriteLine($"4 - Зашифровать текст в файле {Path.GetFileName(PathSettings.Task6_OpenText)} SuperKey ключом,");
             Console.WriteLine($"5 - Дешифровать текст в файле {Path.GetFileName(PathSettings.Task6_CodedText)} первым ключом,");
             Console.WriteLine($"6 - Дешифровать текст в файле {Path.GetFileName(PathSettings.Task6_CodedText)} вторым ключом,");
-            Console.WriteLine($"7 - Дешифровать текст в файле {Path.GetFileName(PathSettings.Task6_CodedText)} SuperKey ключом;");
+            Console.WriteLine($"7 - Дешифровать текст в файле {Path.GetFileName(PathSettings.Task6_CodedText)} SuperKey ключом,");
+            Console.WriteLine($"0 - Завершить работу программы;");
             Console.WriteLine();
 
             for (; ; )
