@@ -30,11 +30,11 @@ namespace CMIP.Programs.Task8
                         Console.WriteLine();
                         break;
                     case WorkMode.CALC_INDEX_FOR_RUS_TEXT:
-                        Console.WriteLine($"Индекс для русского текста подсчитан и равен: {CalcIndex(ReadRusText(), ReadRusText().Length)}");
+                        Console.WriteLine($"Индекс для русского текста подсчитан и равен: {CalcIndex(ReadRusText())}");
                         Console.WriteLine();
                         break;
                     case WorkMode.CALC_INDEX_FOR_ENG_TEXT:
-                        Console.WriteLine($"Индекс для английского текста подсчитан и равен: {CalcIndex(ReadEngText(), ReadEngText().Length)}");
+                        Console.WriteLine($"Индекс для английского текста подсчитан и равен: {CalcIndex(ReadEngText())}");
                         Console.WriteLine();
                         break;
                     case WorkMode.CLOSE_PROGRAM:
@@ -43,7 +43,7 @@ namespace CMIP.Programs.Task8
             }
         }
 
-        private static double CalcIndex(string text, int textLength)
+        private static double CalcIndex(string text)
         {
             var occurrencesCount = new Dictionary<char, int>();
 
@@ -58,7 +58,7 @@ namespace CMIP.Programs.Task8
                 occurrencesCount.Add(c, 1);
             }
 
-            return occurrencesCount.Sum(x => ((x.Value + .0) / textLength) * ((x.Value + .0) / textLength));
+            return occurrencesCount.Sum(x => ((x.Value + .0) / text.Length) * ((x.Value + .0) / text.Length));
         }
 
         private static int ReadLength()
@@ -72,6 +72,7 @@ namespace CMIP.Programs.Task8
                 {
                     Console.WriteLine("Ожидалось целое положительное число. Повторите попытку...");
                     Console.WriteLine();
+                    continue;
                 }
 
                 Console.WriteLine();

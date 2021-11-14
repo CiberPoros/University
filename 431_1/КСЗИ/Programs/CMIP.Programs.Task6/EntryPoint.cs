@@ -5,6 +5,16 @@ using СMIP.Common;
 
 namespace CMIP.Programs.Task6
 {
+    // abcde алфавит
+    // bceda ключ1
+    // caedb ключ2
+
+    // abacdac текст
+    // шифруем 1 раз: bcbedbe
+    // шифруем 2 раз: aeabdab
+
+    // aebdc суперКлюч
+    // aeabdab
     class EntryPoint
     {
         static void Main()
