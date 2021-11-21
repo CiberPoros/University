@@ -29,12 +29,21 @@ namespace CMIP.Programs.Task8
                         Console.WriteLine($"Английский текст сгенерирован и сохранен в файл {Path.GetFileName(PathSettings.Task8_Text_Eng)}");
                         Console.WriteLine();
                         break;
+                    case WorkMode.GENERATE_ARM_TEXT:
+                        File.WriteAllText(PathSettings.Task8_Text_Arm, GenerateText(ReadArmAlphabet(), ReadLength()));
+                        Console.WriteLine($"Армянский текст сгенерирован и сохранен в файл {Path.GetFileName(PathSettings.Task8_Text_Arm)}");
+                        Console.WriteLine();
+                        break;
                     case WorkMode.CALC_INDEX_FOR_RUS_TEXT:
                         Console.WriteLine($"Индекс для русского текста подсчитан и равен: {CalcIndex(ReadRusText())}");
                         Console.WriteLine();
                         break;
                     case WorkMode.CALC_INDEX_FOR_ENG_TEXT:
                         Console.WriteLine($"Индекс для английского текста подсчитан и равен: {CalcIndex(ReadEngText())}");
+                        Console.WriteLine();
+                        break;
+                    case WorkMode.CALC_INDEX_FOR_ARM_TEXT:
+                        Console.WriteLine($"Индекс для армянского текста подсчитан и равен: {CalcIndex(ReadArmText())}");
                         Console.WriteLine();
                         break;
                     case WorkMode.CLOSE_PROGRAM:
@@ -90,6 +99,11 @@ namespace CMIP.Programs.Task8
             return File.ReadAllText(PathSettings.Task8_Alphabet_Eng);
         }
 
+        private static string ReadArmAlphabet()
+        {
+            return File.ReadAllText(PathSettings.Task8_Alphabet_Arm);
+        }
+
         private static string ReadRusText()
         {
             return File.ReadAllText(PathSettings.Task8_Text_Rus);
@@ -98,6 +112,11 @@ namespace CMIP.Programs.Task8
         private static string ReadEngText()
         {
             return File.ReadAllText(PathSettings.Task8_Text_Eng);
+        }
+
+        private static string ReadArmText()
+        {
+            return File.ReadAllText(PathSettings.Task8_Text_Arm);
         }
 
         private static string GenerateText(string alphabet, int length)
@@ -116,8 +135,10 @@ namespace CMIP.Programs.Task8
         {
             Console.WriteLine($"1 - Сгенерировать случайный бессмысленный текст из русских символов,");
             Console.WriteLine($"2 - Сгенерировать случайный бессмысленный текст из английских символов,");
-            Console.WriteLine($"3 - Посчитать индекс совпадения для текста из русских символов,");
-            Console.WriteLine($"4 - Посчитать индекс совпадения для текста из английских символов,");
+            Console.WriteLine($"3 - Сгенерировать случайный бессмысленный текст из армянских символов,");
+            Console.WriteLine($"4 - Посчитать индекс совпадения для текста из русских символов,");
+            Console.WriteLine($"5 - Посчитать индекс совпадения для текста из английских символов,");
+            Console.WriteLine($"6 - Посчитать индекс совпадения для текста из армянских символов,");
             Console.WriteLine($"0 - Завершить работу программы;");
             Console.WriteLine();
 
@@ -135,10 +156,16 @@ namespace CMIP.Programs.Task8
                         return WorkMode.GENERATE_ENG_TEXT;
                     case ConsoleKey.D3:
                     case ConsoleKey.NumPad3:
-                        return WorkMode.CALC_INDEX_FOR_RUS_TEXT;
+                        return WorkMode.GENERATE_ARM_TEXT;
                     case ConsoleKey.D4:
                     case ConsoleKey.NumPad4:
+                        return WorkMode.CALC_INDEX_FOR_RUS_TEXT;
+                    case ConsoleKey.D5:
+                    case ConsoleKey.NumPad5:
                         return WorkMode.CALC_INDEX_FOR_ENG_TEXT;
+                    case ConsoleKey.D6:
+                    case ConsoleKey.NumPad6:
+                        return WorkMode.CALC_INDEX_FOR_ARM_TEXT;
                     case ConsoleKey.D0:
                     case ConsoleKey.NumPad0:
                         return WorkMode.CLOSE_PROGRAM;

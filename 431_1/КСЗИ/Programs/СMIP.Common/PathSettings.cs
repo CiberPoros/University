@@ -24,7 +24,9 @@
 
         public const string Task8_Alphabet_Rus = Task8_FolderPath + "\\" + "РусскийАлфавит.txt";
         public const string Task8_Alphabet_Eng = Task8_FolderPath + "\\" + "АнглийскийАлфавит.txt";
+        public const string Task8_Alphabet_Arm = Task8_FolderPath + "\\" + "АрмянскийАлфавит.txt";
         public const string Task8_Text_Rus = Task8_FolderPath + "\\" + "РусскийТекст.txt";
         public const string Task8_Text_Eng = Task8_FolderPath + "\\" + "АнглийскийТекст.txt";
+        public const string Task8_Text_Arm = Task8_FolderPath + "\\" + "АрмянскийТекст.txt";
     }
 }
