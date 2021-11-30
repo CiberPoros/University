@@ -22,7 +22,9 @@ namespace Common
         {
             var task = Task.Run(() => func());
             return await Task.WhenAny(task, Task.Delay(TimeSpan.FromSeconds(TimeLimitInSeconds))) == task
-                ? Result.Ok(task.Result)
+                ? task.IsFaulted
+                    ? Result.Fail($"The method completed with exception(s): {task.Exception.Message}")
+                    : (await task).ToResult()
                 : Result.Fail($"The method did not complete in a limited time = {TimeLimitInSeconds} seconds");
         }
     }

@@ -11,65 +11,26 @@ namespace Common.IsPrimeChecking
 
         public bool IsPrime(BigInteger value)
         {
-            if (value == 1)
-            {
+            if (value > int.MaxValue)
+                throw new ArgumentOutOfRangeException(nameof(value), value, $"Parameter can't be large than {int.MaxValue}.");
+
+            if (value == 1 || value == 2 || value == 3)
                 return true;
-            }
 
-            for (int i = 2; i * i <= value; i++)
+            if (value % 2 == 0)
+                return false;
+
+            var sqrt = Math.Sqrt((int)value);
+            
+            for (int i = 3; i < sqrt; i += 2)
             {
-                for (int j = 2; ; j++)
-                {
-                    var x = new BigInteger(i);
-                    x = BigInteger.Pow(x, j);
-
-                    if (x == value)
-                    {
-                        return false;
-                    }
-
-                    if (x > value)
-                    {
-                        break;
-                    }    
-                }
-            }
-
-            var log = (long)Math.Floor(BigInteger.Log(value, 2)) + 1;
-            log *= log;
-
-            int r = -1;
-
-            for (int r_current = 0; r == -1; r_current++)
-            {
-                var current = value % r_current; 
-                for (int i = 1; r == -1; i++)
-                {
-                    if (current == 1)
-                    {
-                        if (i > log)
-                        {
-                            r = r_current;
-                        }
-                    }
-
-                    current = (current * value) % r_current;
-                }
-            }
-
-            for (int i = 2; i <= r; i++)
-            {
-                if (BigInteger.GreatestCommonDivisor(i, value) != 1)
+                if (value % i == 0)
                 {
                     return false;
                 }
             }
 
-            var limit = Math.Floor(Math.Sqrt(EulersFunction.GetValueBySimpleFactorization(r)) * BigInteger.Log(value, 2));
-
-            // TODO: end this shit
-
-            return false;
+            return true;
         }
     }
 }

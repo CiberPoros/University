@@ -6,9 +6,9 @@ namespace Common.IsPrimeChecking
     {
         public int RoundsCount { get; set; }
 
-        public bool IsProbabilisticByPrimeResult => false;
+        public bool IsProbabilisticByPrimeResult => true;
 
-        public bool IsProbabilisticByComplexResult => true;
+        public bool IsProbabilisticByComplexResult => false;
 
         public bool IsPrime(BigInteger value)
         {

@@ -65,9 +65,7 @@ namespace AlgebraAlgorithmsAndNTH.Programs.Task2
                         return new CheckerByFerma() { RoundsCount = ReadRoundsCount() };
                     case ConsoleKey.D3:
                     case ConsoleKey.NumPad3:
-                        Console.WriteLine("Алгоритм не реализован. Выберите другой вариант...");
-                        Console.WriteLine();
-                        break;
+                        return new CheckerByCarmichael() { RoundsCount = ReadRoundsCount() };
                     case ConsoleKey.D4:
                     case ConsoleKey.NumPad4:
                         return new CheckerByStrassen() { RoundsCount = ReadRoundsCount() };
@@ -76,12 +74,12 @@ namespace AlgebraAlgorithmsAndNTH.Programs.Task2
                         return new CheckerByRabinMiller() { RoundsCount = ReadRoundsCount() };
                     case ConsoleKey.D6:
                     case ConsoleKey.NumPad6:
-                        Console.WriteLine("Алгоритм не реализован. Выберите другой вариант...");
-                        Console.WriteLine();
-                        break;
+                        return new CheckerByPolinomialTest();
                     case ConsoleKey.D0:
                     case ConsoleKey.NumPad0:
                         return null;
+                    default:
+                        break;
                 }
             }
         }
