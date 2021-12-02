@@ -8,7 +8,7 @@ namespace CodingTheory.Programs.ShannonCompresser
 {
     class EntryPoint
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.OutputEncoding = Encoding.Unicode;
 

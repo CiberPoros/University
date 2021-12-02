@@ -5,9 +5,9 @@ using CodingTheory.Common;
 
 namespace CodingTheory.Programs.ShannonDecompresser
 {
-    class Program
+    class EntryPoint
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.OutputEncoding = Encoding.Unicode;
 

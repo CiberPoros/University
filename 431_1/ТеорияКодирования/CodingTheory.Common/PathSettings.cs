@@ -32,5 +32,14 @@
         public const string ShannonDecompressedTextFileName = ShannonFolderPath + "\\" + @"РазархивированныйТекст.txt";
         public const string ShannonFrequenciesFileName = ShannonFolderPath + "\\" + @"Частоты.txt";
         #endregion
+
+        #region MOVE_TO_FRONT
+        public const string MoveToFrontFolderPath = SandBoxFolderPath + "\\" + @"АлгоритмСтопкаКниг";
+
+        public const string MoveToFrontTextFileName = MoveToFrontFolderPath + "\\" + @"ИсходныйТекст.txt";
+        public const string MoveToFrontCompressedTextFileName = MoveToFrontFolderPath + "\\" + @"АрхивированныйТекст.txt";
+        public const string MoveToFrontDecompressedTextFileName = MoveToFrontFolderPath + "\\" + @"РазархивированныйТекст.txt";
+        public const string MoveToFrontAlphabetFileName = MoveToFrontFolderPath + "\\" + @"Алфавит.txt";
+        #endregion
     }
 }

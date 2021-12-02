@@ -51,6 +51,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.Shann
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.ShannonDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.ShannonDecompresser\CodingTheory.Programs.ShannonDecompresser.csproj", "{4D49FA35-458A-4228-9F6B-ABA72429E083}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.MoveToFrontCompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.MoveToFrontCompresser\CodingTheory.Programs.MoveToFrontCompresser.csproj", "{5790835B-8231-4989-ACCC-1F145F6F32F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.MoveToFrontDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.MoveToFrontDecompresser\CodingTheory.Programs.MoveToFrontDecompresser.csproj", "{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +125,14 @@ Global
 		{4D49FA35-458A-4228-9F6B-ABA72429E083}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D49FA35-458A-4228-9F6B-ABA72429E083}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D49FA35-458A-4228-9F6B-ABA72429E083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5790835B-8231-4989-ACCC-1F145F6F32F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5790835B-8231-4989-ACCC-1F145F6F32F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5790835B-8231-4989-ACCC-1F145F6F32F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5790835B-8231-4989-ACCC-1F145F6F32F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,6 +160,8 @@ Global
 		{0A5CB6A6-1313-49BC-8814-3AD6B1992193} = {A5466C84-B0A1-4DD5-8DCD-D0B866B0BF9A}
 		{0939D810-A5CA-4F7A-86F2-B9390CDA581D} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{4D49FA35-458A-4228-9F6B-ABA72429E083} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{5790835B-8231-4989-ACCC-1F145F6F32F0} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}
