@@ -21,7 +21,16 @@
         public const string FanoTextFileName = FanoFolderPath + "\\" + @"ИсходныйТекст.txt";
         public const string FanoCompressedTextFileName = FanoFolderPath + "\\" + @"АрхивированныйТекст.txt";
         public const string FanoDecompressedTextFileName = FanoFolderPath + "\\" + @"РазархивированныйТекст.txt";
-        public const string FanoFrequenciesFileName = FanoFolderPath + "\\" + @"Частоты.txt"; 
+        public const string FanoFrequenciesFileName = FanoFolderPath + "\\" + @"Частоты.txt";
+        #endregion
+
+        #region SHANNON
+        public const string ShannonFolderPath = SandBoxFolderPath + "\\" + @"АлгоритмШеннона";
+
+        public const string ShannonTextFileName = ShannonFolderPath + "\\" + @"ИсходныйТекст.txt";
+        public const string ShannonCompressedTextFileName = ShannonFolderPath + "\\" + @"АрхивированныйТекст.txt";
+        public const string ShannonDecompressedTextFileName = ShannonFolderPath + "\\" + @"РазархивированныйТекст.txt";
+        public const string ShannonFrequenciesFileName = ShannonFolderPath + "\\" + @"Частоты.txt";
         #endregion
     }
 }
