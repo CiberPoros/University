@@ -47,13 +47,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMIP.Programs.Task8", "431_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgebraAlgorithmsAndNTH.Programs.Task3", "431_1\АлгоритмыАлгебрыИТЧ\Programs\AlgebraAlgorithmsAndNTH.Programs.Task3\AlgebraAlgorithmsAndNTH.Programs.Task3.csproj", "{0A5CB6A6-1313-49BC-8814-3AD6B1992193}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.ShannonCompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.ShannonCompresser\CodingTheory.Programs.ShannonCompresser.csproj", "{0939D810-A5CA-4F7A-86F2-B9390CDA581D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.ShannonCompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.ShannonCompresser\CodingTheory.Programs.ShannonCompresser.csproj", "{0939D810-A5CA-4F7A-86F2-B9390CDA581D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.ShannonDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.ShannonDecompresser\CodingTheory.Programs.ShannonDecompresser.csproj", "{4D49FA35-458A-4228-9F6B-ABA72429E083}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.ShannonDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.ShannonDecompresser\CodingTheory.Programs.ShannonDecompresser.csproj", "{4D49FA35-458A-4228-9F6B-ABA72429E083}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.MoveToFrontCompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.MoveToFrontCompresser\CodingTheory.Programs.MoveToFrontCompresser.csproj", "{5790835B-8231-4989-ACCC-1F145F6F32F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.MoveToFrontCompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.MoveToFrontCompresser\CodingTheory.Programs.MoveToFrontCompresser.csproj", "{5790835B-8231-4989-ACCC-1F145F6F32F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.MoveToFrontDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.MoveToFrontDecompresser\CodingTheory.Programs.MoveToFrontDecompresser.csproj", "{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.MoveToFrontDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.MoveToFrontDecompresser\CodingTheory.Programs.MoveToFrontDecompresser.csproj", "{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMIP.Programs.Task4", "431_1\КСЗИ\Programs\CMIP.Programs.Task4\CMIP.Programs.Task4.csproj", "{FC8ECDB7-E5D4-4A02-94F8-B9A0C965D920}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,6 +135,10 @@ Global
 		{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC8ECDB7-E5D4-4A02-94F8-B9A0C965D920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC8ECDB7-E5D4-4A02-94F8-B9A0C965D920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC8ECDB7-E5D4-4A02-94F8-B9A0C965D920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC8ECDB7-E5D4-4A02-94F8-B9A0C965D920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -162,6 +168,7 @@ Global
 		{4D49FA35-458A-4228-9F6B-ABA72429E083} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{5790835B-8231-4989-ACCC-1F145F6F32F0} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{FC8ECDB7-E5D4-4A02-94F8-B9A0C965D920} = {886C9B94-61EA-455A-B546-D51E98E0AC27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}

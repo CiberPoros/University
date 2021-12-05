@@ -7,6 +7,7 @@
         private const string Task2_FolderPath = SandBoxFolderPath + "\\" + "Задание_2";
         private const string Task6_FolderPath = SandBoxFolderPath + "\\" + "Задание_6";
         private const string Task8_FolderPath = SandBoxFolderPath + "\\" + "Задание_8";
+        private const string Task4_FolderPath = SandBoxFolderPath + "\\" + "Задание_4";
 
         public const string Task2_CodedText = Task2_FolderPath + "\\" + "Шифрограмма.txt";
         public const string Task2_DecodedText = Task2_FolderPath + "\\" + "РасшифрованныйТекст.txt";
@@ -28,5 +29,10 @@
         public const string Task8_Text_Rus = Task8_FolderPath + "\\" + "РусскийТекст.txt";
         public const string Task8_Text_Eng = Task8_FolderPath + "\\" + "АнглийскийТекст.txt";
         public const string Task8_Text_Arm = Task8_FolderPath + "\\" + "АрмянскийТекст.txt";
+
+        public const string Task4_Alphabet = Task4_FolderPath + "\\" + "Алфавит.txt";
+        public const string Task4_OpenText = Task4_FolderPath + "\\" + "ОткрытыйТекст.txt";
+        public const string Task4_CodedText = Task4_FolderPath + "\\" + "Шифрограмма.txt";
+        public const string Task4_DecodedText = Task4_FolderPath + "\\" + "РасшифрованныйТекст.txt";
     }
 }
