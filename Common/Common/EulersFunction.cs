@@ -7,7 +7,7 @@ namespace Common
         // TODO: to non-static
         public static int GetValueBySimpleFactorization(int value)
         {
-            var divisors = Factorization.FactorizationByBruteForce(value).ToArray();
+            var divisors = SimpleFactorization.FactorizationByBruteForce(value).ToArray();
 
             var result = 1;
             foreach (var divisor in divisors)

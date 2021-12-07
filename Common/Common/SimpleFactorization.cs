@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Common
 {
     // TODO: to non-static
-    public static class Factorization
+    public static class SimpleFactorization
     {
         public static IEnumerable<int> FactorizationByBruteForce(int value)
         {
