@@ -65,7 +65,7 @@ namespace AlgebraAlgorithmsAndNTH.Programs.Task2
                         return new CheckerByFerma() { RoundsCount = ReadRoundsCount() };
                     case ConsoleKey.D3:
                     case ConsoleKey.NumPad3:
-                        return new CheckerByCarmichael() { RoundsCount = ReadRoundsCount() };
+                        return new CheckerByCarmichael() { RoundsCount = ReadRoundsCount(), WithOutputToConsole = true };
                     case ConsoleKey.D4:
                     case ConsoleKey.NumPad4:
                         return new CheckerByStrassen() { RoundsCount = ReadRoundsCount() };
