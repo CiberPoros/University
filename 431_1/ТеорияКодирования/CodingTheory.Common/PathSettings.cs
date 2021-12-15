@@ -50,5 +50,13 @@
         public const string GilbertMureDecompressedTextFileName = GilbertMureFolderPath + "\\" + @"РазархивированныйТекст.txt";
         public const string GilbertMureFrequenciesFileName = GilbertMureFolderPath + "\\" + @"Частоты.txt";
         #endregion
+
+        #region LZ77
+        public const string LZ77FolderPath = SandBoxFolderPath + "\\" + @"АлгоритмLZ77";
+
+        public const string LZ77TextFileName = LZ77FolderPath + "\\" + @"ИсходныйТекст.txt";
+        public const string LZ77CompressedTextFileName = LZ77FolderPath + "\\" + @"АрхивированныйТекст.txt";
+        public const string LZ77DecompressedTextFileName = LZ77FolderPath + "\\" + @"РазархивированныйТекст.txt";
+        #endregion
     }
 }

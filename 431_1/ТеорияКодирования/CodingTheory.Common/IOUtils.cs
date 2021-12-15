@@ -64,5 +64,54 @@ namespace CodingTheory.Common
 
             return (compressedText, codes);
         }
+
+        public static int SaveLZ77ResultToFile(IEnumerable<(int offset, int length, char nextSymbol)> lz77Result, string fileName)
+        {
+            var result = new List<string>();
+
+            foreach (var currentRes in lz77Result)
+            {
+                var sb = new StringBuilder();
+                sb.Append(currentRes.offset);
+                sb.Append(' ');
+                sb.Append(currentRes.length);
+                sb.Append(' ');
+                sb.Append(currentRes.nextSymbol);
+                result.Add(sb.ToString());
+            }
+
+            File.WriteAllLines(fileName, result);
+
+            return result.Sum(x => x.Length) + result.Count - 1;
+        }
+
+        public static IEnumerable<(int offset, int length, char nextSymbol)> ReadLZ77ResultFromFile(string fileName)
+        {
+            var lines = File.ReadAllLines(fileName).Where(x => !(string.IsNullOrWhiteSpace(x))).ToList();
+
+            foreach (var line in lines)
+            {
+                var startIndex = 0;
+                var index = 0;
+                while (line[index] != ' ')
+                {
+                    index++;
+                }
+
+                var offset = int.Parse(line.Substring(startIndex, index - startIndex));
+
+                startIndex = index + 1;
+                index++;
+                while (line[index] != ' ')
+                {
+                    index++;
+                }
+
+                var length = int.Parse(line.Substring(startIndex, index - startIndex));
+                var nextSymbol = line.Last();
+
+                yield return (offset, length, nextSymbol);
+            }
+        }
     }
 }

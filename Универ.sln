@@ -63,6 +63,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.Gilbe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.GilbertMureDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.GilbertMureDecompresser\CodingTheory.Programs.GilbertMureDecompresser.csproj", "{6986F603-A738-41F7-B8C2-C5AFC0CE38B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.CommonTests", "431_1\ТеорияКодирования\CodingTheory.CommonTests\CodingTheory.CommonTests.csproj", "{955ECEBB-A3FD-43B9-B1B4-DFEE9584B179}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.LZ77Compresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.LZ77Compresser\CodingTheory.Programs.LZ77Compresser.csproj", "{5FA43704-7388-428D-9CAF-93ADF945D83D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.LZ77Decompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.LZ77Decompresser\CodingTheory.Programs.LZ77Decompresser.csproj", "{87F93099-65BB-4A52-BB1A-126C9A1FBBFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +163,18 @@ Global
 		{6986F603-A738-41F7-B8C2-C5AFC0CE38B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6986F603-A738-41F7-B8C2-C5AFC0CE38B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6986F603-A738-41F7-B8C2-C5AFC0CE38B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{955ECEBB-A3FD-43B9-B1B4-DFEE9584B179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{955ECEBB-A3FD-43B9-B1B4-DFEE9584B179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{955ECEBB-A3FD-43B9-B1B4-DFEE9584B179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{955ECEBB-A3FD-43B9-B1B4-DFEE9584B179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FA43704-7388-428D-9CAF-93ADF945D83D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FA43704-7388-428D-9CAF-93ADF945D83D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FA43704-7388-428D-9CAF-93ADF945D83D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FA43704-7388-428D-9CAF-93ADF945D83D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F93099-65BB-4A52-BB1A-126C9A1FBBFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F93099-65BB-4A52-BB1A-126C9A1FBBFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F93099-65BB-4A52-BB1A-126C9A1FBBFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F93099-65BB-4A52-BB1A-126C9A1FBBFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,6 +208,8 @@ Global
 		{1DD053BF-A2DD-47CC-9F24-30F28490CA23} = {A5466C84-B0A1-4DD5-8DCD-D0B866B0BF9A}
 		{EB750FD1-8989-4248-8554-447F9246F74E} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{6986F603-A738-41F7-B8C2-C5AFC0CE38B6} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{5FA43704-7388-428D-9CAF-93ADF945D83D} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{87F93099-65BB-4A52-BB1A-126C9A1FBBFD} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}
