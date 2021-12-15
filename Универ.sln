@@ -57,7 +57,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.MoveT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMIP.Programs.Task4", "431_1\КСЗИ\Programs\CMIP.Programs.Task4\CMIP.Programs.Task4.csproj", "{FC8ECDB7-E5D4-4A02-94F8-B9A0C965D920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgebraAlgorithmsAndNTH.Programs.Task4", "431_1\АлгоритмыАлгебрыИТЧ\Programs\AlgebraAlgorithmsAndNTH.Programs.Task4\AlgebraAlgorithmsAndNTH.Programs.Task4.csproj", "{1DD053BF-A2DD-47CC-9F24-30F28490CA23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgebraAlgorithmsAndNTH.Programs.Task4", "431_1\АлгоритмыАлгебрыИТЧ\Programs\AlgebraAlgorithmsAndNTH.Programs.Task4\AlgebraAlgorithmsAndNTH.Programs.Task4.csproj", "{1DD053BF-A2DD-47CC-9F24-30F28490CA23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.GilbertMureCompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.GilbertMureCompresser\CodingTheory.Programs.GilbertMureCompresser.csproj", "{EB750FD1-8989-4248-8554-447F9246F74E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.GilbertMureDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.GilbertMureDecompresser\CodingTheory.Programs.GilbertMureDecompresser.csproj", "{6986F603-A738-41F7-B8C2-C5AFC0CE38B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -145,6 +149,14 @@ Global
 		{1DD053BF-A2DD-47CC-9F24-30F28490CA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DD053BF-A2DD-47CC-9F24-30F28490CA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DD053BF-A2DD-47CC-9F24-30F28490CA23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB750FD1-8989-4248-8554-447F9246F74E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB750FD1-8989-4248-8554-447F9246F74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB750FD1-8989-4248-8554-447F9246F74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB750FD1-8989-4248-8554-447F9246F74E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6986F603-A738-41F7-B8C2-C5AFC0CE38B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6986F603-A738-41F7-B8C2-C5AFC0CE38B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6986F603-A738-41F7-B8C2-C5AFC0CE38B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6986F603-A738-41F7-B8C2-C5AFC0CE38B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -176,6 +188,8 @@ Global
 		{994DC9C7-A31B-4F7D-BD4D-03C91CB2E4D7} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{FC8ECDB7-E5D4-4A02-94F8-B9A0C965D920} = {886C9B94-61EA-455A-B546-D51E98E0AC27}
 		{1DD053BF-A2DD-47CC-9F24-30F28490CA23} = {A5466C84-B0A1-4DD5-8DCD-D0B866B0BF9A}
+		{EB750FD1-8989-4248-8554-447F9246F74E} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{6986F603-A738-41F7-B8C2-C5AFC0CE38B6} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}

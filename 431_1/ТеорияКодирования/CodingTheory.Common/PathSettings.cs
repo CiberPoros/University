@@ -41,5 +41,14 @@
         public const string MoveToFrontDecompressedTextFileName = MoveToFrontFolderPath + "\\" + @"РазархивированныйТекст.txt";
         public const string MoveToFrontAlphabetFileName = MoveToFrontFolderPath + "\\" + @"Алфавит.txt";
         #endregion
+
+        #region GILBERT_MURE
+        public const string GilbertMureFolderPath = SandBoxFolderPath + "\\" + @"АлгоритмГилбертаМура";
+
+        public const string GilbertMureTextFileName = GilbertMureFolderPath + "\\" + @"ИсходныйТекст.txt";
+        public const string GilbertMureCompressedTextFileName = GilbertMureFolderPath + "\\" + @"АрхивированныйТекст.txt";
+        public const string GilbertMureDecompressedTextFileName = GilbertMureFolderPath + "\\" + @"РазархивированныйТекст.txt";
+        public const string GilbertMureFrequenciesFileName = GilbertMureFolderPath + "\\" + @"Частоты.txt";
+        #endregion
     }
 }
