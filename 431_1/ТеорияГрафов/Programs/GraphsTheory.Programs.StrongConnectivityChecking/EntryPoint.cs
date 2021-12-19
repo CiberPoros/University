@@ -9,18 +9,15 @@ namespace GraphsTheory.Programs.StrongConnectivityChecking
     {
         static void Main()
         {
-            for (; ; )
-            {
-                var graphIO = new GraphIOConsole();
-                var graph = graphIO.ReadGraph();
+            var graphIO = new GraphIOFile() { FileName = PathSettings.Task_12_9_Graph };
+            var graph = graphIO.ReadGraph();
 
-                var isStrongConnected = IsStrongConnected(graph);
+            var isStrongConnected = IsStrongConnected(graph);
 
-                Console.WriteLine(isStrongConnected
-                    ? "Граф является сильно связным"
-                    : "Граф не является сильно связным");
-                Console.WriteLine();
-            }
+            Console.WriteLine(isStrongConnected
+                ? "Граф является сильно связным"
+                : "Граф не является сильно связным");
+            Console.WriteLine();
         }
 
         private static bool IsStrongConnected(List<List<int>> graph)

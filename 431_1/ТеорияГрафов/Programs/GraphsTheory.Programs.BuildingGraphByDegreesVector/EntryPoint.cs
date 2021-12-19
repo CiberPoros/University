@@ -1,22 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.IO;
 using GraphsTheory.Common;
 
 namespace GraphsTheory.Programs.BuildingGraphByDegreesVector
 {
     class EntryPoint
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            for (; ; )
+            var graphIO = new GraphIOFile() { FileName = PathSettings.Task_12_15_DegreesVector };
+            List<int> vector = null;
+            try
             {
-                var vector = ReadDegreesVector();
-                var graph = BuildGraphByDegreesVector(vector);
-
-                var graphIO = new GraphIOConsole();
-                graphIO.WriteGraph(graph); 
+                vector = graphIO.ReadDegreesVector();
             }
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine($"Ошибка формата входных данный. Подробности: {e.Message}");
+                return;
+            }
+
+            var graph = BuildGraphByDegreesVector(vector);
+
+            graphIO.FileName = PathSettings.Task_12_15_Graph;
+            graphIO.WriteGraph(graph);
+
+            System.Console.WriteLine($"Граф построен и сохранен в файл {Path.GetFileName(PathSettings.Task_12_15_Graph)}");
         }
 
         private static List<List<int>> BuildGraphByDegreesVector(List<int> vector)
@@ -44,42 +53,6 @@ namespace GraphsTheory.Programs.BuildingGraphByDegreesVector
             }
 
             return graph;
-        }
-
-        private static List<int> ReadDegreesVector()
-        {
-            Console.WriteLine("Введите вектор смежности неориентированного графа, используя ' ' или ',' в качестве разделителя:");
-            Console.WriteLine();
-
-            for (; ; )
-            {
-                var input = Console.ReadLine().Split(' ', ',', StringSplitOptions.RemoveEmptyEntries);
-
-                if (input.Any(x => !int.TryParse(x, out var parsed) || parsed < 0 || parsed >= input.Length))
-                {
-                    Console.WriteLine("Ожидались числа больше 0 и меньше n, где n - количество вершин графа. Повторите попытку...");
-                    Console.WriteLine();
-                    continue;
-                }
-
-                var result = input.Select(x => int.Parse(x)).ToList();
-
-                if (!result.SequenceEqual(result.OrderByDescending(x => x)))
-                {
-                    Console.WriteLine("Степени вершин графа должны идти в порядке невозрастания. Повторите попытку...");
-                    Console.WriteLine();
-                    continue;
-                }
-
-                if (result.Sum() % 2 != 0)
-                {
-                    Console.WriteLine("Сумма степеней вершин должна быть четной. Повторите попытку...");
-                    Console.WriteLine();
-                    continue;
-                }
-
-                return result;
-            }
         }
     }
 }
