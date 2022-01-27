@@ -71,7 +71,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.LZ77D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonTests", "Common\CommonTests\CommonTests.csproj", "{B75C2CD3-FF8F-4EE4-9D01-4F2EA6EF2F8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgebraAlgorithmsAndNTH.Programs.Task5", "431_1\АлгоритмыАлгебрыИТЧ\Programs\AlgebraAlgorithmsAndNTH.Programs.Task5\AlgebraAlgorithmsAndNTH.Programs.Task5.csproj", "{960D7218-74D6-4B5F-97D5-5465ADF09485}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgebraAlgorithmsAndNTH.Programs.Task5", "431_1\АлгоритмыАлгебрыИТЧ\Programs\AlgebraAlgorithmsAndNTH.Programs.Task5\AlgebraAlgorithmsAndNTH.Programs.Task5.csproj", "{960D7218-74D6-4B5F-97D5-5465ADF09485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.LZ78Compresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.LZ78Compresser\CodingTheory.Programs.LZ78Compresser.csproj", "{16596E4F-5E56-43CD-9DFA-DDBBC6A3F466}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.LZ78Decompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.LZ78Decompresser\CodingTheory.Programs.LZ78Decompresser.csproj", "{0861BA90-E461-430C-8AB6-F75CB8347B2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.RLECompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.RLECompresser\CodingTheory.Programs.RLECompresser.csproj", "{4BE6E86F-5A7E-454A-A2C8-44A79583A736}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.RLEDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.RLEDecompresser\CodingTheory.Programs.RLEDecompresser.csproj", "{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -187,6 +195,22 @@ Global
 		{960D7218-74D6-4B5F-97D5-5465ADF09485}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{960D7218-74D6-4B5F-97D5-5465ADF09485}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{960D7218-74D6-4B5F-97D5-5465ADF09485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16596E4F-5E56-43CD-9DFA-DDBBC6A3F466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16596E4F-5E56-43CD-9DFA-DDBBC6A3F466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16596E4F-5E56-43CD-9DFA-DDBBC6A3F466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16596E4F-5E56-43CD-9DFA-DDBBC6A3F466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0861BA90-E461-430C-8AB6-F75CB8347B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0861BA90-E461-430C-8AB6-F75CB8347B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0861BA90-E461-430C-8AB6-F75CB8347B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0861BA90-E461-430C-8AB6-F75CB8347B2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BE6E86F-5A7E-454A-A2C8-44A79583A736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE6E86F-5A7E-454A-A2C8-44A79583A736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE6E86F-5A7E-454A-A2C8-44A79583A736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE6E86F-5A7E-454A-A2C8-44A79583A736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -223,6 +247,10 @@ Global
 		{5FA43704-7388-428D-9CAF-93ADF945D83D} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{87F93099-65BB-4A52-BB1A-126C9A1FBBFD} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{960D7218-74D6-4B5F-97D5-5465ADF09485} = {A5466C84-B0A1-4DD5-8DCD-D0B866B0BF9A}
+		{16596E4F-5E56-43CD-9DFA-DDBBC6A3F466} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{0861BA90-E461-430C-8AB6-F75CB8347B2E} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{4BE6E86F-5A7E-454A-A2C8-44A79583A736} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}

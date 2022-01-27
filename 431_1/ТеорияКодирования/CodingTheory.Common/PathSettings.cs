@@ -58,5 +58,21 @@
         public const string LZ77CompressedTextFileName = LZ77FolderPath + "\\" + @"АрхивированныйТекст.txt";
         public const string LZ77DecompressedTextFileName = LZ77FolderPath + "\\" + @"РазархивированныйТекст.txt";
         #endregion
+
+        #region LZ78
+        public const string LZ78FolderPath = SandBoxFolderPath + "\\" + @"АлгоритмLZ78";
+
+        public const string LZ78TextFileName = LZ78FolderPath + "\\" + @"ИсходныйТекст.txt";
+        public const string LZ78CompressedTextFileName = LZ78FolderPath + "\\" + @"АрхивированныйТекст.txt";
+        public const string LZ78DecompressedTextFileName = LZ78FolderPath + "\\" + @"РазархивированныйТекст.txt";
+        #endregion
+
+        #region RLE
+        public const string RLEFolderPath = SandBoxFolderPath + "\\" + @"АлгоритмRLE";
+
+        public const string RLETextFileName = RLEFolderPath + "\\" + @"ИсходныйТекст.txt";
+        public const string RLECompressedTextFileName = RLEFolderPath + "\\" + @"АрхивированныйТекст.txt";
+        public const string RLEDecompressedTextFileName = RLEFolderPath + "\\" + @"РазархивированныйТекст.txt";
+        #endregion
     }
 }
