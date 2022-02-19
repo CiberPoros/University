@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "431_1", "431_1", "{DEEB929D-80B3-4F88-ACEF-14656FA8D4CE}"
 EndProject
@@ -75,21 +75,29 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgebraAlgorithmsAndNTH.Pro
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ТеорияГрафов", "ТеорияГрафов", "{E2B9F545-4D3B-4D79-B554-BE726ED8CFF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphsTheory.Common", "431_1\ТеорияГрафов\GraphsTheory.Common\GraphsTheory.Common.csproj", "{F741D048-F1D6-4933-9C79-500FC2730E33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphsTheory.Common", "431_1\ТеорияГрафов\GraphsTheory.Common\GraphsTheory.Common.csproj", "{F741D048-F1D6-4933-9C79-500FC2730E33}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{1580FF9A-DB2F-473E-81AE-309C53517DA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphsTheory.Programs.StrongConnectivityChecking", "431_1\ТеорияГрафов\Programs\GraphsTheory.Programs.StrongConnectivityChecking\GraphsTheory.Programs.StrongConnectivityChecking.csproj", "{D139DD5F-0214-412A-85C8-DD5E2A75E816}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphsTheory.Programs.StrongConnectivityChecking", "431_1\ТеорияГрафов\Programs\GraphsTheory.Programs.StrongConnectivityChecking\GraphsTheory.Programs.StrongConnectivityChecking.csproj", "{D139DD5F-0214-412A-85C8-DD5E2A75E816}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphsTheory.Programs.BuildingGraphByDegreesVector", "431_1\ТеорияГрафов\Programs\GraphsTheory.Programs.BuildingGraphByDegreesVector\GraphsTheory.Programs.BuildingGraphByDegreesVector.csproj", "{40840099-CE3B-4038-BB6B-C55C01DFF047}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphsTheory.Programs.BuildingGraphByDegreesVector", "431_1\ТеорияГрафов\Programs\GraphsTheory.Programs.BuildingGraphByDegreesVector\GraphsTheory.Programs.BuildingGraphByDegreesVector.csproj", "{40840099-CE3B-4038-BB6B-C55C01DFF047}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.LZ78Compresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.LZ78Compresser\CodingTheory.Programs.LZ78Compresser.csproj", "{16596E4F-5E56-43CD-9DFA-DDBBC6A3F466}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.LZ78Compresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.LZ78Compresser\CodingTheory.Programs.LZ78Compresser.csproj", "{16596E4F-5E56-43CD-9DFA-DDBBC6A3F466}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.LZ78Decompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.LZ78Decompresser\CodingTheory.Programs.LZ78Decompresser.csproj", "{0861BA90-E461-430C-8AB6-F75CB8347B2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.LZ78Decompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.LZ78Decompresser\CodingTheory.Programs.LZ78Decompresser.csproj", "{0861BA90-E461-430C-8AB6-F75CB8347B2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.RLECompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.RLECompresser\CodingTheory.Programs.RLECompresser.csproj", "{4BE6E86F-5A7E-454A-A2C8-44A79583A736}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.RLECompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.RLECompresser\CodingTheory.Programs.RLECompresser.csproj", "{4BE6E86F-5A7E-454A-A2C8-44A79583A736}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingTheory.Programs.RLEDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.RLEDecompresser\CodingTheory.Programs.RLEDecompresser.csproj", "{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingTheory.Programs.RLEDecompresser", "431_1\ТеорияКодирования\Programs\CodingTheory.Programs.RLEDecompresser\CodingTheory.Programs.RLEDecompresser.csproj", "{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "431_2", "431_2", "{3956E59D-38DE-4E08-B917-60509A09EF26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "КМЗИ", "КМЗИ", "{FBB13C76-6DB8-4986-A79F-E20BCF27CA28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{F6550F44-FAD4-413C-B413-968F32CE1285}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMIP.Programs.Summer", "431_2\КМЗИ\Programs\CMIP.Programs.Summer\CMIP.Programs.Summer.csproj", "{B3395092-FF57-4A4F-A51A-E9F0DB506993}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -233,6 +241,10 @@ Global
 		{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3395092-FF57-4A4F-A51A-E9F0DB506993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3395092-FF57-4A4F-A51A-E9F0DB506993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3395092-FF57-4A4F-A51A-E9F0DB506993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3395092-FF57-4A4F-A51A-E9F0DB506993}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -278,6 +290,9 @@ Global
 		{0861BA90-E461-430C-8AB6-F75CB8347B2E} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{4BE6E86F-5A7E-454A-A2C8-44A79583A736} = {198032DE-0126-4353-BD96-8925DE23D8BA}
 		{38BC48DC-1C5A-40CF-87FD-3DF973BF2F20} = {198032DE-0126-4353-BD96-8925DE23D8BA}
+		{FBB13C76-6DB8-4986-A79F-E20BCF27CA28} = {3956E59D-38DE-4E08-B917-60509A09EF26}
+		{F6550F44-FAD4-413C-B413-968F32CE1285} = {FBB13C76-6DB8-4986-A79F-E20BCF27CA28}
+		{B3395092-FF57-4A4F-A51A-E9F0DB506993} = {F6550F44-FAD4-413C-B413-968F32CE1285}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}
