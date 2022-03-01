@@ -49,7 +49,12 @@ namespace CMIP.Programs.Summer
 
             result.Add(Alphabet[remains]);
             result.Reverse();
-            return result.SkipWhile(x => x == Alphabet[0]).ToArray();
+            result = result.SkipWhile(x => x == Alphabet[0]).ToList();
+            if (!result.Any())
+            {
+                result.Add(Alphabet[0]);
+            }
+            return result.ToArray();
         }
     }
 }
