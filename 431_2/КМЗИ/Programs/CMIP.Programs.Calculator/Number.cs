@@ -33,6 +33,8 @@ namespace CMIP.Programs.Calculator
 
         public bool IsPositive { get; set; }
 
+        public bool IsNegative => !IsPositive;
+
         public int Length => Value.Length;
 
         public IEnumerator<char> GetEnumerator()
@@ -50,5 +52,7 @@ namespace CMIP.Programs.Calculator
                 yield return val;
             }
         }
+
+        public override string ToString() => IsNegative ? "-" + string.Join("", Value) : string.Join("", Value);
     }
 }

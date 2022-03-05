@@ -16,6 +16,12 @@ namespace CMIP.Programs.Calculator.Operations
 
         public NumbersUtils NumbersUtils { get; set; }
 
+        /// <summary>
+        /// Does not depend on the signs of the number. Signs calculation have to be determined separately.
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public virtual Number Calculate(Number left, Number right)
         {
             if (left.Any(x => !Alphabet.Contains(x)))
@@ -41,6 +47,6 @@ namespace CMIP.Programs.Calculator.Operations
             return result.Any() ? result : new Number(new char[] { Alphabet[0] });
         }
 
-        internal abstract Number CalculateInternal(Number left, Number right);
+        protected abstract Number CalculateInternal(Number left, Number right);
     }
 }

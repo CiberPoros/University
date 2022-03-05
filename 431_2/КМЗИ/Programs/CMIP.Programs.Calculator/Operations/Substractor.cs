@@ -8,7 +8,7 @@ namespace CMIP.Programs.Calculator.Operations
         {
         }
 
-        internal override char[] CalculateInternal(Number left, Number right)
+        protected override Number CalculateInternal(Number left, Number right)
         {
             var remains = 0;
             var result = new List<char>();
@@ -22,15 +22,14 @@ namespace CMIP.Programs.Calculator.Operations
 
                 if (index < right.Length)
                 {
-                    current += Alphabet.IndexOf(right[index]);
+                    current -= Alphabet.IndexOf(right[index]);
                 }
 
-                remains = current / Alphabet.Count;
-                result.Add(Alphabet[current % Alphabet.Count]);
+                remains = current >= 0 ? 0 : -1;
+                result.Add(Alphabet[((current % Alphabet.Count) + Alphabet.Count) % Alphabet.Count]);
             }
 
-            result.Add(Alphabet[remains]);
-            return result.ToArray();
+            return new Number(result.ToArray());
         }
     }
 }

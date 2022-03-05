@@ -8,7 +8,7 @@ namespace CMIP.Programs.Calculator.Operations
         {
         }
 
-        internal override Number CalculateInternal(Number left, Number right)
+        protected override Number CalculateInternal(Number left, Number right)
         {
             var remains = 0;
             var result = new List<char>();

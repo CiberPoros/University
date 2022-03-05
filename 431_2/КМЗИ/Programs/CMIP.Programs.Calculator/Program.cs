@@ -32,12 +32,18 @@ namespace CMIP.Programs.Calculator
             }
         }
 
-        private static char[] ReadNumber(List<char> alphabet)
+        private static Number ReadNumber(List<char> alphabet)
         {
-            Console.WriteLine("Веедите число, состоящее только из символов алфавита...");
+            Console.WriteLine("Веедите число, состоящее только из символов алфавита (можно указать знак)...");
             for (; ; )
             {
                 var input = Console.ReadLine();
+
+                var isPositive = input[0] != '-';
+                if (input[0] == '-')
+                {
+                    input = new string(input.Skip(1).ToArray());
+                }
 
                 if (input.Any(x => !alphabet.Contains(x)))
                 {
@@ -46,7 +52,7 @@ namespace CMIP.Programs.Calculator
                 }
 
                 Console.WriteLine();
-                return input.ToArray();
+                return new Number(input.ToArray(), isPositive);
             }
         }
     }
