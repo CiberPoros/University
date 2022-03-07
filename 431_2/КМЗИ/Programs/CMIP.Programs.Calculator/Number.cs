@@ -14,7 +14,7 @@ namespace CMIP.Programs.Calculator
                 throw new ArgumentNullException(nameof(value));
             }
 
-            Value = Value.ToArray();
+            Value = value.ToArray();
             IsPositive = isPositive;
         }
 

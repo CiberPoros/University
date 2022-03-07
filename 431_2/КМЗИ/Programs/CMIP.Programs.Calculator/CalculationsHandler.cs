@@ -84,5 +84,19 @@ namespace CMIP.Programs.Calculator
                 }
             }
         }
+
+        public Number Multiply(Number left, Number right)
+        {
+            var multiplier = new Multiplier(Alphabet);
+            var resultIsPositive = left.IsPositive && right.IsPositive || left.IsNegative && right.IsNegative;
+
+            left.IsPositive = true;
+            right.IsPositive = true;
+
+            var result = multiplier.Calculate(left, right);
+            result.IsPositive = resultIsPositive;
+
+            return result;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CMIP.Programs.Calculator.Operations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,7 +11,58 @@ namespace CMIP.Programs.Calculator
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var baseOfNumberSystem = ReadBaseOfNumberSystem();
+            var operation = ReadOperationType();
+            var alphabet = _alphabet.Take(baseOfNumberSystem).ToList();
+            var calculationsHandler = new CalculationsHandler(alphabet);
+
+            var number1 = ReadNumber(alphabet);
+            var number2 = ReadNumber(alphabet);
+
+            var result = operation switch
+            {
+                OperationType.PLUS => calculationsHandler.Summ(number1, number2),
+                OperationType.MINUS => calculationsHandler.Substract(number1, number2),
+                OperationType.MULTIPLY => calculationsHandler.Multiply(number1, number2),
+                OperationType.DIVIDE => throw new NotImplementedException(),
+                OperationType.NONE => throw new NotImplementedException(),
+                _ => throw new NotImplementedException()
+            };
+
+            Console.WriteLine($"Результат: {result}");
+        }
+
+        private static OperationType ReadOperationType()
+        {
+            Console.WriteLine("Выберите операцию:");
+            Console.WriteLine("1. Сложение;");
+            Console.WriteLine("2. Вычитание;");
+            Console.WriteLine("3. Умножение;");
+            Console.WriteLine("4. Деление...");
+            Console.WriteLine();
+
+            for (; ; )
+            {
+                var key = Console.ReadKey(true).Key;
+
+                switch (key)
+                {
+                    case ConsoleKey.NumPad1:
+                    case ConsoleKey.D1:
+                        return OperationType.PLUS;
+                    case ConsoleKey.NumPad2:
+                    case ConsoleKey.D2:
+                        return OperationType.MINUS;
+                    case ConsoleKey.NumPad3:
+                    case ConsoleKey.D3:
+                        return OperationType.MULTIPLY;
+                    case ConsoleKey.NumPad4:
+                    case ConsoleKey.D4:
+                        return OperationType.DIVIDE;
+                    default:
+                        continue;
+                }
+            }
         }
 
         private static int ReadBaseOfNumberSystem()
@@ -38,6 +90,12 @@ namespace CMIP.Programs.Calculator
             for (; ; )
             {
                 var input = Console.ReadLine();
+
+                if (!input.Any())
+                {
+                    Console.WriteLine("Ожидалось некоторое число. Повторите попытку...");
+                    continue;
+                }
 
                 var isPositive = input[0] != '-';
                 if (input[0] == '-')

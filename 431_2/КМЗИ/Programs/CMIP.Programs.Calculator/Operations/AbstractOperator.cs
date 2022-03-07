@@ -12,6 +12,11 @@ namespace CMIP.Programs.Calculator.Operations
             NumbersUtils = new NumbersUtils(Alphabet);
         }
 
+        protected abstract bool NeedInversePrev { get; }
+
+        protected abstract bool NeedInverseAfter { get; }
+
+
         public List<char> Alphabet { get; set; }
 
         public NumbersUtils NumbersUtils { get; set; }
@@ -34,17 +39,37 @@ namespace CMIP.Programs.Calculator.Operations
                 throw new ArgumentException("Number can contain anly alphabet symbols.", nameof(right));
             }
 
-            left = new Number(left.Reverse().ToArray());
-            right = new Number(right.Reverse().ToArray());
-
             left = NumbersUtils.Normalize(left);
             right = NumbersUtils.Normalize(right);
 
+            if (NeedInversePrev)
+            {
+                left = new Number(left.Reverse().ToArray());
+                right = new Number(right.Reverse().ToArray());
+            }
+
             var result = CalculateInternal(left, right);
 
-            result = new Number(result.Reverse().SkipWhile(x => x == Alphabet[0]).ToArray());
+            if (NeedInverseAfter)
+            {
+                result = new Number(result.Reverse().ToArray());
+            }
+
+            result = new Number(result.SkipWhile(x => x == Alphabet[0]).ToArray());
 
             return result.Any() ? result : new Number(new char[] { Alphabet[0] });
+        }
+
+        public static AbstractOperator Create(OperationType operationType, List<char> alphabet)
+        {
+            return operationType switch
+            {
+                OperationType.PLUS => new Summer(alphabet),
+                OperationType.MINUS => new Substractor(alphabet),
+                OperationType.MULTIPLY => throw new NotImplementedException(),
+                OperationType.DIVIDE => throw new NotImplementedException(),
+                _ => throw new ArgumentOutOfRangeException(nameof(operationType), operationType, null)
+            };
         }
 
         protected abstract Number CalculateInternal(Number left, Number right);

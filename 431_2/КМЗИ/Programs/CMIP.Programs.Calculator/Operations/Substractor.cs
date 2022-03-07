@@ -8,6 +8,10 @@ namespace CMIP.Programs.Calculator.Operations
         {
         }
 
+        protected override bool NeedInversePrev => true;
+
+        protected override bool NeedInverseAfter => true;
+
         protected override Number CalculateInternal(Number left, Number right)
         {
             var remains = 0;
