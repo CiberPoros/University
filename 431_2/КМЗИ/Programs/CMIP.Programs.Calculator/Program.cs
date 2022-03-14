@@ -1,4 +1,5 @@
 ﻿using CMIP.Programs.Calculator.Operations;
+using Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,18 +19,19 @@ namespace CMIP.Programs.Calculator
 
             var number1 = ReadNumber(alphabet);
             var number2 = ReadNumber(alphabet);
-
+            
             var result = operation switch
             {
-                OperationType.PLUS => calculationsHandler.Summ(number1, number2),
-                OperationType.MINUS => calculationsHandler.Substract(number1, number2),
-                OperationType.MULTIPLY => calculationsHandler.Multiply(number1, number2),
+                OperationType.PLUS => SpeedMeter.Run(number1, number2, calculationsHandler.Summ),
+                OperationType.MINUS => SpeedMeter.Run(number1, number2, calculationsHandler.Substract),
+                OperationType.MULTIPLY => SpeedMeter.Run(number1, number2, calculationsHandler.Multiply),
                 OperationType.DIVIDE => throw new NotImplementedException(),
                 OperationType.NONE => throw new NotImplementedException(),
                 _ => throw new NotImplementedException()
             };
 
-            Console.WriteLine($"Результат: {result}");
+            Console.WriteLine($"Результат: {result.Item1}");
+            Console.WriteLine($"Время подсчета в миллисекундах: {result.Item2.TotalMilliseconds}");
         }
 
         private static OperationType ReadOperationType()
