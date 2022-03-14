@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace CMIP.Programs.Calculator
 {
@@ -16,6 +17,21 @@ namespace CMIP.Programs.Calculator
 
             Value = value.ToArray();
             IsPositive = isPositive;
+        }
+
+        public BigInteger ToBigInteger(List<char> alphabet)
+        {
+            var baseSystemNumber = alphabet.Count;
+            BigInteger currentDegree = 1;
+
+            BigInteger result = 0;
+            for (int i = Length - 1; i >= 0; i--)
+            {
+                result += alphabet.IndexOf(this[i]) * currentDegree;
+                currentDegree *= baseSystemNumber;
+            }
+
+            return IsPositive ? result : -result;
         }
 
         public Number(IEnumerable<char> value) : this(value, true)

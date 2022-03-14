@@ -3,14 +3,15 @@ using Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace CMIP.Programs.Calculator
 {
     internal class Program
     {
-        private static List<char> _alphabet = new() { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+        private static readonly List<char> _alphabet = new() { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
-        static void Main(string[] args)
+        static void Main()
         {
             var baseOfNumberSystem = ReadBaseOfNumberSystem();
             var operation = ReadOperationType();
@@ -32,6 +33,28 @@ namespace CMIP.Programs.Calculator
 
             Console.WriteLine($"Результат: {result.Item1}");
             Console.WriteLine($"Время подсчета в миллисекундах: {result.Item2.TotalMilliseconds}");
+            Console.WriteLine();
+
+            var simpleResult = SpeedMeter.Run(number1, number2, alphabet, operation, CalculateSimple);
+            Console.WriteLine($"Результат встроенной операции (10 - я система счисления): {simpleResult.Item1}");
+            Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции: {simpleResult.Item2.TotalMilliseconds}");
+            Console.WriteLine();
+        }
+
+        private static BigInteger CalculateSimple(Number left, Number right, List<char> alphabet, OperationType operationType)
+        {
+            var leftParsed = left.ToBigInteger(alphabet);
+            var rightParsed = right.ToBigInteger(alphabet);
+
+            return operationType switch
+            {
+                OperationType.PLUS => leftParsed + rightParsed,
+                OperationType.MINUS => leftParsed - rightParsed,
+                OperationType.MULTIPLY => leftParsed * rightParsed,
+                OperationType.DIVIDE => leftParsed / rightParsed,
+                OperationType.NONE => throw new NotImplementedException(),
+                _ => throw new NotImplementedException()
+            };
         }
 
         private static OperationType ReadOperationType()
