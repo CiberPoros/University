@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,10 +26,6 @@ namespace ProgramsProtection.Programs.SnapshotCreator
                 }
 
                 var snapshot = await Snapshot.CreateAsync(directoryPath);
-                foreach (var sn in snapshotsList.Snapshots.Where(x => x.DirectoryPath == directoryPath))
-                {
-                    File.Delete(sn.DirectoryPath);
-                }
                 snapshotsList.Snapshots = snapshotsList.Snapshots.Where(x => x.DirectoryPath != directoryPath).ToList();
                 snapshotsList.Snapshots.Add(new SnapshotsList.SnapshotShortInfo() { DirectoryPath = directoryPath, Id = snapshot.Id });
                 await snapshotsList.WriteToFileAsync();
