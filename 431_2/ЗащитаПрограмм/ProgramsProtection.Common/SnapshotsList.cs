@@ -8,8 +8,6 @@ namespace ProgramsProtection.Common
 {
     public class SnapshotsList
     {
-        public const string FileName = "ShanshotsInfo.txt";
-
         public ICollection<SnapshotShortInfo> Snapshots { get; set; }
 
         public class SnapshotShortInfo
@@ -21,19 +19,19 @@ namespace ProgramsProtection.Common
 
         public static async Task<SnapshotsList> ReadFromFileOrCreateAsync()
         {
-            if (!File.Exists(FileName))
+            if (!File.Exists(PathSettings.SnapshotsListPath))
             {
                 return new SnapshotsList() { Snapshots = new List<SnapshotShortInfo>() };
             }
 
-            var json = await File.ReadAllTextAsync(FileName);
+            var json = await File.ReadAllTextAsync(PathSettings.SnapshotsListPath);
             return JsonSerializer.Deserialize<SnapshotsList>(json);
         }
 
         public async Task WriteToFileAsync()
         {
             var json = JsonSerializer.Serialize(this, options: new JsonSerializerOptions() { WriteIndented = true });
-            await File.WriteAllTextAsync(FileName, json);
+            await File.WriteAllTextAsync(PathSettings.SnapshotsListPath, json);
         }
     }
 }

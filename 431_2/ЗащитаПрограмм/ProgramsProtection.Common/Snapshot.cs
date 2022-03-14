@@ -15,7 +15,7 @@ namespace ProgramsProtection.Common
 
         public DateTime CreationDate { get; set; }
 
-        private Snapshot()
+        public Snapshot()
         {
 
         }
@@ -46,12 +46,12 @@ namespace ProgramsProtection.Common
         public async Task WriteToFileAsync()
         {
             var json = JsonSerializer.Serialize(this, options: new JsonSerializerOptions() { WriteIndented = true });
-            await File.WriteAllTextAsync($"{Id}.txt", json);
+            await File.WriteAllTextAsync($"{PathSettings.DirectoryScanerPath}//{Id}.txt", json);
         }
 
         public static async Task<Snapshot> ReadFromFileAsync(Guid id)
         {
-            var fileName = $"{id}.txt";
+            var fileName = $"{PathSettings.DirectoryScanerPath}//{id}.txt";
             var json = await File.ReadAllTextAsync(fileName);
             return JsonSerializer.Deserialize<Snapshot>(json);
         }

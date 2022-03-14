@@ -13,7 +13,7 @@ namespace ProgramsProtection.Common
 
         public DateTime CreationDate { get; set; }
 
-        private FileModel()
+        public FileModel()
         {
 
         }

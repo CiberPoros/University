@@ -15,9 +15,38 @@ namespace ProgramsProtection.Common
 
         public DateTime CreationDate { get; set; }
 
-        private DirectoryModel()
+        public DirectoryModel()
         {
 
+        }
+
+        public IEnumerable<DirectoryModel> GetAllDirectories()
+        {
+            yield return this;
+
+            foreach (var directory in InternalDirectories)
+            {
+                foreach (var internalDirectory in directory.GetAllDirectories())
+                {
+                    yield return internalDirectory;
+                }
+            }
+        }
+
+        public IEnumerable<FileModel> GetAllFiles()
+        {
+            foreach (var file in InternalFiles)
+            {
+                yield return file;
+            }
+
+            foreach (var directory in InternalDirectories)
+            {
+                foreach (var file in directory.GetAllFiles())
+                {
+                    yield return file;
+                }
+            }
         }
 
         public static async Task<DirectoryModel> CreateWithRecursionAsync(string directoryPath)
@@ -27,7 +56,7 @@ namespace ProgramsProtection.Common
                 throw new ArgumentNullException(nameof(directoryPath));
             }
 
-            if (!System.IO.Directory.Exists(directoryPath))
+            if (!Directory.Exists(directoryPath))
             {
                 throw new ArgumentException("Directory was not found", nameof(directoryPath));
             }
