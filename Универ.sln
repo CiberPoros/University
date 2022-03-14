@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32210.238
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "431_1", "431_1", "{DEEB929D-80B3-4F88-ACEF-14656FA8D4CE}"
 EndProject
@@ -105,7 +105,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{42
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareToolsForMath.Programs.Matrixes", "431_2\ПСРМЗ\Programs\SoftwareToolsForMath.Programs.Matrixes\SoftwareToolsForMath.Programs.Matrixes.csproj", "{89DAB778-EE9C-4520-8490-3287149BD787}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMIP.Programs.Calculator", "431_2\КМЗИ\Programs\CMIP.Programs.Calculator\CMIP.Programs.Calculator.csproj", "{B9753463-D1F7-4A08-A99D-C0F42014455E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMIP.Programs.Calculator", "431_2\КМЗИ\Programs\CMIP.Programs.Calculator\CMIP.Programs.Calculator.csproj", "{B9753463-D1F7-4A08-A99D-C0F42014455E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ЗащитаПрограмм", "ЗащитаПрограмм", "{7B2A1EB5-D330-408A-8C1A-872CBD1E2A9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{C08CD067-98D8-4C1C-A461-D3DA6ABE68EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramsProtection.Programs.SnapshotCreator", "431_2\ЗащитаПрограмм\Programs\ProgramsProtection.Programs.SnapshotCreator\ProgramsProtection.Programs.SnapshotCreator.csproj", "{69F96BE4-502E-4DDC-9A9E-B9336D35857B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramsProtection.Common", "431_2\ЗащитаПрограмм\ProgramsProtection.Common\ProgramsProtection.Common.csproj", "{E9306AEB-56D4-4F19-A8B5-9602BD6BCCC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramsProtection.Programs.SnapshotScaner", "431_2\ЗащитаПрограмм\Programs\ProgramsProtection.Programs.SnapshotScaner\ProgramsProtection.Programs.SnapshotScaner.csproj", "{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -261,6 +271,18 @@ Global
 		{B9753463-D1F7-4A08-A99D-C0F42014455E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9753463-D1F7-4A08-A99D-C0F42014455E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9753463-D1F7-4A08-A99D-C0F42014455E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69F96BE4-502E-4DDC-9A9E-B9336D35857B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69F96BE4-502E-4DDC-9A9E-B9336D35857B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69F96BE4-502E-4DDC-9A9E-B9336D35857B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69F96BE4-502E-4DDC-9A9E-B9336D35857B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9306AEB-56D4-4F19-A8B5-9602BD6BCCC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9306AEB-56D4-4F19-A8B5-9602BD6BCCC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9306AEB-56D4-4F19-A8B5-9602BD6BCCC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9306AEB-56D4-4F19-A8B5-9602BD6BCCC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -313,6 +335,11 @@ Global
 		{42532A43-0B76-40E8-A1E9-ABEF16208F6A} = {AFDF090C-8AF6-4CE5-BC01-70EC904CE030}
 		{89DAB778-EE9C-4520-8490-3287149BD787} = {42532A43-0B76-40E8-A1E9-ABEF16208F6A}
 		{B9753463-D1F7-4A08-A99D-C0F42014455E} = {F6550F44-FAD4-413C-B413-968F32CE1285}
+		{7B2A1EB5-D330-408A-8C1A-872CBD1E2A9C} = {3956E59D-38DE-4E08-B917-60509A09EF26}
+		{C08CD067-98D8-4C1C-A461-D3DA6ABE68EF} = {7B2A1EB5-D330-408A-8C1A-872CBD1E2A9C}
+		{69F96BE4-502E-4DDC-9A9E-B9336D35857B} = {C08CD067-98D8-4C1C-A461-D3DA6ABE68EF}
+		{E9306AEB-56D4-4F19-A8B5-9602BD6BCCC9} = {7B2A1EB5-D330-408A-8C1A-872CBD1E2A9C}
+		{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA} = {C08CD067-98D8-4C1C-A461-D3DA6ABE68EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}
