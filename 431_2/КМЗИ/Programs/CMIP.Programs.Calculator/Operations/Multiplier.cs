@@ -15,33 +15,22 @@ namespace CMIP.Programs.Calculator.Operations
 
         protected override Number CalculateInternal(Number left, Number right)
         {
-            var numbers = new List<Number>();
+            var result = Enumerable.Repeat(0, left.Length + right.Length).ToList();
             for (int i = 0; i < right.Length; i++)
             {
                 var remains = 0;
                 var value = Alphabet.IndexOf(right[i]);
-                var currentNumber = Enumerable.Repeat(Alphabet[0], i).ToList();
                 for (int j = 0; j < left.Length; j++)
                 {
                     var internalValue = Alphabet.IndexOf(left[j]);
-                    var currentResult = remains + value * internalValue;
-                    currentNumber.Add(Alphabet[(currentResult % Alphabet.Count)]);
+                    var currentResult = value * internalValue + remains + result[j + i];
+                    result[i + j] = currentResult % Alphabet.Count;
                     remains = currentResult / Alphabet.Count;
                 }
-                currentNumber.Add(Alphabet[remains]);
-                currentNumber.Reverse();
-
-                numbers.Add(new Number(currentNumber));
+                result[i + left.Length] = remains;
             }
 
-            var summer = new Summer(Alphabet);
-            var current = numbers[0];
-            for (int i = 1; i < numbers.Count; i++)
-            {
-                current = summer.Calculate(current, numbers[i]);
-            }
-
-            return current;
+            return new Number(result.Select(x => Alphabet[x]).Reverse().ToList());
         }
     }
 }
