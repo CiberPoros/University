@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Generators.Programs.Gen": {
+      "commandName": "Project",
+      "commandLineArgs": "-g add -n 100 -m 1000"
+    }
+  }
+}

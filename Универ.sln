@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32126.315
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "431_1", "431_1", "{DEEB929D-80B3-4F88-ACEF-14656FA8D4CE}"
 EndProject
@@ -111,11 +111,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ЗащитаПрограм�
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{C08CD067-98D8-4C1C-A461-D3DA6ABE68EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramsProtection.Programs.SnapshotCreator", "431_2\ЗащитаПрограмм\Programs\ProgramsProtection.Programs.SnapshotCreator\ProgramsProtection.Programs.SnapshotCreator.csproj", "{69F96BE4-502E-4DDC-9A9E-B9336D35857B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgramsProtection.Programs.SnapshotCreator", "431_2\ЗащитаПрограмм\Programs\ProgramsProtection.Programs.SnapshotCreator\ProgramsProtection.Programs.SnapshotCreator.csproj", "{69F96BE4-502E-4DDC-9A9E-B9336D35857B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramsProtection.Common", "431_2\ЗащитаПрограмм\ProgramsProtection.Common\ProgramsProtection.Common.csproj", "{E9306AEB-56D4-4F19-A8B5-9602BD6BCCC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgramsProtection.Common", "431_2\ЗащитаПрограмм\ProgramsProtection.Common\ProgramsProtection.Common.csproj", "{E9306AEB-56D4-4F19-A8B5-9602BD6BCCC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramsProtection.Programs.SnapshotScaner", "431_2\ЗащитаПрограмм\Programs\ProgramsProtection.Programs.SnapshotScaner\ProgramsProtection.Programs.SnapshotScaner.csproj", "{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgramsProtection.Programs.SnapshotScaner", "431_2\ЗащитаПрограмм\Programs\ProgramsProtection.Programs.SnapshotScaner\ProgramsProtection.Programs.SnapshotScaner.csproj", "{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Генераторы", "Генераторы", "{0E96FF18-C55B-4230-9CC3-24756A5DCD68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{3747DD51-0CAD-4954-BEFF-4DC912ED3B0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generators.Programs.Gen", "431_2\Генераторы\Programs\Generators.Programs.Gen\Generators.Programs.Gen.csproj", "{BF994B1B-34CA-411A-A546-CFD437B7164A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -283,6 +289,10 @@ Global
 		{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF994B1B-34CA-411A-A546-CFD437B7164A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF994B1B-34CA-411A-A546-CFD437B7164A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF994B1B-34CA-411A-A546-CFD437B7164A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF994B1B-34CA-411A-A546-CFD437B7164A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -340,6 +350,9 @@ Global
 		{69F96BE4-502E-4DDC-9A9E-B9336D35857B} = {C08CD067-98D8-4C1C-A461-D3DA6ABE68EF}
 		{E9306AEB-56D4-4F19-A8B5-9602BD6BCCC9} = {7B2A1EB5-D330-408A-8C1A-872CBD1E2A9C}
 		{23CE6EA6-3B7E-40B2-B53E-49BDE79E4EFA} = {C08CD067-98D8-4C1C-A461-D3DA6ABE68EF}
+		{0E96FF18-C55B-4230-9CC3-24756A5DCD68} = {3956E59D-38DE-4E08-B917-60509A09EF26}
+		{3747DD51-0CAD-4954-BEFF-4DC912ED3B0C} = {0E96FF18-C55B-4230-9CC3-24756A5DCD68}
+		{BF994B1B-34CA-411A-A546-CFD437B7164A} = {3747DD51-0CAD-4954-BEFF-4DC912ED3B0C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}
