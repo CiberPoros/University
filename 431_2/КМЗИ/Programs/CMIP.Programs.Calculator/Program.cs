@@ -26,7 +26,7 @@ namespace CMIP.Programs.Calculator
                 OperationType.PLUS => SpeedMeter.Run(number1, number2, calculationsHandler.Summ),
                 OperationType.MINUS => SpeedMeter.Run(number1, number2, calculationsHandler.Substract),
                 OperationType.MULTIPLY => SpeedMeter.Run(number1, number2, calculationsHandler.Multiply),
-                OperationType.DIVIDE => throw new NotImplementedException(),
+                OperationType.DIVIDE => SpeedMeter.Run(number1, number2, calculationsHandler.Divide),
                 OperationType.NONE => throw new NotImplementedException(),
                 _ => throw new NotImplementedException()
             };

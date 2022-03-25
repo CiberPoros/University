@@ -98,5 +98,19 @@ namespace CMIP.Programs.Calculator
 
             return result;
         }
+
+        public Number Divide(Number left, Number right)
+        {
+            var divider = new Divider(Alphabet);
+            var resultIsPositive = left.IsPositive && right.IsPositive || left.IsNegative && right.IsNegative;
+
+            left.IsPositive = true;
+            right.IsPositive = true;
+
+            var result = divider.Calculate(left, right);
+            result.IsPositive = resultIsPositive;
+
+            return result;
+        }
     }
 }
