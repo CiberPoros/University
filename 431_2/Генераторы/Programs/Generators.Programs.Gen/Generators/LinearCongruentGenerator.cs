@@ -8,14 +8,9 @@ namespace Generators.Programs.Gen.Generators
     {
         public IEnumerable<int> Generate(IEnumerable<int> initialVector, int seed, int numbersCount, int maxValue)
         {
-            if (initialVector is null || !initialVector.Any())
-            {
-                initialVector = GetDefaultParameters();
-            }
-            else if (initialVector.Count() < 3)
-            {
-                throw new ArgumentException($"{initialVector} must contain at least 3 items.", nameof(initialVector));
-            }
+            initialVector = initialVector is null
+                ? GetDefaultParameters().ToList()
+                : initialVector.ToList().Concat(GetDefaultParameters().Take(3 - initialVector.Count())).ToList();
 
             var a = initialVector.ElementAt(0);
             var c = initialVector.ElementAt(1);
@@ -24,7 +19,7 @@ namespace Generators.Programs.Gen.Generators
             var currentRnd = seed;
             for (int i = 0; i < numbersCount; i++)
             {
-                currentRnd = (a * currentRnd + c) % m;
+                currentRnd = (((a * currentRnd + c) % m) + m) % m;
                 yield return currentRnd % maxValue;
             }
         }

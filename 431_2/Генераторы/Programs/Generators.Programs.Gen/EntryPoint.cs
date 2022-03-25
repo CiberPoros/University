@@ -14,6 +14,7 @@ namespace Generators.Programs.Gen
                    {
                        var generatorType = o.GeneratorType;
 
+                       // TODO: validate it
                        var generator = IGenerator.Create(generatorType);
 
                        var result = generator.Generate(o.InitialVector, IGenerator.Rnd.Next(), o.NumbersCount, o.MaxValue);

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Generators.Programs.Gen.Generators
 {
@@ -10,9 +7,38 @@ namespace Generators.Programs.Gen.Generators
     {
         public IEnumerable<int> Generate(IEnumerable<int> initialVector, int seed, int numbersCount, int maxValue)
         {
-            throw new NotImplementedException();
+            var parameters = initialVector is null
+                ? GetDefaultParameters().ToList()
+                : initialVector.Concat(GetDefaultParameters().Take(4 - initialVector.Count())).ToList();
+
+            // names as in the algorithm
+            int q1 = parameters[0], q2 = parameters[1], q3 = parameters[2], p = parameters[3];
+
+            var bits = Utils.GenerateInitialBitVector(p);
+            for (int i = p + 1, j = 0; j < numbersCount; i++, j++)      
+            {
+                var currentResultNumber = 0;
+                for (int k = 0, mask = 1; k < 31; k++, mask <<= 1)
+                {
+                    var currentBit =
+                        Utils.GetBitFromByteArray(bits, q1 + j * 31 + k)
+                        ^ Utils.GetBitFromByteArray(bits, q2 + j * 31 + k)
+                        ^ Utils.GetBitFromByteArray(bits, q3 + j * 31 + k)
+                        ^ Utils.GetBitFromByteArray(bits, j * 31 + k);
+
+                    var adjustedIndex = p + j * 31 + k;
+                    Utils.AddLast(bits, currentBit, adjustedIndex);
+                    if (currentBit)
+                    {
+                        currentResultNumber |= mask;
+                    }
+                }
+
+                yield return currentResultNumber % maxValue;
+            }
         }
 
+        // from table in the algorithm
         public IEnumerable<int> GetDefaultParameters()
         {
             var defaultParameters = new int[10, 5];
