@@ -79,6 +79,87 @@ namespace CMIP.Programs.Calculator.Operations
             return new Number(qArr.Select(x => Alphabet[x]));
         }
 
+        public int[] Divide(int[] u, int[] v)
+        {
+            var b = Alphabet.Count;
+            var n = v.Length;
+            var m = u.Length - v.Length;
+
+            var d = b / (v[n - 1] + 1);
+
+            u = MultiplyOnConst(u, d);
+            v = MultiplyOnConst(v, d, false);
+            var qArr = new int[m];
+
+            for (int j = m; j >= 0; j--)
+            {
+                var q = (u[j + n] * b + u[j + n - 1]) / v[n - 1];
+                var r = (u[j + n] * b + u[j + n - 1]) % v[n - 1];
+
+                if (q == b || q * v[n - 2] > b * r + u[j + n - 2])
+                {
+                    q--;
+                    r += v[n - 1];
+
+                    if (r < b && (q == b || q * v[n - 2] > b * r + u[j + n - 2]))
+                    {
+                        q--;
+                        r += v[n - 1];
+                    }
+                }
+
+                var temp = MultiplyOnConst(v, q);
+                u = Minus(u, temp); // TODO: check is positive
+
+                qArr[j] = q;
+            }
+
+            return qArr;
+        }
+
+        private int[] Minus(int[] left, int[] right)
+        {
+            var b = Alphabet.Count;
+            var remains = 0;
+
+            var result = left.ToArray();
+
+            for (int l = left.Length - 1, r = right.Length - 1; r >= 0; l--, r--)
+            {
+                result[l] = (((left[l] - right[r] - remains) % b) + b) % b;
+                remains = left[l] - right[r] - remains < 0 ? 1 : 0;
+            }
+
+            if (remains == 1)
+            {
+                result[result.Length - right.Length - 1]--;
+            }
+
+            return result;
+        }
+
+        private int[] MultiplyOnConst(int[] value, int constant, bool extend = true)
+        {
+            var b = Alphabet.Count;
+            var remains = 0;
+
+            var result = new int[value.Length + 1];
+            for (int i = value.Length - 1; i >= 0; i--)
+            {
+                result[i] = (value[i] * constant + remains) % b;
+                remains = (value[i] * constant + remains) / b;
+            }
+
+            result[0] = remains;
+
+            if (!extend && result[0] == 0)
+            {
+                result = result.Skip(1).ToArray();
+            }
+
+            return result;
+        }
+
         private List<int> MultyplyOnConstant(List<int> value, int multiplier, int modulo, bool skipZero = false)
         {
             var remains = 0;
