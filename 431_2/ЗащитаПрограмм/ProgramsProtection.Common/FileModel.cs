@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace ProgramsProtection.Common
@@ -31,27 +30,15 @@ namespace ProgramsProtection.Common
             }
 
             var fileInfo = new FileInfo(filePath);
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                using (FileStream fileStream = fileInfo.Open(FileMode.Open))
-                {
-                    try
-                    {
-                        fileStream.Position = 0;
-                        var hash = await sha256.ComputeHashAsync(fileStream);
-
-                        return new FileModel() { FileName = filePath, Hash = hash, CreationDate = fileInfo.CreationTimeUtc };
-                    }
-                    catch (IOException)
-                    {
-                        throw;
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
-                        throw;
-                    }
-                }
-            }
+            var source = await File.ReadAllBytesAsync(filePath);
+            var sha = new CustomSha256();
+            var hash = sha.GetHash(source);
+            return new FileModel() 
+            { 
+                FileName = filePath, 
+                Hash = hash, 
+                CreationDate = fileInfo.CreationTimeUtc 
+            };
         }
     }
 }
