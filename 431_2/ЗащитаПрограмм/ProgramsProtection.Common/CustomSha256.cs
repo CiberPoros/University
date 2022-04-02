@@ -10,12 +10,16 @@ namespace ProgramsProtection.Common
             var extended = new byte[(source.Length + 1) + 448 - (source.Length + 1) % 512];
             source.CopyTo(extended, 0);
 
-            uint length = (uint)source.Length;
+            ulong length = (ulong)source.LongLength;
 
-            source[^4] |= (byte)(length >> 24);
-            source[^3] |= (byte)(length >> 16);
-            source[^2] |= (byte)(length >> 8);
-            source[^1] |= (byte)(length);
+            extended[^8] |= (byte)(length >> 56);
+            extended[^7] |= (byte)(length >> 48);
+            extended[^6] |= (byte)(length >> 40);
+            extended[^5] |= (byte)(length >> 32);
+            extended[^4] |= (byte)(length >> 24);
+            extended[^3] |= (byte)(length >> 16);
+            extended[^2] |= (byte)(length >> 8);
+            extended[^1] |= (byte)(length);
 
             // just constants
             var hArr = new uint[]
@@ -72,14 +76,14 @@ namespace ProgramsProtection.Common
                 var g = hArr[6];
                 var h = hArr[7];
 
-                for (int j = 0; j < 63; j++)
+                for (int j = 0; j < 64; j++)
                 {
                     var sigma0 = Rotr(a, 2) ^ Rotr(a, 13) ^ Rotr(a, 22);
                     var ma = (a & b) ^ (a & c) ^ (b & c);
                     var t2 = sigma0 + ma;
                     var sigma1 = Rotr(e, 6) ^ Rotr(e, 11) ^ Rotr(e, 25);
                     var ch = (e & f) ^ ((~e) & g);
-                    var t1 = h + sigma1 + ch + k[i] + w[i];
+                    var t1 = h + sigma1 + ch + k[j] + w[j];
 
                     h = g;
                     g = f;
