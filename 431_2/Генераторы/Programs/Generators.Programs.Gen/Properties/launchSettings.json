@@ -2,7 +2,7 @@
   "profiles": {
     "Generators.Programs.Gen": {
       "commandName": "Project",
-      "commandLineArgs": "-g add -i 97|32|100|100354|124|14"
+      "commandLineArgs": "-g lfsr -m 2"
     }
   }
 }

@@ -18,6 +18,7 @@ namespace Generators.Programs.Gen.Generators
                 "lc" => new LinearCongruentGenerator(),
                 "add" => new AdditiveGenerator(),
                 "5p" => new FiveParamsGenerator(),
+                "lfsr" => new LFSRGenerator(),
                 _ => throw new ArgumentOutOfRangeException(nameof(generatorType), "Value must be only lc|add|5p|lfsr|nfsr|mt|rc4|rsa|bbs.")
             };
         }

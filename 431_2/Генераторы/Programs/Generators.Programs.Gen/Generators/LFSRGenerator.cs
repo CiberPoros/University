@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Generators.Programs.Gen.Generators
 {
@@ -16,9 +13,35 @@ namespace Generators.Programs.Gen.Generators
             _seed = seed;
             var values = initialVector is null
                 ? Utils.ConvertIntArrayToByteArray(GetDefaultParameters().ToArray()).ToList()
-                : Utils.ConvertIntArrayToByteArray(initialVector.ToArray()).Concat(Utils.ConvertIntArrayToByteArray(GetDefaultParameters().ToArray()).Take(seed / 8 - initialVector.Count())).ToList();
+                : Utils.ConvertIntArrayToByteArray(initialVector.ToArray()).Concat(Utils.ConvertIntArrayToByteArray(GetDefaultParameters().ToArray()).Take(seed / 4 - initialVector.Count())).ToList();
 
-            throw new NotImplementedException();
+            // names as in the algorithm
+            var x = values.Take(values.Count / 2).ToList();
+            var a = values.Skip(values.Count / 2).ToArray();
+            var n = x.Count * 8;
+
+            for (int i = n + 1, j = 0; j < numbersCount; i++, j++)
+            {
+                var currentResultNumber = 0;
+                for (int k = 0, mask = 1; k < 31; k++, mask <<= 1)
+                {
+                    var currentBit = Utils.GetBitFromByteArray(x, j * 31 + k) && Utils.GetBitFromByteArray(a, 0);
+
+                    for (int index = j * 31 + k + 1, cnt = 1; cnt < n; index++, cnt++)
+                    {
+                        currentBit ^= (Utils.GetBitFromByteArray(x, index) && Utils.GetBitFromByteArray(a, cnt));
+                    }
+
+                    var adjustedIndex = n + j * 31 + k + 1;
+                    Utils.AddLast(x, currentBit, adjustedIndex);
+                    if (currentBit)
+                    {
+                        currentResultNumber |= mask;
+                    }
+                }
+
+                yield return currentResultNumber % maxValue;
+            }
         }
 
         public IEnumerable<int> GetDefaultParameters()
