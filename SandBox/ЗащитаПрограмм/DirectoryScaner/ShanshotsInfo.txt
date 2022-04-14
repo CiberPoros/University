@@ -1,7 +1,7 @@
 {
   "Snapshots": [
     {
-      "Id": "111aa7a9-6b5c-4476-b7b8-5bc8ee084e21",
+      "Id": "3d888800-13bc-4266-a531-e8dc4af686b6",
       "DirectoryPath": "C:\\Users\\maxim\\source\\repos\\\u0422\u0435\u0441\u0442"
     }
   ]

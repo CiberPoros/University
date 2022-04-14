@@ -31,7 +31,7 @@ namespace ProgramsProtection.Common
 
             var fileInfo = new FileInfo(filePath);
             var source = await File.ReadAllBytesAsync(filePath);
-            var sha = new CustomSha256();
+            var sha = new SimpleHash();
             var hash = sha.GetHash(source);
             return new FileModel() 
             { 

@@ -1,0 +1,40 @@
+{
+  "Id": "3d888800-13bc-4266-a531-e8dc4af686b6",
+  "Path": "C:\\Users\\maxim\\source\\repos\\\u0422\u0435\u0441\u0442",
+  "Directory": {
+    "DirectoryName": "C:\\Users\\maxim\\source\\repos\\\u0422\u0435\u0441\u0442",
+    "InternalDirectories": [
+      {
+        "DirectoryName": "C:\\Users\\maxim\\source\\repos\\\u0422\u0435\u0441\u0442\\\u041F\u0430\u043F\u043A\u04301",
+        "InternalDirectories": [],
+        "InternalFiles": [
+          {
+            "FileName": "C:\\Users\\maxim\\source\\repos\\\u0422\u0435\u0441\u0442\\\u041F\u0430\u043F\u043A\u04301\\\u0412\u043B\u043E\u0436\u0435\u043D\u043D\u044B\u0439_\u0444\u0430\u0439\u043B1.txt",
+            "Hash": "AAAAAA==",
+            "CreationDate": "2022-03-14T20:33:37.6888801Z"
+          }
+        ],
+        "CreationDate": "2022-03-14T20:33:31.6560058Z"
+      }
+    ],
+    "InternalFiles": [
+      {
+        "FileName": "C:\\Users\\maxim\\source\\repos\\\u0422\u0435\u0441\u0442\\\u041D\u043E\u0432\u044B\u0439.txt",
+        "Hash": "AAAAAA==",
+        "CreationDate": "2022-04-02T18:19:07.1274379Z"
+      },
+      {
+        "FileName": "C:\\Users\\maxim\\source\\repos\\\u0422\u0435\u0441\u0442\\\u041D\u043E\u0432\u044B\u0439_\u0444\u0430\u0439\u043B.txt",
+        "Hash": "AAAAAA==",
+        "CreationDate": "2022-04-02T18:51:42.6685515Z"
+      },
+      {
+        "FileName": "C:\\Users\\maxim\\source\\repos\\\u0422\u0435\u0441\u0442\\\u0424\u0430\u0439\u043B3_\u043F\u0435\u0440\u0435\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D.txt",
+        "Hash": "dyoxIQ==",
+        "CreationDate": "2022-03-14T20:33:26.8808331Z"
+      }
+    ],
+    "CreationDate": "2022-03-14T20:33:19.965406Z"
+  },
+  "CreationDate": "2022-04-14T20:23:21.4946973+04:00"
+}
