@@ -14,7 +14,7 @@ namespace Generators.Programs.Gen
         [Option('n', "NumbersCount", Required = false, Default = 10000, HelpText = "Positive integer value.")]
         public int NumbersCount { get; set; }
 
-        [Option('m', "UpperBound", Required = false, Default = int.MaxValue, HelpText = "Positive integer value.")]
+        [Option('m', "UpperBound", Required = false, Default = 100000, HelpText = "Positive integer value.")]
         public int MaxValue { get; set; }
 
         [Option('f', "OutputFile", Required = false, Default = null, HelpText = "Full file path.")]

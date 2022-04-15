@@ -19,6 +19,10 @@ namespace Generators.Programs.Gen.Generators
                 "add" => new AdditiveGenerator(),
                 "5p" => new FiveParamsGenerator(),
                 "lfsr" => new LFSRGenerator(),
+                "mt" => new MersenneVortexGenerator(),
+                "rc4" => new RC4Generator(),
+                "rsa" => new RSAGenerator(),
+                "bbs" => new BbsGenerator(),
                 _ => throw new ArgumentOutOfRangeException(nameof(generatorType), "Value must be only lc|add|5p|lfsr|nfsr|mt|rc4|rsa|bbs.")
             };
         }

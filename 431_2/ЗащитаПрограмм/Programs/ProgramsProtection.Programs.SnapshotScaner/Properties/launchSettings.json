@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ProgramsProtection.Programs.SnapshotScaner": {
+      "commandName": "Project",
+      "commandLineArgs": "-g mt"
+    }
+  }
+}

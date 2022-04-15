@@ -2,7 +2,7 @@
   "profiles": {
     "Generators.Programs.Gen": {
       "commandName": "Project",
-      "commandLineArgs": "-g lfsr -m 2"
+      "commandLineArgs": "-g bbs"
     }
   }
 }
