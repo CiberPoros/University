@@ -36,7 +36,7 @@ namespace Generators.Programs.Gen.Generators
                     h1 |= mask;
                 }
             }
-
+            
             var x = new List<int>();
             for (int i = 0; i < n; i++)
             {
@@ -50,7 +50,7 @@ namespace Generators.Programs.Gen.Generators
                 y = x[i];
                 y ^= (y >> u);
                 y ^= ((y << s) & b);
-                y = y ^ ((y << t) & c);
+                y ^= ((y << t) & c);
                 yield return ((((int)(y ^ (y >> l)) % maxValue) + maxValue) % maxValue);
             }
         }

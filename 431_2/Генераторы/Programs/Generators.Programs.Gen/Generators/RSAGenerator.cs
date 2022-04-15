@@ -16,7 +16,6 @@ namespace Generators.Programs.Gen.Generators
             var f = (p - 1) * (q - 1);
 
             var e = new BigInteger();
-
             for (; ; )
             {
                 e = IGenerator.Rnd.Next();

@@ -7,11 +7,11 @@ namespace Generators.Programs.Gen.Generators
     {
         public IEnumerable<int> Generate(IEnumerable<int> initialVector, int seed, int numbersCount, int maxValue)
         {
-            var vector = initialVector is null || !initialVector.Any()
+            var k = initialVector is null || !initialVector.Any()
                 ? GetDefaultParameters().Select(x => (byte)x).ToList()
                 : initialVector.Select(x => (byte)x).ToList();
 
-            var L = vector.Count;
+            var l = k.Count;
             var s = new int[256];
             for (int i = 0; i < 256; i++)
             {
@@ -20,7 +20,7 @@ namespace Generators.Programs.Gen.Generators
             var j = 0;
             for (int i = 0; i < 256; i++)
             {
-                j = (j + s[i] + vector[i % L]) % 256;
+                j = (j + s[i] + k[i % l]) % 256;
                 (s[j], s[i]) = (s[i], s[j]);
             }
 
@@ -57,7 +57,10 @@ namespace Generators.Programs.Gen.Generators
 
         public IEnumerable<int> GetDefaultParameters()
         {
-            yield return IGenerator.Rnd.Next();
+            for (int i = 0; i < 1000; i++)
+            {
+                yield return IGenerator.Rnd.Next();
+            }
         }
     }
 }
