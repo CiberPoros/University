@@ -27,6 +27,7 @@ namespace CMIP.Programs.Calculator
                 OperationType.MINUS => SpeedMeter.Run(number1, number2, calculationsHandler.Substract),
                 OperationType.MULTIPLY => SpeedMeter.Run(number1, number2, calculationsHandler.Multiply),
                 OperationType.DIVIDE => SpeedMeter.Run(number1, number2, calculationsHandler.Divide),
+                OperationType.POW => SpeedMeter.Run(number1, number2, calculationsHandler.Pow),
                 OperationType.NONE => throw new NotImplementedException(),
                 _ => throw new NotImplementedException()
             };
@@ -52,6 +53,7 @@ namespace CMIP.Programs.Calculator
                 OperationType.MINUS => leftParsed - rightParsed,
                 OperationType.MULTIPLY => leftParsed * rightParsed,
                 OperationType.DIVIDE => leftParsed / rightParsed,
+                OperationType.POW => BigInteger.Pow(leftParsed, (int)rightParsed),
                 OperationType.NONE => throw new NotImplementedException(),
                 _ => throw new NotImplementedException()
             };
@@ -63,7 +65,8 @@ namespace CMIP.Programs.Calculator
             Console.WriteLine("1. Сложение;");
             Console.WriteLine("2. Вычитание;");
             Console.WriteLine("3. Умножение;");
-            Console.WriteLine("4. Деление...");
+            Console.WriteLine("4. Деление;");
+            Console.WriteLine("5. Возведение в степень...");
             Console.WriteLine();
 
             for (; ; )
@@ -84,6 +87,9 @@ namespace CMIP.Programs.Calculator
                     case ConsoleKey.NumPad4:
                     case ConsoleKey.D4:
                         return OperationType.DIVIDE;
+                    case ConsoleKey.NumPad5:
+                    case ConsoleKey.D5:
+                        return OperationType.POW;
                     default:
                         continue;
                 }

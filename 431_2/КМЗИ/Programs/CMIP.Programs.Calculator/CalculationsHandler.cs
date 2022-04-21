@@ -112,5 +112,19 @@ namespace CMIP.Programs.Calculator
 
             return result;
         }
+
+        public Number Pow(Number left, Number right)
+        {
+            var exponenciator = new Exponenciator(Alphabet);
+            var resultIsPositive = left.IsPositive;
+
+            left.IsPositive = true;
+            right.IsPositive = true;
+
+            var result = exponenciator.Calculate(left, right);
+            result.IsPositive = resultIsPositive;
+
+            return result;
+        }
     }
 }

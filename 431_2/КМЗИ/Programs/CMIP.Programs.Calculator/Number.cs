@@ -34,6 +34,21 @@ namespace CMIP.Programs.Calculator
             return IsPositive ? result : -result;
         }
 
+        public int ToInt32(List<char> alphabet)
+        {
+            var baseSystemNumber = alphabet.Count;
+            int currentDegree = 1;
+
+            int result = 0;
+            for (int i = Length - 1; i >= 0; i--)
+            {
+                result += alphabet.IndexOf(this[i]) * currentDegree;
+                currentDegree *= baseSystemNumber;
+            }
+
+            return IsPositive ? result : -result;
+        }
+
         public Number(IEnumerable<char> value) : this(value, true)
         {
 
