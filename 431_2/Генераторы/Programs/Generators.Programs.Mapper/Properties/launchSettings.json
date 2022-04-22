@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Generators.Programs.Mapper": {
+      "commandName": "Project",
+      "commandLineArgs": "-d bi"
+    }
+  }
+}
