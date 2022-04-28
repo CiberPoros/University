@@ -30,8 +30,8 @@ namespace Generators.Programs.Mapper
                        Console.WriteLine("Результат: ");
                        foreach (var currentRes in result)
                        {
-                           Console.Write($"{currentRes:0.00} ");
-                           stringBuilder.Append($"{currentRes:0.00} ");
+                           Console.WriteLine($"{currentRes:0.00} ");
+                           stringBuilder.Append($"{currentRes:0.00}{Environment.NewLine}");
                        }
 
                        Console.WriteLine();

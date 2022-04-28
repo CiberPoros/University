@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Generators.Programs.Mapper.Distributions
 {
+    /// <summary>
+    /// Гамма распределение
+    /// </summary>
     internal class ToGammaMapper : AbstractMapper
     {
         // a
