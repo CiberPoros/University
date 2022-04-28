@@ -18,6 +18,7 @@ namespace Generators.Programs.Gen.Generators
                 "lc" => new LinearCongruentGenerator(),
                 "add" => new AdditiveGenerator(),
                 "5p" => new FiveParamsGenerator(),
+                "nfsr" => new LFSRGenerator(),
                 "lfsr" => new LFSRGenerator(),
                 "mt" => new MersenneVortexGenerator(),
                 "rc4" => new RC4Generator(),

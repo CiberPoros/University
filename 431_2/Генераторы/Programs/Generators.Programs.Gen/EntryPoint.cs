@@ -21,7 +21,7 @@ namespace Generators.Programs.Gen
 
                        if (o.OutputFilePath is null)
                        {
-                           Console.WriteLine($"Result: {string.Join(", ", result)}");
+                           Console.WriteLine($"Result: {string.Join($"{Environment.NewLine} ", result)}");
                        }
                        else
                        {
