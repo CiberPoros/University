@@ -64,18 +64,6 @@ namespace CMIP.Programs.Calculator.Operations
             return result.Any() ? result : new Number(new char[] { Alphabet[0] }) { RemainsByDivision = remains };
         }
 
-        public static AbstractOperator Create(OperationType operationType, List<char> alphabet)
-        {
-            return operationType switch
-            {
-                OperationType.PLUS => new Summer(alphabet),
-                OperationType.MINUS => new Substractor(alphabet),
-                OperationType.MULTIPLY => throw new NotImplementedException(),
-                OperationType.DIVIDE => throw new NotImplementedException(),
-                _ => throw new ArgumentOutOfRangeException(nameof(operationType), operationType, null)
-            };
-        }
-
         protected abstract Number CalculateInternal(Number left, Number right);
     }
 }

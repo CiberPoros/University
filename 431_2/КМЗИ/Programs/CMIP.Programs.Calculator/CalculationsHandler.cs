@@ -132,5 +132,19 @@ namespace CMIP.Programs.Calculator
 
             return result;
         }
+
+        public Number PowMod(Number left, Number right, Number modulo)
+        {
+            var exponenciator = new ExponenciatorModulo(Alphabet, modulo);
+            var resultIsPositive = left.IsPositive;
+
+            left.IsPositive = true;
+            right.IsPositive = true;
+
+            var result = exponenciator.Calculate(left, right);
+            result.IsPositive = resultIsPositive;
+
+            return result;
+        }
     }
 }

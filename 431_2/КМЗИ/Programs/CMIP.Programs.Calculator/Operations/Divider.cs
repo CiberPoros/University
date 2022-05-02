@@ -19,6 +19,14 @@ namespace CMIP.Programs.Calculator.Operations
         {
             var u = left.Select(x => Alphabet.IndexOf(x)).Reverse().ToArray();
             var v = right.Select(x => Alphabet.IndexOf(x)).Reverse().ToArray();
+
+            if (!IsLeftGreaterOrEquals(u, v))
+            {
+                var numres = new Number(new char[] { '0' });
+                numres.RemainsByDivision = new Number(u.Select(x => Alphabet[x]).Reverse().ToArray());
+                return numres;
+            }
+
             var n = v.Length;
             var b = Alphabet.Count;
             var d = b / (v[n - 1] + 1);

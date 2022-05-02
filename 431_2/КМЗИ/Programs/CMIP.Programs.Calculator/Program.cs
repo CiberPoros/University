@@ -20,6 +20,12 @@ namespace CMIP.Programs.Calculator
 
             var number1 = ReadNumber(alphabet);
             var number2 = ReadNumber(alphabet);
+            Number number3 = default;
+
+            if (operation == OperationType.POW_MOD)
+            {
+                number3 = ReadNumber(alphabet);
+            }
 
             (Number, TimeSpan) result = default;
             try
@@ -31,6 +37,7 @@ namespace CMIP.Programs.Calculator
                     OperationType.MULTIPLY => SpeedMeter.Run(number1, number2, calculationsHandler.Multiply),
                     OperationType.DIVIDE => SpeedMeter.Run(number1, number2, calculationsHandler.Divide),
                     OperationType.POW => SpeedMeter.Run(number1, number2, calculationsHandler.Pow),
+                    OperationType.POW_MOD => SpeedMeter.Run(number1, number2, number3, calculationsHandler.PowMod),
                     OperationType.NONE => throw new NotImplementedException(),
                     _ => throw new NotImplementedException()
                 };
@@ -45,24 +52,25 @@ namespace CMIP.Programs.Calculator
             Console.WriteLine($"Время подсчета в миллисекундах: {result.Item2.TotalMilliseconds}");
             Console.WriteLine();
 
-            var simpleResult = SpeedMeter.Run(number1, number2, alphabet, operation, CalculateSimple);
+            var simpleResult = SpeedMeter.Run(number1, number2, number3, alphabet, operation, CalculateSimple);
             Console.WriteLine($"Результат встроенной операции (10 - я система счисления): {simpleResult.Item1}");
             Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции: {simpleResult.Item2.TotalMilliseconds}");
             Console.WriteLine();
 
             if (operation == OperationType.DIVIDE)
             {
-                var remainsSimpleResult = SpeedMeter.Run(number1, number2, alphabet, OperationType.GET_REMAINS, CalculateSimple);
+                var remainsSimpleResult = SpeedMeter.Run(number1, number2, number3, alphabet, OperationType.GET_REMAINS, CalculateSimple);
                 Console.WriteLine($"Результат встроенной операции остатка от деления (10 - я система счисления): {remainsSimpleResult.Item1}");
                 Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции остатка от деления: {remainsSimpleResult.Item2.TotalMilliseconds}");
                 Console.WriteLine();
             }
         }
 
-        public static BigInteger CalculateSimple(Number left, Number right, List<char> alphabet, OperationType operationType)
+        public static BigInteger CalculateSimple(Number left, Number right, Number modulo, List<char> alphabet, OperationType operationType)
         {
             var leftParsed = left.ToBigInteger(alphabet);
             var rightParsed = right.ToBigInteger(alphabet);
+            var moduloParsed = modulo?.ToBigInteger(alphabet);
 
             return operationType switch
             {
@@ -72,6 +80,7 @@ namespace CMIP.Programs.Calculator
                 OperationType.DIVIDE => leftParsed / rightParsed,
                 OperationType.POW => BigInteger.Pow(leftParsed, (int)rightParsed),
                 OperationType.GET_REMAINS => leftParsed % rightParsed,
+                OperationType.POW_MOD => BigInteger.ModPow(leftParsed, rightParsed, moduloParsed.Value),
                 OperationType.NONE => throw new NotImplementedException(),
                 _ => throw new NotImplementedException()
             };
@@ -84,7 +93,8 @@ namespace CMIP.Programs.Calculator
             Console.WriteLine("2. Вычитание;");
             Console.WriteLine("3. Умножение;");
             Console.WriteLine("4. Деление;");
-            Console.WriteLine("5. Возведение в степень...");
+            Console.WriteLine("5. Возведение в степень;");
+            Console.WriteLine("6. Возведение в степень по модулю...");
             Console.WriteLine();
 
             for (; ; )
@@ -108,6 +118,9 @@ namespace CMIP.Programs.Calculator
                     case ConsoleKey.NumPad5:
                     case ConsoleKey.D5:
                         return OperationType.POW;
+                    case ConsoleKey.NumPad6:
+                    case ConsoleKey.D6:
+                        return OperationType.POW_MOD;
                     default:
                         continue;
                 }

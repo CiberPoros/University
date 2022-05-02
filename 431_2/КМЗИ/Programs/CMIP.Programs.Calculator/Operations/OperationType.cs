@@ -8,6 +8,7 @@
         MULTIPLY = 3,
         DIVIDE = 4,
         POW = 5,
-        GET_REMAINS = 6
+        GET_REMAINS = 6,
+        POW_MOD = 7
     }
 }
