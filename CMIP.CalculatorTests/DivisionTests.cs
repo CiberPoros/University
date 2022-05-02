@@ -47,7 +47,7 @@ namespace CMIP.CalculatorTests
 
                 var expectedResult = Program.CalculateSimple(leftNumber, rightNumber, _alphabet, Programs.Calculator.Operations.OperationType.DIVIDE);
 
-                Assert.AreEqual(expectedResult.ToString(), actualResult.ToString());
+                Assert.AreEqual(expectedResult.ToString(), actualResult.ToString().Split(';').First());
             }
         }
     }

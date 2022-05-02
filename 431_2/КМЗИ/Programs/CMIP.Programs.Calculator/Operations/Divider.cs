@@ -27,10 +27,10 @@ namespace CMIP.Programs.Calculator.Operations
 
             var result = new Number(qArr.Select(x => Alphabet[x]).Reverse());
 
-            var vTemp = new int[n];
-            Array.Copy(u, 0, vTemp, 0, n);
+            var uTemp = new int[n];
+            Array.Copy(u, 0, uTemp, 0, n);
             var dTemp = new int[] { d };
-            var remains = CalculateInternal(ref vTemp, ref dTemp).Reverse().SkipWhile(x => x == 0).Reverse().ToArray();
+            var remains = CalculateInternal(ref uTemp, ref dTemp).Reverse().SkipWhile(x => x == 0).Reverse().ToArray();
 
             if (!remains.Any())
             {
@@ -85,7 +85,7 @@ namespace CMIP.Programs.Calculator.Operations
                 else
                 {
                     var inverseMinusResult = MinusInternal(qMult, uArr, b);
-                    var bPow = new int[n + 2];
+                    var bPow = new int[n + 2]; // b ^ n + 1
                     bPow[^1] = 1;
                     var currentRes = MinusInternal(bPow, inverseMinusResult, b);
                     Array.Copy(currentRes, 0, u, j, n + 1);
