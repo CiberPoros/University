@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CMIP.Programs.Calculator
 {
-    internal class NumbersUtils
+    public class NumbersUtils
     {
         public NumbersUtils(List<char> alphabet)
         {

@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace CMIP.Programs.Calculator
 {
-    internal class Number : IEnumerable<char>
+    public class Number : IEnumerable<char>
     {
         public Number(IEnumerable<char> value, bool isPositive)
         {
@@ -60,6 +60,8 @@ namespace CMIP.Programs.Calculator
             set => Value[index] = value;
         }
 
+        public Number RemainsByDivision { get; set; }
+
         public char[] Value { get; set; }
 
         public bool IsPositive { get; set; }
@@ -84,6 +86,33 @@ namespace CMIP.Programs.Calculator
             }
         }
 
-        public override string ToString() => IsNegative ? "-" + string.Join("", Value) : string.Join("", Value);
+        public override string ToString()
+        {
+            if (RemainsByDivision is null)
+                return IsNegative ? "-" + string.Join("", Value) : string.Join("", Value);
+            else
+                return IsNegative ? "-" + string.Join("", Value) : string.Join("", Value) + "; Остаток от деления: " + string.Join("", RemainsByDivision.Value);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not Number right)
+            {
+                return false;
+            }
+
+            return Value.SequenceEqual(right.Value);
+        }
+
+        public override int GetHashCode()
+        {
+            var result = 0;
+            foreach (var current in Value)
+            {
+                result ^= current;
+            }
+
+            return result;
+        }
     }
 }

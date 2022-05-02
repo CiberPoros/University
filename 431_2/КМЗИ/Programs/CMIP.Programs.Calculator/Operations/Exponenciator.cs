@@ -2,7 +2,7 @@
 
 namespace CMIP.Programs.Calculator.Operations
 {
-    internal class Exponenciator : AbstractOperator
+    public class Exponenciator : AbstractOperator
     {
         public Exponenciator(List<char> alphabet) : base(alphabet)
         {

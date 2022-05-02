@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CMIP.Programs.Calculator.Operations
 {
-    internal class Multiplier : AbstractOperator
+    public class Multiplier : AbstractOperator
     {
         public Multiplier(List<char> alphabet) : base(alphabet)
         {

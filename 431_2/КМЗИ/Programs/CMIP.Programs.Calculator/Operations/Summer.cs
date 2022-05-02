@@ -2,7 +2,7 @@
 
 namespace CMIP.Programs.Calculator.Operations
 {
-    internal class Summer : AbstractOperator
+    public class Summer : AbstractOperator
     {
         public Summer(List<char> alphabet) : base(alphabet)
         {

@@ -7,7 +7,7 @@ using System.Numerics;
 
 namespace CMIP.Programs.Calculator
 {
-    internal class Program
+    public class Program
     {
         private static readonly List<char> _alphabet = new() { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
@@ -20,17 +20,26 @@ namespace CMIP.Programs.Calculator
 
             var number1 = ReadNumber(alphabet);
             var number2 = ReadNumber(alphabet);
-            
-            var result = operation switch
+
+            (Number, TimeSpan) result = default;
+            try
             {
-                OperationType.PLUS => SpeedMeter.Run(number1, number2, calculationsHandler.Summ),
-                OperationType.MINUS => SpeedMeter.Run(number1, number2, calculationsHandler.Substract),
-                OperationType.MULTIPLY => SpeedMeter.Run(number1, number2, calculationsHandler.Multiply),
-                OperationType.DIVIDE => SpeedMeter.Run(number1, number2, calculationsHandler.Divide),
-                OperationType.POW => SpeedMeter.Run(number1, number2, calculationsHandler.Pow),
-                OperationType.NONE => throw new NotImplementedException(),
-                _ => throw new NotImplementedException()
-            };
+                result = operation switch
+                {
+                    OperationType.PLUS => SpeedMeter.Run(number1, number2, calculationsHandler.Summ),
+                    OperationType.MINUS => SpeedMeter.Run(number1, number2, calculationsHandler.Substract),
+                    OperationType.MULTIPLY => SpeedMeter.Run(number1, number2, calculationsHandler.Multiply),
+                    OperationType.DIVIDE => SpeedMeter.Run(number1, number2, calculationsHandler.Divide),
+                    OperationType.POW => SpeedMeter.Run(number1, number2, calculationsHandler.Pow),
+                    OperationType.NONE => throw new NotImplementedException(),
+                    _ => throw new NotImplementedException()
+                };
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine($"Неверный формат входных данных. Подробности: {e.Message}");
+                return;
+            }
 
             Console.WriteLine($"Результат: {result.Item1}");
             Console.WriteLine($"Время подсчета в миллисекундах: {result.Item2.TotalMilliseconds}");
@@ -40,9 +49,17 @@ namespace CMIP.Programs.Calculator
             Console.WriteLine($"Результат встроенной операции (10 - я система счисления): {simpleResult.Item1}");
             Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции: {simpleResult.Item2.TotalMilliseconds}");
             Console.WriteLine();
+
+            if (operation == OperationType.DIVIDE)
+            {
+                var remainsSimpleResult = SpeedMeter.Run(number1, number2, alphabet, OperationType.GET_REMAINS, CalculateSimple);
+                Console.WriteLine($"Результат встроенной операции остатка от деления (10 - я система счисления): {remainsSimpleResult.Item1}");
+                Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции остатка от деления: {remainsSimpleResult.Item2.TotalMilliseconds}");
+                Console.WriteLine();
+            }
         }
 
-        private static BigInteger CalculateSimple(Number left, Number right, List<char> alphabet, OperationType operationType)
+        public static BigInteger CalculateSimple(Number left, Number right, List<char> alphabet, OperationType operationType)
         {
             var leftParsed = left.ToBigInteger(alphabet);
             var rightParsed = right.ToBigInteger(alphabet);
@@ -54,6 +71,7 @@ namespace CMIP.Programs.Calculator
                 OperationType.MULTIPLY => leftParsed * rightParsed,
                 OperationType.DIVIDE => leftParsed / rightParsed,
                 OperationType.POW => BigInteger.Pow(leftParsed, (int)rightParsed),
+                OperationType.GET_REMAINS => leftParsed % rightParsed,
                 OperationType.NONE => throw new NotImplementedException(),
                 _ => throw new NotImplementedException()
             };

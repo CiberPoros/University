@@ -2,7 +2,7 @@
 
 namespace CMIP.Programs.Calculator.Operations
 {
-    internal class Substractor : AbstractOperator
+    public class Substractor : AbstractOperator
     {
         public Substractor(List<char> alphabet) : base(alphabet)
         {

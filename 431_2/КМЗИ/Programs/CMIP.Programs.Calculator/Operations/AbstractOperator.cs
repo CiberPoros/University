@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CMIP.Programs.Calculator.Operations
 {
-    internal abstract class AbstractOperator
+    public abstract class AbstractOperator
     {
         public AbstractOperator(List<char> alphabet)
         {
@@ -49,15 +49,19 @@ namespace CMIP.Programs.Calculator.Operations
             }
 
             var result = CalculateInternal(left, right);
+            var remains = result.RemainsByDivision;
 
             if (NeedInverseAfter)
             {
                 result = new Number(result.Reverse().ToArray());
             }
 
-            result = new Number(result.SkipWhile(x => x == Alphabet[0]).ToArray());
+            result = new Number(result.SkipWhile(x => x == Alphabet[0]).ToArray())
+            {
+                RemainsByDivision = remains
+            };
 
-            return result.Any() ? result : new Number(new char[] { Alphabet[0] });
+            return result.Any() ? result : new Number(new char[] { Alphabet[0] }) { RemainsByDivision = remains };
         }
 
         public static AbstractOperator Create(OperationType operationType, List<char> alphabet)

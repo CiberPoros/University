@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CMIP.Programs.Calculator.Operations;
 
 namespace CMIP.Programs.Calculator
 {
-    internal class CalculationsHandler
+    public class CalculationsHandler
     {
         public CalculationsHandler(List<char> alphabet)
         {
@@ -101,6 +102,11 @@ namespace CMIP.Programs.Calculator
 
         public Number Divide(Number left, Number right)
         {
+            if (!right.Any() || right.All(x => x == '0'))
+            {
+                throw new ArgumentOutOfRangeException(nameof(right), right, "Невозможно разделить на 0.");
+            }
+
             var divider = new Divider(Alphabet);
             var resultIsPositive = left.IsPositive && right.IsPositive || left.IsNegative && right.IsNegative;
 
