@@ -13,56 +13,64 @@ namespace CMIP.Programs.Calculator
 
         static void Main()
         {
-            var baseOfNumberSystem = ReadBaseOfNumberSystem();
-            var operation = ReadOperationType();
-            var alphabet = _alphabet.Take(baseOfNumberSystem).ToList();
-            var calculationsHandler = new CalculationsHandler(alphabet);
-
-            var number1 = ReadNumber(alphabet);
-            var number2 = ReadNumber(alphabet);
-            Number number3 = default;
-
-            if (operation == OperationType.POW_MOD)
+            for (; ; )
             {
-                number3 = ReadNumber(alphabet);
-            }
-
-            (Number, TimeSpan) result = default;
-            try
-            {
-                result = operation switch
+                var baseOfNumberSystem = ReadBaseOfNumberSystem();
+                var operation = ReadOperationType();
+                if (operation == OperationType.EXIT_PROGRAM)
                 {
-                    OperationType.PLUS => SpeedMeter.Run(number1, number2, calculationsHandler.Summ),
-                    OperationType.MINUS => SpeedMeter.Run(number1, number2, calculationsHandler.Substract),
-                    OperationType.MULTIPLY => SpeedMeter.Run(number1, number2, calculationsHandler.Multiply),
-                    OperationType.DIVIDE => SpeedMeter.Run(number1, number2, calculationsHandler.Divide),
-                    OperationType.POW => SpeedMeter.Run(number1, number2, calculationsHandler.Pow),
-                    OperationType.POW_MOD => SpeedMeter.Run(number1, number2, number3, calculationsHandler.PowMod),
-                    OperationType.NONE => throw new NotImplementedException(),
-                    _ => throw new NotImplementedException()
-                };
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                Console.WriteLine($"Неверный формат входных данных. Подробности: {e.Message}");
-                return;
-            }
+                    return;
+                }
 
-            Console.WriteLine($"Результат: {result.Item1}");
-            Console.WriteLine($"Время подсчета в миллисекундах: {result.Item2.TotalMilliseconds}");
-            Console.WriteLine();
+                var alphabet = _alphabet.Take(baseOfNumberSystem).ToList();
+                var calculationsHandler = new CalculationsHandler(alphabet);
 
-            var simpleResult = SpeedMeter.Run(number1, number2, number3, alphabet, operation, CalculateSimple);
-            Console.WriteLine($"Результат встроенной операции (10 - я система счисления): {simpleResult.Item1}");
-            Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции: {simpleResult.Item2.TotalMilliseconds}");
-            Console.WriteLine();
+                var number1 = ReadNumber(alphabet);
+                var number2 = ReadNumber(alphabet);
+                Number number3 = default;
 
-            if (operation == OperationType.DIVIDE)
-            {
-                var remainsSimpleResult = SpeedMeter.Run(number1, number2, number3, alphabet, OperationType.GET_REMAINS, CalculateSimple);
-                Console.WriteLine($"Результат встроенной операции остатка от деления (10 - я система счисления): {remainsSimpleResult.Item1}");
-                Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции остатка от деления: {remainsSimpleResult.Item2.TotalMilliseconds}");
+                if (operation == OperationType.POW_MOD)
+                {
+                    number3 = ReadNumber(alphabet);
+                }
+
+                (Number, TimeSpan) result = default;
+                try
+                {
+                    result = operation switch
+                    {
+                        OperationType.PLUS => SpeedMeter.Run(number1, number2, calculationsHandler.Summ),
+                        OperationType.MINUS => SpeedMeter.Run(number1, number2, calculationsHandler.Substract),
+                        OperationType.MULTIPLY => SpeedMeter.Run(number1, number2, calculationsHandler.Multiply),
+                        OperationType.DIVIDE => SpeedMeter.Run(number1, number2, calculationsHandler.Divide),
+                        OperationType.POW => SpeedMeter.Run(number1, number2, calculationsHandler.Pow),
+                        OperationType.POW_MOD => SpeedMeter.Run(number1, number2, number3, calculationsHandler.PowMod),
+                        OperationType.NONE => throw new NotImplementedException(),
+                        _ => throw new NotImplementedException()
+                    };
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    Console.WriteLine($"Неверный формат входных данных. Подробности: {e.Message}");
+                    return;
+                }
+
+                Console.WriteLine($"Результат: {result.Item1}");
+                Console.WriteLine($"Время подсчета в миллисекундах: {result.Item2.TotalMilliseconds}");
                 Console.WriteLine();
+
+                var simpleResult = SpeedMeter.Run(number1, number2, number3, alphabet, operation, CalculateSimple);
+                Console.WriteLine($"Результат встроенной операции (10 - я система счисления): {simpleResult.Item1}");
+                Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции: {simpleResult.Item2.TotalMilliseconds}");
+                Console.WriteLine();
+
+                if (operation == OperationType.DIVIDE)
+                {
+                    var remainsSimpleResult = SpeedMeter.Run(number1, number2, number3, alphabet, OperationType.GET_REMAINS, CalculateSimple);
+                    Console.WriteLine($"Результат встроенной операции остатка от деления (10 - я система счисления): {remainsSimpleResult.Item1}");
+                    Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции остатка от деления: {remainsSimpleResult.Item2.TotalMilliseconds}");
+                    Console.WriteLine();
+                } 
             }
         }
 

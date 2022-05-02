@@ -9,6 +9,7 @@
         DIVIDE = 4,
         POW = 5,
         GET_REMAINS = 6,
-        POW_MOD = 7
+        POW_MOD = 7,
+        EXIT_PROGRAM = 8
     }
 }
