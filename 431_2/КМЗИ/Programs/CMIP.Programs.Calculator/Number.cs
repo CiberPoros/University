@@ -70,6 +70,8 @@ namespace CMIP.Programs.Calculator
 
         public bool IsZero => !Value.Any() || Value.Length == 1 && Value[0] == '0';
 
+        public bool IsSingleOne => Value.Length == 1 && Value[0] == '1';
+
         public bool IsNegative => !IsPositive;
 
         public int Length => Value.Length;

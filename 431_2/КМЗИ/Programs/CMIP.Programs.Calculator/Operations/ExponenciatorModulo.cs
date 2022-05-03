@@ -22,6 +22,11 @@ namespace CMIP.Programs.Calculator.Operations
                 return new Number(new char[] { '0' }) { IsUndefined = true };
             }
 
+            if (Modulo.IsSingleOne)
+            {
+                return new Number(new char[] { '0' });
+            }
+
             var n = right.ToInt32(Alphabet);
             if (n == 0)
             {
