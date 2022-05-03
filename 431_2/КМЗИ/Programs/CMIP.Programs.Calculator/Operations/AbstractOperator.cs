@@ -50,6 +50,7 @@ namespace CMIP.Programs.Calculator.Operations
 
             var result = CalculateInternal(left, right);
             var remains = result.RemainsByDivision;
+            var isUndefined = result.IsUndefined;
 
             if (NeedInverseAfter)
             {
@@ -61,7 +62,7 @@ namespace CMIP.Programs.Calculator.Operations
                 RemainsByDivision = remains
             };
 
-            return result.Any() ? result : new Number(new char[] { Alphabet[0] }) { RemainsByDivision = remains };
+            return result.Any() ? result : new Number(new char[] { Alphabet[0] }) { RemainsByDivision = remains, IsUndefined = isUndefined };
         }
 
         protected abstract Number CalculateInternal(Number left, Number right);

@@ -17,6 +17,11 @@ namespace CMIP.Programs.Calculator.Operations
 
         protected override Number CalculateInternal(Number left, Number right)
         {
+            if (Modulo.IsZero)
+            {
+                return new Number(new char[] { '0' }) { IsUndefined = true };
+            }
+
             var n = right.ToInt32(Alphabet);
             if (n == 0)
             {

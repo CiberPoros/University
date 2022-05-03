@@ -60,21 +60,21 @@ namespace CMIP.Programs.Calculator
                 Console.WriteLine();
 
                 var simpleResult = SpeedMeter.Run(number1, number2, number3, alphabet, operation, CalculateSimple);
-                Console.WriteLine($"Результат встроенной операции (10 - я система счисления): {simpleResult.Item1}");
+                Console.WriteLine($"Результат встроенной операции (10 - я система счисления): {(simpleResult.Item1.HasValue ? simpleResult.Item1.ToString() : "Undefined")}");
                 Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции: {simpleResult.Item2.TotalMilliseconds}");
                 Console.WriteLine();
 
                 if (operation == OperationType.DIVIDE)
                 {
                     var remainsSimpleResult = SpeedMeter.Run(number1, number2, number3, alphabet, OperationType.GET_REMAINS, CalculateSimple);
-                    Console.WriteLine($"Результат встроенной операции остатка от деления (10 - я система счисления): {remainsSimpleResult.Item1}");
+                    Console.WriteLine($"Результат встроенной операции остатка от деления (10 - я система счисления): {(remainsSimpleResult.Item1.HasValue ? remainsSimpleResult.Item1.ToString() : "Undefined")}");
                     Console.WriteLine($"Время подсчета в миллисекундах для встроенной операции остатка от деления: {remainsSimpleResult.Item2.TotalMilliseconds}");
                     Console.WriteLine();
                 } 
             }
         }
 
-        public static BigInteger CalculateSimple(Number left, Number right, Number modulo, List<char> alphabet, OperationType operationType)
+        public static BigInteger? CalculateSimple(Number left, Number right, Number modulo, List<char> alphabet, OperationType operationType)
         {
             var leftParsed = left.ToBigInteger(alphabet);
             var rightParsed = right.ToBigInteger(alphabet);
@@ -88,7 +88,7 @@ namespace CMIP.Programs.Calculator
                 OperationType.DIVIDE => leftParsed / rightParsed,
                 OperationType.POW => BigInteger.Pow(leftParsed, (int)rightParsed),
                 OperationType.GET_REMAINS => leftParsed % rightParsed,
-                OperationType.POW_MOD => BigInteger.ModPow(leftParsed, rightParsed, moduloParsed.Value),
+                OperationType.POW_MOD => moduloParsed.Value == 0 ? null : BigInteger.ModPow(leftParsed, rightParsed, moduloParsed.Value),
                 OperationType.NONE => throw new NotImplementedException(),
                 _ => throw new NotImplementedException()
             };

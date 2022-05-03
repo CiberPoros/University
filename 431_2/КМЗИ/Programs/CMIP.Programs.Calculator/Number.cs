@@ -62,9 +62,13 @@ namespace CMIP.Programs.Calculator
 
         public Number RemainsByDivision { get; set; }
 
+        public bool IsUndefined { get; set; }
+
         public char[] Value { get; set; }
 
         public bool IsPositive { get; set; }
+
+        public bool IsZero => !Value.Any() || Value.Length == 1 && Value[0] == '0';
 
         public bool IsNegative => !IsPositive;
 
@@ -88,6 +92,11 @@ namespace CMIP.Programs.Calculator
 
         public override string ToString()
         {
+            if (IsUndefined)
+            {
+                return "Undefined";
+            }
+
             if (RemainsByDivision is null)
                 return IsNegative ? "-" + string.Join("", Value) : string.Join("", Value);
             else
