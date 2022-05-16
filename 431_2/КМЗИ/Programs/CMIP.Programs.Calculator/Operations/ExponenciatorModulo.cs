@@ -27,7 +27,7 @@ namespace CMIP.Programs.Calculator.Operations
                 return new Number(new char[] { '0' });
             }
 
-            var n = right.ToInt32(Alphabet);
+            var n = right.ToBigInteger(Alphabet);
             if (n == 0)
             {
                 return new Number(new char[] { Alphabet[1] });

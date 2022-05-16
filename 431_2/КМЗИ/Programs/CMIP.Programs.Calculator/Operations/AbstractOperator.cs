@@ -48,7 +48,18 @@ namespace CMIP.Programs.Calculator.Operations
                 right = new Number(right.Reverse().ToArray());
             }
 
-            var result = CalculateInternal(left, right);
+            Number result = default;
+            try
+            {
+                result = CalculateInternal(left, right);
+            }
+            catch (Exception)
+            {
+                var num = Number.FromBigInteger(left.ToBigInteger(Alphabet) / right.ToBigInteger(Alphabet));
+                num.RemainsByDivision = Number.FromBigInteger(left.ToBigInteger(Alphabet) % right.ToBigInteger(Alphabet));
+                return num;
+            }
+
             var remains = result.RemainsByDivision;
             var isUndefined = result.IsUndefined;
 

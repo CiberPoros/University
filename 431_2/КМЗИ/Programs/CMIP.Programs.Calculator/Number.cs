@@ -19,6 +19,11 @@ namespace CMIP.Programs.Calculator
             IsPositive = isPositive;
         }
 
+        public static Number FromBigInteger(BigInteger value)
+        {
+            return new Number(value.ToString(), true);
+        }
+
         public BigInteger ToBigInteger(List<char> alphabet)
         {
             var baseSystemNumber = alphabet.Count;
