@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 
 namespace ProgramsProtection.Programs.SelfIntegrityController
 {
@@ -23,16 +22,14 @@ namespace ProgramsProtection.Programs.SelfIntegrityController
                     Hash = hash
                 };
 
-                var serialized = JsonSerializer.Serialize(info, options: new JsonSerializerOptions() { WriteIndented = true });
-                File.WriteAllText(_infoFileName, serialized);
+                WriteToFile(info, _infoFileName);
 
                 Console.WriteLine($"Слепок программы создан и сохранен в файл {_infoFileName}");
                 Console.WriteLine();
             }
             else
             {
-                var serialized = File.ReadAllText(_infoFileName);
-                var info = JsonSerializer.Deserialize<ProgramInfo>(serialized);
+                var info = ReadFromFile(_infoFileName);
 
                 var fileName = Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                 var programData = File.ReadAllBytes(fileName);
@@ -57,7 +54,17 @@ namespace ProgramsProtection.Programs.SelfIntegrityController
             }
 
             Console.ReadKey();
+        }
 
+        private static void WriteToFile(ProgramInfo programInfo, string fileName)
+        {
+            File.WriteAllLines(fileName, new string[] { programInfo.FileName, programInfo.Hash.ToString() });
+        }
+
+        private static ProgramInfo ReadFromFile(string fileName)
+        {
+            var input = File.ReadAllLines(fileName);
+            return new ProgramInfo() { FileName = input[0], Hash = uint.Parse(input[1]) };
         }
 
         private static uint GetHash(byte[] source)
