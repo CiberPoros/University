@@ -63,9 +63,9 @@ namespace CMIP.Programs.Generator
 
         private static (BigInteger p, BigInteger q, BigInteger s) GenerateByCustomArithmetic(int k)
         {
-            while (true)
+            for (var cnt = 1 << (k / 2); ; cnt++)
             {
-                var q = _primeNumberGenerator.Generate(k / 2);
+                var q = k >= 15 ? _primeNumberGenerator.Generate(k / 2) : cnt;
                 var lowerBound = new BigInteger(1) << (k - 1);
                 var upperBound = lowerBound << 1;
 
@@ -76,15 +76,8 @@ namespace CMIP.Programs.Generator
                 var divider = new Divider(_alphabet);
                 var multiplier = new Multiplier(_alphabet);
 
-                int i = 0;
-                while (true)
-                {
-                    if (i >= 1000 && k < 15)
-                    {
-                        break;
-                    }
-
-                    i += 2;
+                for (var i = 0; ; i++)
+                {      
                     // Генерация s
                     var sNum = divider.Calculate(lowerBoundNum, qNum); // lowerBound / q
                     sNum = summer.Calculate(sNum, Number.FromBigInteger(i));
@@ -93,6 +86,11 @@ namespace CMIP.Programs.Generator
                     var pNum = multiplier.Calculate(qNum, sNum); // q * s
                     pNum = summer.Calculate(pNum, new Number(new char[] { '1' })); // q * s + 1
                     var p = pNum.ToBigInteger(_alphabet);
+
+                    if (k < 15 && p >= upperBound)
+                    {
+                        break;
+                    }
 
                     if (p >= upperBound) // чтобы было строго k bit
                     {
