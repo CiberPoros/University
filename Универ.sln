@@ -125,11 +125,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generators.Common", "431_2\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generators.Programs.Mapper", "431_2\Генераторы\Programs\Generators.Programs.Mapper\Generators.Programs.Mapper.csproj", "{A3E4F5E2-045F-477C-A3A3-D55A70438AD4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMIP.CalculatorTests", "CMIP.CalculatorTests\CMIP.CalculatorTests.csproj", "{EF6F57D1-D269-43DD-98F9-BF52EB43FC10}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramsProtection.Programs.SelfIntegrityController", "431_2\ЗащитаПрограмм\Programs\ProgramsProtection.Programs.SelfIntegrityController\ProgramsProtection.Programs.SelfIntegrityController.csproj", "{11025001-116D-443C-8BD7-758979F74D2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMIP.Programs.Generator", "431_2\КМЗИ\Programs\CMIP.Programs.Generator\CMIP.Programs.Generator.csproj", "{B5E65353-74AF-4D26-843E-FE17BCB33D7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMIP.Programs.Generator", "431_2\КМЗИ\Programs\CMIP.Programs.Generator\CMIP.Programs.Generator.csproj", "{B5E65353-74AF-4D26-843E-FE17BCB33D7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -305,10 +303,6 @@ Global
 		{A3E4F5E2-045F-477C-A3A3-D55A70438AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3E4F5E2-045F-477C-A3A3-D55A70438AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3E4F5E2-045F-477C-A3A3-D55A70438AD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF6F57D1-D269-43DD-98F9-BF52EB43FC10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF6F57D1-D269-43DD-98F9-BF52EB43FC10}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF6F57D1-D269-43DD-98F9-BF52EB43FC10}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF6F57D1-D269-43DD-98F9-BF52EB43FC10}.Release|Any CPU.Build.0 = Release|Any CPU
 		{11025001-116D-443C-8BD7-758979F74D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{11025001-116D-443C-8BD7-758979F74D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11025001-116D-443C-8BD7-758979F74D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU

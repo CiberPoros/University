@@ -5,6 +5,7 @@ using Common.PrimeNumbersGeneration;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Threading.Tasks;
 
 namespace CMIP.Programs.Generator
 {
@@ -15,28 +16,40 @@ namespace CMIP.Programs.Generator
 
         private static readonly List<char> _alphabet = new() { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-        static void Main()
+        static async Task Main()
         {
             for (; ; )
             {
                 var bitsCount = ReadBitsCount();
-                var (p, q, s) = GenerateByCustomArithmetic(bitsCount);
 
-                Console.WriteLine($"p: {p}");
-                Console.WriteLine($"q: {q}");
-                Console.WriteLine($"s: {s}");
-                Console.WriteLine();
+                var task1 = Task.Run(() => GenerateByCustomArithmetic(bitsCount));
+                var task2 = Task.Delay(TimeSpan.FromSeconds(5));
+
+                await Task.WhenAny(task1, task2);
+                if (task1.IsCompleted)
+                {
+                    var (p, q, s) = task1.Result;
+                    Console.WriteLine($"p: {p}");
+                    Console.WriteLine($"q: {q}");
+                    Console.WriteLine($"s: {s}");
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine("Числа с заданной длиной бит не найдены");
+                    Console.WriteLine();
+                }
             }
         }
 
         private static int ReadBitsCount()
         {
-            Console.WriteLine("Введите минимальное количество бит генерируемых чисел (от 15 до 100): ");
+            Console.WriteLine("Введите минимальное количество бит генерируемых чисел (от 0 до 100): ");
             Console.WriteLine();
             for (; ; )
             {
                 var input = Console.ReadLine();
-                if (!int.TryParse(input, out var res) || res < 15 || res > 100)
+                if (!int.TryParse(input, out var res) || res < 0 || res > 100)
                 {
                     Console.WriteLine("Некорректный ввод. Повторите попытку...");
                     Console.WriteLine();
