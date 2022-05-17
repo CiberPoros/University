@@ -36,7 +36,7 @@ namespace CMIP.Programs.Generator
                 }
                 else
                 {
-                    Console.WriteLine("Числа с заданной длиной бит не найдены");
+                    Console.WriteLine("Не найдены подходящие q и s с заданным количеством бит для p.");
                     Console.WriteLine();
                 }
             }
@@ -63,56 +63,67 @@ namespace CMIP.Programs.Generator
 
         private static (BigInteger p, BigInteger q, BigInteger s) GenerateByCustomArithmetic(int k)
         {
-            var q = _primeNumberGenerator.Generate(k / 2);
-            var lowerBound = new BigInteger(1) << (k - 1);
-            var upperBound = lowerBound << 1;
-
-            var qNum = Number.FromBigInteger(q);
-            var lowerBoundNum = Number.FromBigInteger(lowerBound);
-
-            var summer = new Summer(_alphabet);
-            var divider = new Divider(_alphabet);
-            var multiplier = new Multiplier(_alphabet);
-
             while (true)
             {
-                // Генерация s
-                var sNum = divider.Calculate(lowerBoundNum, qNum); // lowerBound / q
-                sNum = summer.Calculate(sNum, Number.FromBigInteger(_random.Next((int)BigInteger.Min(int.MaxValue, 100000))));
+                var q = _primeNumberGenerator.Generate(k / 2);
+                var lowerBound = new BigInteger(1) << (k - 1);
+                var upperBound = lowerBound << 1;
 
-                var pNum = multiplier.Calculate(qNum, sNum); // q * s
-                pNum = summer.Calculate(pNum, new Number(new char[] { '1' })); // q * s + 1
-                var p = pNum.ToBigInteger(_alphabet);
+                var qNum = Number.FromBigInteger(q);
+                var lowerBoundNum = Number.FromBigInteger(lowerBound);
 
-                if (p >= upperBound) // чтобы было строго k bit
+                var summer = new Summer(_alphabet);
+                var divider = new Divider(_alphabet);
+                var multiplier = new Multiplier(_alphabet);
+
+                int i = 0;
+                while (true)
                 {
-                    continue;
-                }
+                    if (i >= 1000 && k < 15)
+                    {
+                        break;
+                    }
 
-                var firstConditionMember = multiplier.Calculate(qNum, new Number(new char[] { '2' })); // q * 2
-                firstConditionMember = summer.Calculate(firstConditionMember, new Number(new char[] { '1' })); // q * 2 + 1
-                firstConditionMember = multiplier.Calculate(firstConditionMember, firstConditionMember); // (q * 2 + 1) * (q * 2 + 1)
-                if (p >= firstConditionMember.ToBigInteger(_alphabet))
-                {
-                    continue;
-                }
+                    i += 2;
+                    // Генерация s
+                    var sNum = divider.Calculate(lowerBoundNum, qNum); // lowerBound / q
+                    sNum = summer.Calculate(sNum, Number.FromBigInteger(i));
+                    //sNum = summer.Calculate(sNum, Number.FromBigInteger(_random.Next((int)BigInteger.Min(int.MaxValue, 100000))));
 
-                var exponenciator = new ExponenciatorModulo(_alphabet, pNum);
-                var secondConditionMember = exponenciator.Calculate(new Number(new char[] { '2' }), multiplier.Calculate(qNum, sNum)); // 2 ^ (q * s) mod p
-                if (!secondConditionMember.IsSingleOne) // res != 1
-                {
-                    continue;
-                }
+                    var pNum = multiplier.Calculate(qNum, sNum); // q * s
+                    pNum = summer.Calculate(pNum, new Number(new char[] { '1' })); // q * s + 1
+                    var p = pNum.ToBigInteger(_alphabet);
 
-                exponenciator = new ExponenciatorModulo(_alphabet, pNum);
-                var thirdConditionMember = exponenciator.Calculate(new Number(new char[] { '2' }), sNum); // 2 ^ s mod p
-                if (thirdConditionMember.IsSingleOne) // res == 1
-                {
-                    continue;
-                }
+                    if (p >= upperBound) // чтобы было строго k bit
+                    {
+                        continue;
+                    }
 
-                return (p, q, sNum.ToBigInteger(_alphabet));
-            }
+                    var firstConditionMember = multiplier.Calculate(qNum, new Number(new char[] { '2' })); // q * 2
+                    firstConditionMember = summer.Calculate(firstConditionMember, new Number(new char[] { '1' })); // q * 2 + 1
+                    firstConditionMember = multiplier.Calculate(firstConditionMember, firstConditionMember); // (q * 2 + 1) * (q * 2 + 1)
+                    if (p >= firstConditionMember.ToBigInteger(_alphabet))
+                    {
+                        continue;
+                    }
+
+                    var exponenciator = new ExponenciatorModulo(_alphabet, pNum);
+                    var secondConditionMember = exponenciator.Calculate(new Number(new char[] { '2' }), multiplier.Calculate(qNum, sNum)); // 2 ^ (q * s) mod p
+                    if (!secondConditionMember.IsSingleOne) // res != 1
+                    {
+                        continue;
+                    }
+
+                    exponenciator = new ExponenciatorModulo(_alphabet, pNum);
+                    var thirdConditionMember = exponenciator.Calculate(new Number(new char[] { '2' }), sNum); // 2 ^ s mod p
+                    if (thirdConditionMember.IsSingleOne) // res == 1
+                    {
+                        continue;
+                    }
+
+                    return (p, q, sNum.ToBigInteger(_alphabet));
+                }
+            } 
         }
 
         private static (BigInteger p, BigInteger q) Generate(int k)
