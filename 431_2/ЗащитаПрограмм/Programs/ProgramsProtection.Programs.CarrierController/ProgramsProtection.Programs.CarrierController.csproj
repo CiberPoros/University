@@ -7,7 +7,7 @@
     <ProjectGuid>{52FF07BE-4D0F-4217-8C58-BD728B95AA56}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ProgramsProtection.Programs.CarrierController</RootNamespace>
-    <AssemblyName>ProgramsProtection.Programs.CarrierController</AssemblyName>
+    <AssemblyName>Installer</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
