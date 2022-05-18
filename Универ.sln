@@ -125,8 +125,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generators.Common", "431_2\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generators.Programs.Mapper", "431_2\Генераторы\Programs\Generators.Programs.Mapper\Generators.Programs.Mapper.csproj", "{A3E4F5E2-045F-477C-A3A3-D55A70438AD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramsProtection.Programs.SelfIntegrityController", "431_2\ЗащитаПрограмм\Programs\ProgramsProtection.Programs.SelfIntegrityController\ProgramsProtection.Programs.SelfIntegrityController.csproj", "{11025001-116D-443C-8BD7-758979F74D2B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMIP.Programs.Generator", "431_2\КМЗИ\Programs\CMIP.Programs.Generator\CMIP.Programs.Generator.csproj", "{B5E65353-74AF-4D26-843E-FE17BCB33D7E}"
 EndProject
 Global
@@ -303,10 +301,6 @@ Global
 		{A3E4F5E2-045F-477C-A3A3-D55A70438AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3E4F5E2-045F-477C-A3A3-D55A70438AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3E4F5E2-045F-477C-A3A3-D55A70438AD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11025001-116D-443C-8BD7-758979F74D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11025001-116D-443C-8BD7-758979F74D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11025001-116D-443C-8BD7-758979F74D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11025001-116D-443C-8BD7-758979F74D2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5E65353-74AF-4D26-843E-FE17BCB33D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5E65353-74AF-4D26-843E-FE17BCB33D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5E65353-74AF-4D26-843E-FE17BCB33D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -372,7 +366,6 @@ Global
 		{BF994B1B-34CA-411A-A546-CFD437B7164A} = {3747DD51-0CAD-4954-BEFF-4DC912ED3B0C}
 		{B27FC64A-86FB-4DE3-9CBD-8511CAC2EE7C} = {0E96FF18-C55B-4230-9CC3-24756A5DCD68}
 		{A3E4F5E2-045F-477C-A3A3-D55A70438AD4} = {3747DD51-0CAD-4954-BEFF-4DC912ED3B0C}
-		{11025001-116D-443C-8BD7-758979F74D2B} = {C08CD067-98D8-4C1C-A461-D3DA6ABE68EF}
 		{B5E65353-74AF-4D26-843E-FE17BCB33D7E} = {F6550F44-FAD4-413C-B413-968F32CE1285}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
