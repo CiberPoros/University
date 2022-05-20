@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Generators.Programs.Analizer.Criteria
 {
@@ -56,12 +53,12 @@ namespace Generators.Programs.Analizer.Criteria
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    M += (c[i] - arr.Length * b[i]) * (c[j] - arr.Length * b[j]) / a[i, j];
+                    M += (c[i] - arr.Length * b[i]) * (c[j] - arr.Length * b[j]) / (a[i, j] * 100);
                 }
             }
 
             // ваще хз, какие тут вероятности, их тут нет
-            return (M, M > 18.54758);
+            return (M, M < 18.54758);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Generators.Programs.Analizer.Criteria
         {
             Dictionary<string, int> cnt = new Dictionary<string, int>();
 
-            var t = 3;
+            var t = 4;
             var arr = values.ToArray();
 
             for (int i = 0; i < arr.Length - t; i++)
@@ -30,14 +30,14 @@ namespace Generators.Programs.Analizer.Criteria
             }
 
             var sum = 0d;
-            var p = 1d / 8;
+            var p = 1d / (24);
             foreach (var kvp in cnt)
             {
-                sum += ((kvp.Value + .0) / (arr.Length - t) - p) * ((kvp.Value + .0) / (arr.Length - t) - p) / p;
+                sum += ((kvp.Value + .0) / (arr.Length - t) - p) * ((kvp.Value + .0) / (arr.Length - t) - p) / (p * arr.Length);
             }
             sum *= (arr.Length - t + 1);
 
-            return (sum, sum > 40.64647d);
+            return (sum, sum < 40.64647d);
         }
 
         private static string GetStr(double[] values)

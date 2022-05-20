@@ -148,7 +148,7 @@ namespace Generators.Programs.Analizer
             {
                 var res = criteria.CheckCriteria(values);
                 Console.WriteLine($"Критерий \"{criteria.Name}\"");
-                Console.WriteLine($"Результат: {(res.isAccepted ? "критерий подтвержден" : "критерий не подтвержден")}. Значение: {res.val}");
+                Console.WriteLine($"Результат: {(res.isAccepted ? "критерий подтвержден" : "критерий не подтвержден")}. Значение: {res.val}{(criteria is ConflictCriteria ? "; Теоретическое значение: 0.004355" : string.Empty)}");
                 Console.WriteLine();
             }
         }

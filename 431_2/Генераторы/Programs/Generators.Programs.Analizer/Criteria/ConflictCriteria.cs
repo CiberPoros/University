@@ -49,7 +49,7 @@ namespace Generators.Programs.Analizer.Criteria
                 cntEmp += dict.Count(x => x.Value >= 2);
             }
 
-            var emp = (cntEmp + .0) / arrCommon.Length;
+            var emp = (cntEmp + .0) / (arrCommon.Length * m);
 
             return (emp, Math.Abs(teor - emp) < 1d);
         }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Generators.Programs.Analizer.Criteria
 {
@@ -48,7 +46,7 @@ namespace Generators.Programs.Analizer.Criteria
 
             // не очень понятно, какую тут вероятность брать. Беру самую маленькую
             // число степеней свободы maxVal + 1 = 6
-            return (sum, sum > 18.54758);
+            return (sum, sum < 18.54758);
         }
     }
 }
