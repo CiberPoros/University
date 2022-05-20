@@ -2,7 +2,7 @@
   "profiles": {
     "Generators.Programs.Gen": {
       "commandName": "Project",
-      "commandLineArgs": "-g nfsr"
+      "commandLineArgs": "-g mt -f Random.txt"
     }
   }
 }

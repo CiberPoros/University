@@ -227,7 +227,7 @@ namespace Generators.Programs.Analizer
 
         private static double[] ReadNumbersFromFile()
         {
-            return File.ReadAllLines(RandomNumbersFileName).Select(x => double.Parse(x)).ToArray();
+            return File.ReadAllLines(RandomNumbersFileName).Select(x => double.Parse(x)).Select(x => x == 1 ? 0 : x).ToArray();
         }
     }
 }

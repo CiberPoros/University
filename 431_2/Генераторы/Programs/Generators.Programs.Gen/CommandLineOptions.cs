@@ -19,5 +19,8 @@ namespace Generators.Programs.Gen
 
         [Option('f', "OutputFile", Required = false, Default = null, HelpText = "Full file path.")]
         public string OutputFilePath { get; set; }
+
+        [Option('s', "Normalize", Required = false, Default = true, HelpText = "Normalize values to [0; 1) interval.")]
+        public bool Normalize { get; set; }
     }
 }
