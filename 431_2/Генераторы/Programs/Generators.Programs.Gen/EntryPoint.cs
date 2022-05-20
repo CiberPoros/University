@@ -3,6 +3,7 @@ using Generators.Programs.Gen.Generators;
 using System;
 using System.IO;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Generators.Programs.Analizer")]
 namespace Generators.Programs.Gen
 {
     internal class EntryPoint
