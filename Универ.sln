@@ -129,7 +129,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMIP.Programs.Generator", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramsProtection.Programs.CarrierController", "431_2\ЗащитаПрограмм\Programs\ProgramsProtection.Programs.CarrierController\ProgramsProtection.Programs.CarrierController.csproj", "{52FF07BE-4D0F-4217-8C58-BD728B95AA56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generators.Programs.Analizer", "431_2\Генераторы\Programs\Generators.Programs.Analizer\Generators.Programs.Analizer.csproj", "{904766CD-835E-43C8-8FCD-A4B085DF42BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generators.Programs.Analizer", "431_2\Генераторы\Programs\Generators.Programs.Analizer\Generators.Programs.Analizer.csproj", "{904766CD-835E-43C8-8FCD-A4B085DF42BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "531_1", "531_1", "{01F91071-1D0C-41C8-A36E-11CE75B825F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Molchanov", "Molchanov", "{A504A1E6-BC7D-4B70-8C1D-22595723C1AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{E9A97D36-DCDD-4820-9A3B-6DC246A99026}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Molchanov.Programs.LabWork1", "531_1\Теоретико числовые методы в криптографии\Programs\Molchanov.Programs.LabWork1\Molchanov.Programs.LabWork1.csproj", "{5DFCFAC6-7195-4945-8515-725A0A4EC20A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Molchanov.Common", "531_1\Теоретико числовые методы в криптографии\Molchanov.Common\Molchanov.Common.csproj", "{B072E349-5918-4346-B3E8-0328B86C5528}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -317,6 +327,14 @@ Global
 		{904766CD-835E-43C8-8FCD-A4B085DF42BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{904766CD-835E-43C8-8FCD-A4B085DF42BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{904766CD-835E-43C8-8FCD-A4B085DF42BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DFCFAC6-7195-4945-8515-725A0A4EC20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DFCFAC6-7195-4945-8515-725A0A4EC20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DFCFAC6-7195-4945-8515-725A0A4EC20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DFCFAC6-7195-4945-8515-725A0A4EC20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B072E349-5918-4346-B3E8-0328B86C5528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B072E349-5918-4346-B3E8-0328B86C5528}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B072E349-5918-4346-B3E8-0328B86C5528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B072E349-5918-4346-B3E8-0328B86C5528}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -381,6 +399,10 @@ Global
 		{B5E65353-74AF-4D26-843E-FE17BCB33D7E} = {F6550F44-FAD4-413C-B413-968F32CE1285}
 		{52FF07BE-4D0F-4217-8C58-BD728B95AA56} = {C08CD067-98D8-4C1C-A461-D3DA6ABE68EF}
 		{904766CD-835E-43C8-8FCD-A4B085DF42BA} = {3747DD51-0CAD-4954-BEFF-4DC912ED3B0C}
+		{A504A1E6-BC7D-4B70-8C1D-22595723C1AB} = {01F91071-1D0C-41C8-A36E-11CE75B825F7}
+		{E9A97D36-DCDD-4820-9A3B-6DC246A99026} = {A504A1E6-BC7D-4B70-8C1D-22595723C1AB}
+		{5DFCFAC6-7195-4945-8515-725A0A4EC20A} = {E9A97D36-DCDD-4820-9A3B-6DC246A99026}
+		{B072E349-5918-4346-B3E8-0328B86C5528} = {A504A1E6-BC7D-4B70-8C1D-22595723C1AB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}
