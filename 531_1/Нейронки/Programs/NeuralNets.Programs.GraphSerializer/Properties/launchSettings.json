@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NeuralNets.Programs.GraphSerializer": {
+      "commandName": "Project",
+      "commandLineArgs": "input1=input1.txt output1=output1.txt"
+    }
+  }
+}
