@@ -10,19 +10,31 @@ namespace Common.FieldMath
 
         public static (BigInteger prime, BigInteger primitiveRoot) GetBigPrimeWithPrimitiveElement(int minBitsCount)
         {
-            var primeDivider = GetBigPrime(50);
+            BigInteger prime, primeDivider;
 
-            var degreeOf2 = new BigInteger(1);
-            degreeOf2 <<= Math.Max(50, minBitsCount - 50);
 
-            var checher = new CheckerByRabinMiller() { RoundsCount = 30 };
-            var prime = primeDivider * degreeOf2 + 1;
-            while (!checher.IsPrime(prime))
+            while (true)
             {
-                degreeOf2 <<= 1;
-                prime = primeDivider * degreeOf2 + 1;
-            }
+                primeDivider = GetBigPrime(50);
 
+                var degreeOf2 = new BigInteger(1);
+                degreeOf2 <<= Math.Max(50, minBitsCount - 50);
+
+                var checher = new CheckerByRabinMiller() { RoundsCount = 30 };
+                prime = primeDivider * degreeOf2 + 1;
+
+                for (int i = 0; i < 50 && !checher.IsPrime(prime); i++)
+                {
+                    degreeOf2 <<= 1;
+                    prime = primeDivider * degreeOf2 + 1;
+                }
+
+                if (checher.IsPrime(prime))
+                {
+                    break;
+                }
+            }
+           
             while (true)
             {
                 var primitiveRoot = GetRandom(Math.Max(50, minBitsCount - 1));
@@ -44,12 +56,17 @@ namespace Common.FieldMath
         public static BigInteger GetBigPrime(int minBitsCount)
         {
             var checher = new CheckerByRabinMiller() { RoundsCount = 30 };
-            var result = 1;
+            var result = new BigInteger(1);
 
             for (int i = 0; i < Math.Max(minBitsCount / 2, 25); i++)
             {
                 result <<= 1;
                 result += _random.Next(2);
+            }
+
+            if (result % 2 == 0)
+            {
+                result++;
             }
 
             while (!checher.IsPrime(result))
@@ -62,7 +79,7 @@ namespace Common.FieldMath
 
         public static BigInteger GetRandom(int bitsCount)
         {
-            var result = 1;
+            var result = new BigInteger(1);
 
             for (int i = 0; i < bitsCount; i++)
             {

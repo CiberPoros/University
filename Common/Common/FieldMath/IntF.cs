@@ -43,9 +43,6 @@ namespace Common.FieldMath
 
         private static (BigInteger result, BigInteger u, BigInteger v) GcdExtend(BigInteger x1, BigInteger x2)
         {
-            x1 = ToField(x1);
-            x2 = ToField(x2);
-
             BigInteger u = 0, v = 0;
             var result = ByEuklidInternal(x1, x2, ref u, ref v);
             return (result, u, v);
