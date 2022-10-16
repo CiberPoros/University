@@ -31,11 +31,16 @@ namespace Molchanov.Programs.LabWork1
 
         private List<string> QR()
         {
+            // нижняя диагональ
             var outputInfo = new List<string>();
             for (int i = 0; i < _height; i++)
             {
                 if (!MultyvectorOnInverseElement(i, outputInfo))
+                {
+                    AddMatrixToOutputInfo(outputInfo);
                     continue;
+                }
+                    
 
                 for (int j = i + 1; j < _height; j++)
                 {
@@ -44,6 +49,7 @@ namespace Molchanov.Programs.LabWork1
                 }
             }
 
+            // верхняя диагональ
             for (int i = _height - 1; i >= 0; i--)
             {
                 if (_matrix[i, i] == 0)
