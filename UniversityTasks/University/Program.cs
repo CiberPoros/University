@@ -20,14 +20,12 @@ namespace HardwareScanner
             if (File.Exists(_snapShotFileName))
             {
                 Console.WriteLine($"Сохраненная информация об аппаратном окружении считана c файла {_snapShotFileName}. Сравнение данных с текущей конфигурацией...");
-                var snapshotBinary = await File.ReadAllBytesAsync(_snapShotFileName);
-                var snapshotJson = Encoding.Unicode.GetString(snapshotBinary);
-                var snapshot = JsonConvert.DeserializeObject<HardwareInfo>(snapshotJson);
+                var snapshotHash = await File.ReadAllTextAsync(_snapShotFileName);
                 await Task.Delay(TimeSpan.FromSeconds(2));
                 Console.WriteLine("Сравнение аппаратных конфигураций произведено.");
                 Console.WriteLine();
 
-                if (hardwareInfo.Equals(snapshot))
+                if (hardwareInfo.GetHashCode().ToString().Equals(snapshotHash))
                 {
                     Console.WriteLine("Текущая конфигурация аппаратного окружения совпадает с сохраненной конфигурацией.");
                 }
@@ -39,10 +37,8 @@ namespace HardwareScanner
                 return;
             }
 
-            string json = JsonConvert.SerializeObject(hardwareInfo);
-            var binaryData = Encoding.Unicode.GetBytes(json);
-
-            await File.WriteAllBytesAsync(_snapShotFileName, binaryData);
+            var hash = hardwareInfo.GetHashCode();
+            await File.WriteAllTextAsync(_snapShotFileName, hash.ToString());
 
             Console.WriteLine($"Информация о текущем аппаратном окружении успешно сохранена в файл {_snapShotFileName}.");
         }
