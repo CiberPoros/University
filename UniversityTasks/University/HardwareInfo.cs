@@ -1,4 +1,6 @@
-﻿namespace HardwareScanner
+﻿using System;
+
+namespace HardwareScanner
 {
     internal class HardwareInfo
     {

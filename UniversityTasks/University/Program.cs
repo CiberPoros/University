@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace HardwareScanner
 {
@@ -13,7 +16,7 @@ namespace HardwareScanner
             var hardwareInfo = HardwareInfo.Create();
             Console.WriteLine("Текущая аппаратная конфигурация получена.");
             Console.WriteLine();
-            
+
             if (File.Exists(_snapShotFileName))
             {
                 Console.WriteLine($"Сохраненная информация об аппаратном окружении считана c файла {_snapShotFileName}. Сравнение данных с текущей конфигурацией...");
