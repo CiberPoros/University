@@ -42,11 +42,9 @@ namespace Molchanov.Programs.LabWork1
             }
 
             BigInteger u = 0;
+            for (int i = 0; i < mArr.Length; i++)
             {
-                for (int i = 0; i < mArr.Length; i++)
-                {
-                    u += (cArr[i] * dArr[i] * uArr[i]) % m;
-                }
+                u += (cArr[i] * dArr[i] * uArr[i]) % m;
             }
 
             return (u % m, outputInfo);

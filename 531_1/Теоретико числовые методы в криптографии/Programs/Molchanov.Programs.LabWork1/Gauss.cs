@@ -121,7 +121,7 @@ namespace Molchanov.Programs.LabWork1
             BigInteger inverse_element = MathOverRing.GetInverse(_matrix[k, k], _mod);
 
             for (int i = k; i < _width; i++)
-                _matrix[k, i] = (_matrix[k, i] * inverse_element) % _mod;
+                _matrix[k, i] = (((_matrix[k, i] * inverse_element) % _mod) + _mod) % _mod;
 
             return true;
         }
