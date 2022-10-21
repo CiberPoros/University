@@ -139,13 +139,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{E9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Molchanov.Programs.LabWork1", "531_1\Теоретико числовые методы в криптографии\Programs\Molchanov.Programs.LabWork1\Molchanov.Programs.LabWork1.csproj", "{5DFCFAC6-7195-4945-8515-725A0A4EC20A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Molchanov.Common", "531_1\Теоретико числовые методы в криптографии\Molchanov.Common\Molchanov.Common.csproj", "{B072E349-5918-4346-B3E8-0328B86C5528}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Molchanov.Common", "531_1\Теоретико числовые методы в криптографии\Molchanov.Common\Molchanov.Common.csproj", "{B072E349-5918-4346-B3E8-0328B86C5528}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NeuralNets", "NeuralNets", "{5A219C7B-A795-4DB3-AF43-FA15E181621E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{869B98DE-711E-45AA-A081-FB3653F52D36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNets.Programs.GraphSerializer", "531_1\Нейронки\Programs\NeuralNets.Programs.GraphSerializer\NeuralNets.Programs.GraphSerializer.csproj", "{3E52426C-F198-4917-9005-F18D3239BC22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuralNets.Programs.GraphSerializer", "531_1\Нейронки\Programs\NeuralNets.Programs.GraphSerializer\NeuralNets.Programs.GraphSerializer.csproj", "{3E52426C-F198-4917-9005-F18D3239BC22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gortinskiy", "Gortinskiy", "{5A4EF04B-4798-4D28-B3FE-696195E14E0B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programs", "Programs", "{D24EBCBA-3668-4B85-97CE-856DACE3A7D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gortinsky.Programs.HardwareChecker", "531_1\Гортинский\Programs\Gortinsky.Programs.HardwareChecker\Gortinsky.Programs.HardwareChecker.csproj", "{EE5C295B-0FAC-429B-8E6B-B7A3D26AF749}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -345,6 +351,10 @@ Global
 		{3E52426C-F198-4917-9005-F18D3239BC22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E52426C-F198-4917-9005-F18D3239BC22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E52426C-F198-4917-9005-F18D3239BC22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE5C295B-0FAC-429B-8E6B-B7A3D26AF749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE5C295B-0FAC-429B-8E6B-B7A3D26AF749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE5C295B-0FAC-429B-8E6B-B7A3D26AF749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE5C295B-0FAC-429B-8E6B-B7A3D26AF749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -416,6 +426,9 @@ Global
 		{5A219C7B-A795-4DB3-AF43-FA15E181621E} = {01F91071-1D0C-41C8-A36E-11CE75B825F7}
 		{869B98DE-711E-45AA-A081-FB3653F52D36} = {5A219C7B-A795-4DB3-AF43-FA15E181621E}
 		{3E52426C-F198-4917-9005-F18D3239BC22} = {869B98DE-711E-45AA-A081-FB3653F52D36}
+		{5A4EF04B-4798-4D28-B3FE-696195E14E0B} = {01F91071-1D0C-41C8-A36E-11CE75B825F7}
+		{D24EBCBA-3668-4B85-97CE-856DACE3A7D4} = {5A4EF04B-4798-4D28-B3FE-696195E14E0B}
+		{EE5C295B-0FAC-429B-8E6B-B7A3D26AF749} = {D24EBCBA-3668-4B85-97CE-856DACE3A7D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BECC848-CD7B-4F62-854D-3D37A6C9A994}
