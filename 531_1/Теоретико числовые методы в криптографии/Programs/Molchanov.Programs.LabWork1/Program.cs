@@ -129,27 +129,27 @@ internal class Program
 
     private static void HandleGauss()
     {
-        var n = ReadInt(" N - размер матрицы");
+        (var height, var width) = ReadPairInt(" height width - высота и ширина матрицы, учитывая столбец свободных членов");
         var mod = ReadBigInt(" mod - размер кольца целых чисел");
-        var matrix = ReadMatrix(n);
-        var gauss = new Gauss(mod, n, n + 1, matrix);
+        var matrix = ReadMatrix(height, width);
+        var gauss = new Gauss(mod, height, width, matrix);
         var res = gauss.Run();
         Console.WriteLine(string.Join(Environment.NewLine, res.outputInfo));
     }
 
-    private static BigInteger[,] ReadMatrix(int size)
+    private static BigInteger[,] ReadMatrix(int height, int width)
     {
-        Console.WriteLine("Введите матрицу N x N+1, состоящую из целых чисел, разделенных пробелами. Последний стоблец матрицы - свободные коеффициенты");
-        var res = new BigInteger[size, size + 1];
+        Console.WriteLine("Введите матрицу height x width, состоящую из целых чисел, разделенных пробелами. Последний стоблец матрицы - свободные коеффициенты");
+        var res = new BigInteger[height, width];
  
         while (true)
         {
             bool crash = false;
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < height; i++)
             {
                 var input = Console.ReadLine()!.Split().Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
-                if (input.Length != size + 1)
+                if (input.Length != width)
                 {
                     crash = true;
                     break;
@@ -161,7 +161,7 @@ internal class Program
                     break;
                 }
 
-                for (int j = 0; j < size + 1; j++)
+                for (int j = 0; j < width; j++)
                 {
                     res[i, j] = BigInteger.Parse(input[j]);
                 }
@@ -313,6 +313,43 @@ internal class Program
             }
 
             if (!BigInteger.TryParse(splited[1], out var val2))
+            {
+                Console.WriteLine("Ошибка формата входных данных. Повторите попытку...");
+                continue;
+            }
+
+            if (val1 <= 0 || val2 <= 0)
+            {
+                Console.WriteLine("Ошибка формата входных данных. Повторите попытку...");
+                continue;
+            }
+
+            Console.WriteLine();
+            return (val1, val2);
+        }
+    }
+
+    private static (int val1, int val2) ReadPairInt(string addInfo = "")
+    {
+        Console.WriteLine($"Введите 2 целых положительных числа через пробел{addInfo}:");
+        while (true)
+        {
+            var input = Console.ReadLine()!;
+            var splited = input.Split().Where(s => !string.IsNullOrEmpty(s)).ToArray();
+
+            if (splited.Length != 2)
+            {
+                Console.WriteLine("Ошибка формата входных данных. Повторите попытку...");
+                continue;
+            }
+
+            if (!int.TryParse(splited[0], out var val1))
+            {
+                Console.WriteLine("Ошибка формата входных данных. Повторите попытку...");
+                continue;
+            }
+
+            if (!int.TryParse(splited[1], out var val2))
             {
                 Console.WriteLine("Ошибка формата входных данных. Повторите попытку...");
                 continue;
