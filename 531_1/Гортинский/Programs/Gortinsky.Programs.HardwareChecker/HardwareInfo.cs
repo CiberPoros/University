@@ -19,18 +19,19 @@ namespace HardwareScanner
             foreach (var prop in props)
             {
                 var propType = prop.PropertyType;
+                var propName = prop.Name;
                 var internalProps = propType.GetProperties();
 
                 foreach (var propInternal in internalProps)
                 {
-                    var internalPropType = propInternal.PropertyType;
+                    var internalPropName = propInternal.Name;
 
-                    var sysObjects = new System.Management.ManagementClass(propType.Name).GetInstances();
+                    var sysObjects = new System.Management.ManagementClass(propName).GetInstances();
                     foreach (System.Management.ManagementObject sysObject in sysObjects)
                     {
                         try
                         {
-                            result.Append(sysObject[internalPropType.Name]?.ToString() ?? string.Empty);
+                            result.Append(sysObject[internalPropName]?.ToString() ?? string.Empty);
                             break;
                         }
                         catch { }
@@ -39,21 +40,6 @@ namespace HardwareScanner
             }
 
             return result.ToString();
-        }
-
-        private static string Identifier(string wmiClass, string wmiProperty)
-        {
-            var sysObjects = new System.Management.ManagementClass(wmiClass).GetInstances();
-            foreach (System.Management.ManagementObject sysObject in sysObjects)
-            {
-                try
-                {
-                    return sysObject[wmiProperty].ToString();
-                }
-                catch { }
-            }
-
-            return string.Empty;
         }
     }
 
