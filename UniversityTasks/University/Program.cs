@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,13 +28,27 @@ namespace HardwareScanner
                 Console.WriteLine("Сравнение аппаратных конфигураций произведено.");
                 Console.WriteLine();
 
-                if (hardwareInfo.Equals(snapshot))
+                var compareResult = hardwareInfo.CompareInfo(snapshot);
+
+                if (!compareResult.Any())
                 {
                     Console.WriteLine("Текущая конфигурация аппаратного окружения совпадает с сохраненной конфигурацией.");
                 }
                 else
                 {
-                    Console.WriteLine("Текущая конфигурация аппаратного окружения не совпадает с сохраненной конфигурацией.");
+                    Console.WriteLine("Текущая конфигурация аппаратного окружения не совпадает с сохраненной конфигурацией. Подробности:");
+
+                    foreach (var ci in compareResult)
+                    {
+                        Console.WriteLine(ci.Key);
+
+                        foreach (var item in ci.Value)
+                        {
+                            Console.WriteLine(item);
+                        }
+
+                        Console.WriteLine();
+                    }
                 }
 
                 return;
