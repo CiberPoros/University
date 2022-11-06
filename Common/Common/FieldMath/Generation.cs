@@ -12,7 +12,6 @@ namespace Common.FieldMath
         {
             BigInteger prime, primeDivider;
 
-
             while (true)
             {
                 primeDivider = GetBigPrime(50);
