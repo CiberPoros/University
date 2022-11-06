@@ -11,7 +11,75 @@
         public HashSet<Vertex> Vertexes { get; set; }
         public List<Arc> Arcs { get; set; }
 
-        public static bool TryCreateByStringDescription(string descriprion, out Graph result)
+        public Dictionary<Vertex, List<Vertex>> ToAdjVector()
+        {
+            var result = new Dictionary<Vertex, List<Vertex>>();
+
+            foreach (var vertex in Vertexes)
+            {
+                result.Add(vertex, new List<Vertex>());
+            }
+
+            foreach (var arc in Arcs)
+            {
+                result[arc.From].Add(arc.To);
+            }
+
+            return result;
+        }
+
+        public bool HasCycle()
+        {
+            var g = ToAdjVector();
+
+            var color = new Dictionary<Vertex, int>();
+            var prevs = new Dictionary<Vertex, Vertex?>();
+
+            foreach (var kvp in g)
+            {
+                color.Add(kvp.Key, 0);
+                prevs.Add(kvp.Key, null);
+            }
+
+            foreach (var kvp in g)
+            {
+                if (color[kvp.Key] == 0)
+                {
+                    if (dfs(kvp.Key))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+
+            bool dfs(Vertex vertex)
+            {
+                color[vertex] = 1;
+
+                foreach (var to in g[vertex])
+                {
+                    if (color[to] == 0)
+                    {
+                        prevs[to] = vertex;
+
+                        if (dfs(to))
+                        {
+                            return true;
+                        }
+                    }
+                    else if (color[to] == 1)
+                    {
+                        return true;
+                    }
+                }
+                color[vertex] = 2;
+                return false;
+            }
+        }
+
+        public static (bool success, string error) TryCreateByStringDescription(string descriprion, out Graph result)
         {
             result = new Graph();
 
@@ -23,12 +91,12 @@
 
                 if (arcSplited.Length != 3)
                 {
-                    return false;
+                    return (false, $"Не удалось распарсить кортеж {splited}");
                 }
 
                 if (!int.TryParse(arcSplited[2], out var order) || order < 0)
                 {
-                    return false;
+                    return (false, $"Ожидался целочисленный порядковый номер в кортеже {splited}. Актуальное значение: {arcSplited[2]}");
                 }
 
                 var from = new Vertex(arcSplited[0]);
@@ -55,15 +123,37 @@
                 var arc = new Arc(from, to, order);
                 if (result.Arcs.Contains(arc))
                 {
-                    return false;
+                    return (false, $"Повторяющаяся дуга {splited}");
                 }
 
                 result.Arcs.Add(arc);
             }
 
-            result.Arcs = result.Arcs.OrderBy(x => (x.From, x.To, x.Order)).ToList();
+            result.Arcs = result.Arcs.OrderBy(x => (x.To, x.Order, x.From)).ToList();
 
-            return true;
+            var groups = result.Arcs.GroupBy(x => x.To);
+            foreach (var group in groups)
+            {
+                var sorted = group.OrderBy(x => x.Order);
+
+                var etalonOrder = 1;
+                foreach (var item in sorted)
+                {
+                    if (item.Order != etalonOrder)
+                    {
+                        return (false, $"Номера дуг в списке входящих в вершину {item.To.Name} не соответствуют правильной нумерации (1, 2, 3, ...)");
+                    }
+
+                    etalonOrder++;
+                }
+            }
+
+            if (result.HasCycle())
+            {
+                return (false, "Входной граф содержит цикл");
+            }
+
+            return (true, string.Empty);
         }
     }
 

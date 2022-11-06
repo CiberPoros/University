@@ -27,9 +27,11 @@ internal class Program
 
         var description = File.ReadAllText(program._input1);
 
-        if (!Graph.TryCreateByStringDescription(description, out var graph))
+        var creationResult = Graph.TryCreateByStringDescription(description, out var graph);
+
+        if (!creationResult.success)
         {
-            Console.WriteLine($"Ошибка в формате файла {program._input1}");
+            Console.WriteLine($"Ошибка в формате файла {program._input1}. Подробности: {creationResult.error}");
             return;
         }
 
