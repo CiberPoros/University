@@ -1,4 +1,4 @@
-﻿using NeuralNets.Programs.GraphSerializer;
+﻿using NeuralNets.Common;
 using System.Text.Json;
 
 internal class Program
