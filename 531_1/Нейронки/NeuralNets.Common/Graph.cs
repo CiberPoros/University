@@ -180,7 +180,7 @@ namespace NeuralNets.Common
             {
                 if (inversedVector[vertex].Any() && vertex.Operation == Operation.Const)
                 {
-                    return (false, $"Вершина {vertex.Name} не является стокоми не может иметь операцию const");
+                    return (false, $"Вершина {vertex.Name} не является стоком и не может иметь операцию const");
                 }
             }
 
