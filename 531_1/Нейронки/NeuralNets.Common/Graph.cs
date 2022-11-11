@@ -92,6 +92,7 @@ namespace NeuralNets.Common
                     }
 
                     vertex.Value = Math.Exp(inversedVector[vertex].First().Value!.Value);
+                    return;
                 }
 
                 if (vertex.Operation == Operation.Summ)
@@ -101,6 +102,7 @@ namespace NeuralNets.Common
                     {
                         vertex.Value += from.Value!.Value;
                     }
+                    return;
                 }
 
                 if (vertex.Operation == Operation.Multyply)
@@ -110,6 +112,7 @@ namespace NeuralNets.Common
                     {
                         vertex.Value *= from.Value!.Value;
                     }
+                    return;
                 }
             }
         }
