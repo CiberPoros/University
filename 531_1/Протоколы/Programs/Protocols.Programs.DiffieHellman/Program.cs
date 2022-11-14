@@ -88,6 +88,7 @@ internal class Program
             }
 
             Console.WriteLine();
+            break;
         }
 
         var (p, g) = Generation.GetBigPrimeWithPrimitiveElement(len);
