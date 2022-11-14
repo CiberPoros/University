@@ -74,7 +74,23 @@ internal class Program
 
     private static async Task Step1()
     {
-        var (p, g) = Generation.GetBigPrimeWithPrimitiveElement(200);
+        int len = -1;
+        Console.WriteLine("Введите длину p в битах");
+
+        while (true)
+        {
+            var input = Console.ReadLine();
+
+            if (!int.TryParse(input, out len) || len < 0)
+            {
+                Console.WriteLine("Ожидалось целое положительное число. Повторите попытку...");
+                continue;
+            }
+
+            Console.WriteLine();
+        }
+
+        var (p, g) = Generation.GetBigPrimeWithPrimitiveElement(len);
 
         await _step1.WriteParameters(new CommonParameters() { P = p, G = g });
         IntF.Modulo = p;
