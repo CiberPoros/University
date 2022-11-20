@@ -19,7 +19,7 @@ namespace Common.IsPrimeChecking
 
             for (int i = 0; i < RoundsCount; i++)
             {
-                var a = Generator.Next(2, value);
+                var a = Generator.Next(2, value - 2);
 
                 if (BigInteger.GreatestCommonDivisor(a, value) > 1)
                 {
