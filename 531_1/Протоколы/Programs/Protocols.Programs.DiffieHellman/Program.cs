@@ -14,6 +14,8 @@ internal class Program
     private static readonly GenerateCommonSecretKeyByAlice _step6 = new();
     private static readonly GenerateCommonSecretKeyByBob _step7 = new();
 
+    private static int _len = -1;
+
     public async static Task Main()
     {
         for (; ; )
@@ -74,16 +76,15 @@ internal class Program
 
     private static async Task Step1()
     {
-        int len = -1;
         Console.WriteLine("Введите длину p в битах");
 
         while (true)
         {
             var input = Console.ReadLine();
 
-            if (!int.TryParse(input, out len) || len < 0)
+            if (!int.TryParse(input, out _len) || _len <= 2)
             {
-                Console.WriteLine("Ожидалось целое положительное число. Повторите попытку...");
+                Console.WriteLine("Ожидалось целое положительное число больше 2. Повторите попытку...");
                 continue;
             }
 
@@ -91,7 +92,7 @@ internal class Program
             break;
         }
 
-        var (p, g) = Generation.GetBigPrimeWithPrimitiveElement(len);
+        var (p, g) = Generation.GetBigPrimeWithPrimitiveElement(_len);
 
         await _step1.WriteParameters(new CommonParameters() { P = p, G = g });
         IntF.Modulo = p;
@@ -103,7 +104,7 @@ internal class Program
 
     private static async Task Step2()
     {
-        var a = Generation.GetBigPrime(180);
+        var a = Generation.GetRandom(_len - 1);
         await _step2.WriteParameters(new CloseKeyAlice() { CloseA = a });
 
         Console.WriteLine(_step2.Description);
@@ -113,7 +114,7 @@ internal class Program
 
     private static async Task Step3()
     {
-        var b = Generation.GetBigPrime(180);
+        var b = Generation.GetRandom(_len - 1);
         await _step3.WriteParameters(new CloseKeyBob() { CloseB = b });
 
         Console.WriteLine(_step3.Description);

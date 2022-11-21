@@ -11,24 +11,31 @@ namespace Common.FieldMath
         public static (BigInteger prime, BigInteger primitiveRoot) GetBigPrimeWithPrimitiveElement(int minBitsCount)
         {
             BigInteger prime, primeDivider;
+            var limit = (new BigInteger(1)) << minBitsCount;
+            var checker = new CheckerByRabinMiller() { RoundsCount = 30 };
 
             while (true)
             {
-                primeDivider = GetBigPrime(50);
+                primeDivider = minBitsCount > 30 
+                    ? GetBigPrime(minBitsCount / 5)
+                    : GetLittlePrime(0, 1 << (minBitsCount));
 
                 var degreeOf2 = new BigInteger(1);
-                degreeOf2 <<= Math.Max(50, minBitsCount - 50);
-
-                var checher = new CheckerByRabinMiller() { RoundsCount = 30 };
-                prime = primeDivider * degreeOf2 + 1;
-
-                for (int i = 0; i < 50 && !checher.IsPrime(prime); i++)
+                while (true)
                 {
+                    if (primeDivider * (degreeOf2 << 1) + 1 >= limit)
+                        break;
+
                     degreeOf2 <<= 1;
-                    prime = primeDivider * degreeOf2 + 1;
                 }
 
-                if (checher.IsPrime(prime))
+                prime = primeDivider * degreeOf2 + 1;
+                if (prime >= limit)
+                {
+                    continue;
+                }
+
+                if (checker.IsPrime(prime))
                 {
                     break;
                 }
@@ -36,7 +43,7 @@ namespace Common.FieldMath
            
             while (true)
             {
-                var primitiveRoot = GetRandom(Math.Max(50, minBitsCount - 1));
+                var primitiveRoot = GetRandom(Math.Min(100, minBitsCount - 1));
 
                 if (BigInteger.ModPow(primitiveRoot, 2, prime - 1) == 1)
                 {
@@ -54,26 +61,51 @@ namespace Common.FieldMath
 
         public static BigInteger GetBigPrime(int minBitsCount)
         {
-            var checher = new CheckerByRabinMiller() { RoundsCount = 30 };
+            if (minBitsCount <= 30)
+            {
+                return GetLittlePrime(0, 1 << minBitsCount);
+            }
+
+            var checker = new CheckerByRabinMiller() { RoundsCount = 30 };
             var result = new BigInteger(1);
+            result <<= minBitsCount - 1;
+            var limit = result << 1;
 
-            for (int i = 0; i < Math.Max(minBitsCount / 2, 25); i++)
+            while (true)
             {
-                result <<= 1;
-                result += _random.Next(2);
-            }
+                result += _random.Next(1 << 25);
+                if (result % 2 == 0)
+                    result++;
+                while (true)
+                {
+                    if (checker.IsPrime(result))
+                    {
+                        return result;
+                    }
 
-            if (result % 2 == 0)
+                    result += 2;
+
+                    if (result >= limit)
+                    {
+                        break;
+                    }
+                } 
+            }
+        }
+
+        public static int GetLittlePrime(int minval, int maxVal)
+        {
+            var checher = new CheckerByRabinMiller() { RoundsCount = 30 };
+            
+            while (true)
             {
-                result++;
-            }
+                var result = _random.Next(minval, maxVal);
 
-            while (!checher.IsPrime(result))
-            {
-                result += 2;
+                if (checher.IsPrime(result))
+                {
+                    return result;
+                }
             }
-
-            return result;
         }
 
         public static BigInteger GetRandom(int bitsCount)
