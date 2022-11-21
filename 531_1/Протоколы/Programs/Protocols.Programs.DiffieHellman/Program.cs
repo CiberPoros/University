@@ -104,7 +104,21 @@ internal class Program
 
     private static async Task Step2()
     {
-        var a = Generation.GetRandom(_len - 1);
+        var (success, commonParams) = await _step1.ReadParameters();
+        if (!success)
+        {
+            Console.WriteLine($"Не удалось считать данные из файла {_step1.FileName}. Файл отсутствует или поврежден");
+            Console.WriteLine();
+            return;
+        }
+        var (p, _) = (commonParams.P, commonParams.G);
+
+        var a = Generation.GetRandom(_len - 1) % p;
+        while (a == 0)
+        {
+            a = Generation.GetRandom(_len - 1) % p;
+        }
+
         await _step2.WriteParameters(new CloseKeyAlice() { CloseA = a });
 
         Console.WriteLine(_step2.Description);
@@ -114,7 +128,21 @@ internal class Program
 
     private static async Task Step3()
     {
-        var b = Generation.GetRandom(_len - 1);
+        var (success, commonParams) = await _step1.ReadParameters();
+        if (!success)
+        {
+            Console.WriteLine($"Не удалось считать данные из файла {_step1.FileName}. Файл отсутствует или поврежден");
+            Console.WriteLine();
+            return;
+        }
+        var (p, _) = (commonParams.P, commonParams.G);
+
+        var b = Generation.GetRandom(_len - 1) % p;
+        while (b == 0)
+        {
+            b = Generation.GetRandom(_len - 1) % p;
+        }
+
         await _step3.WriteParameters(new CloseKeyBob() { CloseB = b });
 
         Console.WriteLine(_step3.Description);
