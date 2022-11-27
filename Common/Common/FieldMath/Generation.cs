@@ -8,6 +8,42 @@ namespace Common.FieldMath
     {
         private static readonly Random _random = new();
 
+        public static (BigInteger prime, BigInteger divider) GetBigPrimeWithBigPrimeDivider(int minBitsCount)
+        {
+            BigInteger prime, primeDivider;
+            var limit = (new BigInteger(1)) << minBitsCount;
+            var checker = new CheckerByRabinMiller() { RoundsCount = 30 };
+
+            while (true)
+            {
+                primeDivider = minBitsCount > 30
+                    ? GetBigPrime(minBitsCount / 5)
+                    : GetLittlePrime(0, 1 << (minBitsCount));
+
+                var degreeOf2 = new BigInteger(1);
+                while (true)
+                {
+                    if (primeDivider * (degreeOf2 << 1) + 1 >= limit)
+                        break;
+
+                    degreeOf2 <<= 1;
+                }
+
+                prime = primeDivider * degreeOf2 + 1;
+                if (prime >= limit)
+                {
+                    continue;
+                }
+
+                if (checker.IsPrime(prime))
+                {
+                    break;
+                }
+            }
+
+            return (prime, primeDivider);
+        }
+
         public static (BigInteger prime, BigInteger primitiveRoot) GetBigPrimeWithPrimitiveElement(int minBitsCount)
         {
             BigInteger prime, primeDivider;
