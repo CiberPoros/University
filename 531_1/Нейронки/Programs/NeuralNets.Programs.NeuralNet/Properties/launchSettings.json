@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NeuralNets.Programs.NeuralNet": {
+      "commandName": "Project",
+      "commandLineArgs": "input1=input1.txt output1=output1.txt input2=input2.txt output2=output2.txt"
+    }
+  }
+}
