@@ -252,7 +252,7 @@ internal class Program
             ? BigInteger.ModPow(h, x, p) 
             : BigInteger.ModPow(t, x, p);
 
-        await _step4.WriteParameters(new AliceRandomModPowNumber { Y = y });
+        await _step4.WriteParameters(new AliceRandomModPowNumber { Y = y, UsedValue = random == 0 ? nameof(BobRandomNumbers.H) : nameof(BobRandomNumbers.T) });
 
         Console.WriteLine(_step4.Description);
         Console.WriteLine($"Результат сохранен в файл {_step4.FileName}");
