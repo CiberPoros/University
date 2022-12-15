@@ -94,7 +94,7 @@ internal class Program
 
         var (p, divider) = Generation.GetBigPrimeWithBigPrimeDivider(_len);
 
-        await _step1.WriteParameters(new CommonParameters() { P = p, Divider = divider });
+        await _step1.WriteParameters(new CommonParameters() { P = p, UniqueDividers = new List<BigInteger>() { divider, 2 } });
         IntF.Modulo = p;
 
         Console.WriteLine(_step1.Description);
@@ -111,24 +111,25 @@ internal class Program
             Console.WriteLine();
             return;
         }
-        var (p, divider) = (commonParams.P, commonParams.Divider);
+        var (p, dividers) = (commonParams.P, commonParams.UniqueDividers);
 
         var h = new BigInteger(1);
         while (true)
         {
             h = Generation.GetRandom(_len - 1) % p;
 
-            if (BigInteger.ModPow(h, 2, p - 1) == 1)
+            var isPrimitive = true;
+            foreach (var divider in dividers)
             {
-                continue;
+                if (BigInteger.ModPow(h, divider, p - 1) == 1)
+                {
+                    isPrimitive = false;
+                    break;
+                }
             }
 
-            if (BigInteger.ModPow(h, divider, p - 1) == 1)
-            {
-                continue;
-            }
-
-            break;
+            if (isPrimitive)
+                break;
         }
 
         var t = new BigInteger(1);
@@ -136,17 +137,18 @@ internal class Program
         {
             t = Generation.GetRandom(_len - 1) % p;
 
-            if (BigInteger.ModPow(t, 2, p - 1) == 1)
+            var isPrimitive = true;
+            foreach (var divider in dividers)
             {
-                continue;
+                if (BigInteger.ModPow(t, divider, p - 1) == 1)
+                {
+                    isPrimitive = false;
+                    break;
+                }
             }
 
-            if (BigInteger.ModPow(t, divider, p - 1) == 1)
-            {
-                continue;
-            }
-
-            break;
+            if (isPrimitive)
+                break;
         }
 
         await _step2.WriteParameters(new BobRandomNumbers { H = h, T = t });
@@ -165,7 +167,7 @@ internal class Program
             Console.WriteLine();
             return;
         }
-        var (p, divider) = (commonParams.P, commonParams.Divider);
+        var (p, dividers) = (commonParams.P, commonParams.UniqueDividers);
 
         (success, var bobRandomNumbers) = await _step2.ReadParameters();
         if (!success)
@@ -176,32 +178,21 @@ internal class Program
         }
         var (h, t) = (bobRandomNumbers.H, bobRandomNumbers.T);
 
-        if (BigInteger.ModPow(h, 2, p - 1) == 1)
+        foreach (var divider in dividers)
         {
-            Console.WriteLine($"{nameof(bobRandomNumbers.H)} не является примитивным элементом в GF({nameof(commonParams.P)})");
-            Console.WriteLine();
-            return;
-        }
+            if (BigInteger.ModPow(h, divider, p - 1) == 1)
+            {
+                Console.WriteLine($"{nameof(bobRandomNumbers.H)} не является примитивным элементом в GF({nameof(commonParams.P)})");
+                Console.WriteLine();
+                return;
+            }
 
-        if (BigInteger.ModPow(h, divider, p - 1) == 1)
-        {
-            Console.WriteLine($"{nameof(bobRandomNumbers.H)} не является примитивным элементом в GF({nameof(commonParams.P)})");
-            Console.WriteLine();
-            return;
-        }
-
-        if (BigInteger.ModPow(t, 2, p - 1) == 1)
-        {
-            Console.WriteLine($"{nameof(bobRandomNumbers.T)} не является примитивным элементом в GF({nameof(commonParams.P)})");
-            Console.WriteLine();
-            return;
-        }
-
-        if (BigInteger.ModPow(t, divider, p - 1) == 1)
-        {
-            Console.WriteLine($"{nameof(bobRandomNumbers.T)} не является примитивным элементом в GF({nameof(commonParams.P)})");
-            Console.WriteLine();
-            return;
+            if (BigInteger.ModPow(t, divider, p - 1) == 1)
+            {
+                Console.WriteLine($"{nameof(bobRandomNumbers.T)} не является примитивным элементом в GF({nameof(commonParams.P)})");
+                Console.WriteLine();
+                return;
+            }
         }
 
         var x = Generation.GetRandom(_len - 1) % p;
@@ -226,7 +217,8 @@ internal class Program
             Console.WriteLine();
             return;
         }
-        var (p, divider) = (commonParams.P, commonParams.Divider);
+
+        var p = commonParams.P;
 
         (success, var bobRandomNumbers) = await _step2.ReadParameters();
         if (!success)
@@ -278,7 +270,8 @@ internal class Program
             Console.WriteLine();
             return;
         }
-        var (p, _) = (commonParams.P, commonParams.Divider);
+
+        var p = commonParams.P;
 
         (success, var bobRandomNumbers) = await _step2.ReadParameters();
         if (!success)
@@ -336,7 +329,8 @@ internal class Program
             Console.WriteLine();
             return;
         }
-        var (p, _) = (commonParams.P, commonParams.Divider);
+
+        var p = commonParams.P;
 
         (success, var bobRandomNumbers) = await _step2.ReadParameters();
         if (!success)
