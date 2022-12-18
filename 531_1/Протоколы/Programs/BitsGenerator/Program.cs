@@ -9,9 +9,10 @@ internal class Program
     private static readonly GenerateCommonParameters _step1 = new();
     private static readonly BobRandomNumbersGeneration _step2 = new();
     private static readonly AliceRandomNumberGenerate _step3 = new();
-    private static readonly AliceCalculateModPow _step4 = new();
-    private static readonly BobBitGeneration _step5 = new();
-    private static readonly AliceShareResult _step6 = new();
+    private static readonly AliceSuggestion _step4 = new(); 
+    private static readonly AliceCalculateModPow _step5 = new();
+    private static readonly BobBitGeneration _step6 = new();
+    private static readonly AliceShareResult _step7 = new();
     private static readonly Random _random = new();
 
     private static int _len = -1;
@@ -23,10 +24,11 @@ internal class Program
             Console.WriteLine($"1. Генерация общего параметра {nameof(CommonParameters.P)};");
             Console.WriteLine($"2. Генерация случайных чисел {nameof(BobRandomNumbers.T)}, {nameof(BobRandomNumbers.H)} Бобом;");
             Console.WriteLine($"3. Генерация случайного числа {nameof(AliceRandomNumber.X)} Алисой;");
-            Console.WriteLine($"4. Вычисление числа {nameof(AliceRandomModPowNumber.Y)} Алисой, используя {nameof(BobRandomNumbers.T)} или {nameof(BobRandomNumbers.H)};");
-            Console.WriteLine($"5. Предположение Боба о том, какое число использовала Алиса {nameof(BobRandomNumbers.T)} или {nameof(BobRandomNumbers.H)};");
-            Console.WriteLine($"6. Объявление результата протокола Алисой;");
-            Console.WriteLine($"7. Боб проверяет, что бросок монеты был честен;");
+            Console.WriteLine($"4. Выбор Алисы, какое число использовать для вычисления {nameof(AliceRandomModPowNumber.Y)};");
+            Console.WriteLine($"5. Вычисление числа {nameof(AliceRandomModPowNumber.Y)} Алисой, используя {nameof(BobRandomNumbers.T)} или {nameof(BobRandomNumbers.H)};");
+            Console.WriteLine($"6. Предположение Боба о том, какое число использовала Алиса {nameof(BobRandomNumbers.T)} или {nameof(BobRandomNumbers.H)};");
+            Console.WriteLine($"7. Объявление результата протокола Алисой;");
+            Console.WriteLine($"8. Боб проверяет, что бросок монеты был честен;");
             Console.WriteLine("0. Закрыть программу...");
             Console.WriteLine();
 
@@ -63,6 +65,10 @@ internal class Program
                     case ConsoleKey.D7:
                     case ConsoleKey.NumPad7:
                         await Step7();
+                        break;
+                    case ConsoleKey.D8:
+                    case ConsoleKey.NumPad8:
+                        await Step8();
                         break;
                     case ConsoleKey.D0:
                     case ConsoleKey.NumPad0:
@@ -210,6 +216,16 @@ internal class Program
 
     private static async Task Step4()
     {
+        var random = _random.Next(2);
+        await _step4.WriteParameters(new AliceSuggestionParameter { UsedValue = random == 0 ? nameof(BobRandomNumbers.H) : nameof(BobRandomNumbers.T) });
+
+        Console.WriteLine(_step4.Description);
+        Console.WriteLine($"Результат сохранен в файл {_step4.FileName}");
+        Console.WriteLine();
+    }
+
+    private static async Task Step5()
+    {
         var (success, commonParams) = await _step1.ReadParameters();
         if (!success)
         {
@@ -232,29 +248,26 @@ internal class Program
         (success, var aliceRandomNumbers) = await _step3.ReadParameters();
         if (!success)
         {
-            Console.WriteLine($"Не удалось считать данные из файла {_step2.FileName}. Файл отсутствует или поврежден");
+            Console.WriteLine($"Не удалось считать данные из файла {_step3.FileName}. Файл отсутствует или поврежден");
             Console.WriteLine();
             return;
         }
         var x = aliceRandomNumbers.X;
 
-        var random = _random.Next(2);
+        (success, var suggestionParam) = await _step4.ReadParameters();
+        if (!success)
+        {
+            Console.WriteLine($"Не удалось считать данные из файла {_step4.FileName}. Файл отсутствует или поврежден");
+            Console.WriteLine();
+            return;
+        }
+        var suggestion = suggestionParam.UsedValue;
 
-        var y = random == 0 
+        var y = suggestion.Trim().ToLower() == "h"
             ? BigInteger.ModPow(h, x, p) 
             : BigInteger.ModPow(t, x, p);
 
-        await _step4.WriteParameters(new AliceRandomModPowNumber { Y = y, UsedValue = random == 0 ? nameof(BobRandomNumbers.H) : nameof(BobRandomNumbers.T) });
-
-        Console.WriteLine(_step4.Description);
-        Console.WriteLine($"Результат сохранен в файл {_step4.FileName}");
-        Console.WriteLine();
-    }
-
-    private static async Task Step5()
-    {
-        var random = _random.Next(2);
-        await _step5.WriteParameters(new BitCalculatedByBob { BobsGuess = random });
+        await _step5.WriteParameters(new AliceRandomModPowNumber { Y = y });
 
         Console.WriteLine(_step5.Description);
         Console.WriteLine($"Результат сохранен в файл {_step5.FileName}");
@@ -262,6 +275,16 @@ internal class Program
     }
 
     private static async Task Step6()
+    {
+        var random = _random.Next(2);
+        await _step6.WriteParameters(new BitCalculatedByBob { BobsGuess = random });
+
+        Console.WriteLine(_step6.Description);
+        Console.WriteLine($"Результат сохранен в файл {_step6.FileName}");
+        Console.WriteLine();
+    }
+
+    private static async Task Step7()
     {
         var (success, commonParams) = await _step1.ReadParameters();
         if (!success)
@@ -291,19 +314,19 @@ internal class Program
         }
         var x = aliceRandomNumbers.X;
 
-        (success, var aliceModPowNumber) = await _step4.ReadParameters();
+        (success, var aliceModPowNumber) = await _step5.ReadParameters();
         if (!success)
         {
-            Console.WriteLine($"Не удалось считать данные из файла {_step4.FileName}. Файл отсутствует или поврежден");
+            Console.WriteLine($"Не удалось считать данные из файла {_step5.FileName}. Файл отсутствует или поврежден");
             Console.WriteLine();
             return;
         }
         var y = aliceModPowNumber.Y;
 
-        (success, var bobsGuess) = await _step5.ReadParameters();
+        (success, var bobsGuess) = await _step6.ReadParameters();
         if (!success)
         {
-            Console.WriteLine($"Не удалось считать данные из файла {_step5.FileName}. Файл отсутствует или поврежден");
+            Console.WriteLine($"Не удалось считать данные из файла {_step6.FileName}. Файл отсутствует или поврежден");
             Console.WriteLine();
             return;
         }
@@ -313,14 +336,14 @@ internal class Program
 
         var resultBit = hUsed && bobsGuessBit == 1 || !hUsed && bobsGuessBit == 0 ? 1 : 0;
 
-        await _step6.WriteParameters(new ResultBit() { Bit = resultBit });
+        await _step7.WriteParameters(new ResultBit() { Bit = resultBit });
 
-        Console.WriteLine(_step6.Description);
-        Console.WriteLine($"Результат сохранен в файл {_step6.FileName}");
+        Console.WriteLine(_step7.Description);
+        Console.WriteLine($"Результат сохранен в файл {_step7.FileName}");
         Console.WriteLine();
     }
 
-    private static async Task Step7()
+    private static async Task Step8()
     {
         var (success, commonParams) = await _step1.ReadParameters();
         if (!success)
@@ -350,28 +373,28 @@ internal class Program
         }
         var x = aliceRandomNumbers.X;
 
-        (success, var aliceModPowNumber) = await _step4.ReadParameters();
-        if (!success)
-        {
-            Console.WriteLine($"Не удалось считать данные из файла {_step4.FileName}. Файл отсутствует или поврежден");
-            Console.WriteLine();
-            return;
-        }
-        var y = aliceModPowNumber.Y;
-
-        (success, var bobsGuess) = await _step5.ReadParameters();
+        (success, var aliceModPowNumber) = await _step5.ReadParameters();
         if (!success)
         {
             Console.WriteLine($"Не удалось считать данные из файла {_step5.FileName}. Файл отсутствует или поврежден");
             Console.WriteLine();
             return;
         }
-        var bobsGuessBit = bobsGuess.BobsGuess;
+        var y = aliceModPowNumber.Y;
 
-        (success, var resultBit) = await _step6.ReadParameters();
+        (success, var bobsGuess) = await _step6.ReadParameters();
         if (!success)
         {
             Console.WriteLine($"Не удалось считать данные из файла {_step6.FileName}. Файл отсутствует или поврежден");
+            Console.WriteLine();
+            return;
+        }
+        var bobsGuessBit = bobsGuess.BobsGuess;
+
+        (success, var resultBit) = await _step7.ReadParameters();
+        if (!success)
+        {
+            Console.WriteLine($"Не удалось считать данные из файла {_step7.FileName}. Файл отсутствует или поврежден");
             Console.WriteLine();
             return;
         }

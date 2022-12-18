@@ -18,6 +18,5 @@ namespace BitsGenerator.Steps
     public class AliceRandomModPowNumber
     {
         public BigInteger Y { get; set; }
-        public string UsedValue { get; set; }
     }
 }
