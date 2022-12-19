@@ -1,0 +1,310 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BigMath</name>
+    </assembly>
+    <members>
+        <member name="M:BigMath.BinaryTrees.AvlSet`1.Remove(`0)">
+            <summary>
+            Удаляет один экземпляр объекта из коллекции, возвращает true, если удаление произошло
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:BigMath.BinaryTrees.AvlSet`1.Node`1.GetHeight(BigMath.BinaryTrees.AvlSet{`0}.Node{`1})">
+            <summary>
+            Вернет высоту или 0, если на вход подавался null
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.BinaryTrees.AvlSet`1.Node`1.BalanseFactor(BigMath.BinaryTrees.AvlSet{`0}.Node{`1})">
+            <summary>
+            Вычисляет балансирующий фактор, на вход только инициализированные объекты
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.BinaryTrees.AvlSet`1.Node`1.FindMin(BigMath.BinaryTrees.AvlSet{`0}.Node{`1})">
+            <summary>
+            Найдет минимальный узел в дереве
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.BinaryTrees.AvlSet`1.Node`1.FixHeight(BigMath.BinaryTrees.AvlSet{`0}.Node{`1})">
+            <summary>
+            Восстанавливает правильную высоту узла, при условии, что у левых и правых соседей высота корректна
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:BigMath.BinaryTrees.AvlSet`1.Node`1.Balance(BigMath.BinaryTrees.AvlSet{`0}.Node{`1})">
+            <summary>
+            Балансирует дерево, если высота левого и правого поддеревьев различается на 2
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.ConvertC.ConvertExtension.CodeToBigInteger(System.String)">
+            <summary>
+            Кодирует строку одним числом. На каждый символ уходит 8 бит
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.ConvertC.ConvertExtension.CodeToBigInteger(System.Byte[])">
+            <summary>
+            Кодирует строку одним числом. На каждый символ уходит 8 бит
+            </summary>
+            <param name="arr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.ConvertC.ConvertExtension.DecodeToByteArray(System.Numerics.BigInteger)">
+            <summary>
+            Декодирует число в строку, закодированную методом StringToBigInteger
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.ConvertC.ConvertExtension.DecodeToString(System.Numerics.BigInteger)">
+            <summary>
+            Декодирует число в строку, закодированную методом StringToBigInteger
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BigMath.FastFourierTransform.Fft">
+            <summary>
+            Класс, реализующий дискретное преобразование Фурье для полиномов над Комплексными числами и для полиномов над полем
+            </summary>
+        </member>
+        <member name="M:BigMath.FastFourierTransform.Fft.MultyPolinomsByFFT(BigMath.Polinomial.Polinom@,BigMath.Polinomial.Polinom@,System.Boolean,System.Int32,System.Numerics.BigInteger@)">
+            <summary>
+            Умножает два полинова с помощью быстрого преобразования Фурье.
+            f true - алгоритм над комплексными числами - иначе будет использована модульная арифметика
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="f"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.FastFourierTransform.Fft.ComplexAddToMassNullValues(System.Numerics.Complex[]@)">
+            <summary>
+            дополняет массив ведущими нулями, результат возвращает
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.FastFourierTransform.Fft.F_intAddToMassNullValues(BigMath.F_int[]@)">
+            <summary>
+            дополняет массив ведущими нулями, результат возвращает
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.FastFourierTransform.Fft.ComplexTransform(System.Numerics.Complex[]@,System.Boolean)">
+            <summary>
+            FFT on Complex ring; invert true - invert FFT on Complex ring
+            </summary>
+            <param name="a"></param>
+            <param name="invert"></param>
+        </member>
+        <member name="M:BigMath.FastFourierTransform.Fft.ComplexTransformRec(System.Numerics.Complex[]@,System.Boolean)">
+            <summary>
+            FFT on Complex ring; invert true - invert FFT on Complex ring
+            </summary>
+            <param name="a"></param>
+            <param name="invert"></param>
+        </member>
+        <member name="M:BigMath.FastFourierTransform.Fft.БыстроеФурье(System.Collections.Generic.List{BigMath.F_int},System.Numerics.BigInteger@)">
+            <summary>
+            Выполняет быстрое преобразование Фурье
+            </summary>
+            <param name="u"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.FastFourierTransform.Fft.БыстроеОбратноеФурье(System.Collections.Generic.List{BigMath.F_int},System.Numerics.BigInteger@)">
+            <summary>
+            Выполняет обратное быстрое преобразование Фурье
+            </summary>
+            <param name="V"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Generator.GeneratePrimeNumber(System.Int32,System.Int32,System.Int32,System.Random@)">
+            <summary>
+            Генерирует случайное число длины l в битах, сравнимое с a по модулю m
+            </summary>
+            <param name="l"> Длина числа в битах</param>
+            <param name="rnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Generator.GenerateSophiZhermenPrimeNumber(System.Random@,System.Int32,System.Numerics.BigInteger@)">
+            <summary>
+            Генерирует случайное простое число p длины l в битах; число p-1 будет делиться только на 2 и на выходной параметр divider 
+            </summary>
+            <param name="l"> Длина числа в битах</param>
+            <param name="rnd"></param>
+            <param name="divider"> Большой простой делители числа p - 1 </param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Generator.GenerateSophiZhermenPrimeNumberOld(System.Int32,System.Random@,System.Numerics.BigInteger@)">
+            <summary>
+            Генерирует случайное простое число p длины l в битах; число p-1 будет делиться только на 2 и на выходной параметр divider 
+            </summary>
+            <param name="l"> Длина числа в битах</param>
+            <param name="rnd"></param>
+            <param name="divider"> Большой простой делители числа p - 1 </param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Generator.IsPrimeByMillerRabin(System.Numerics.BigInteger,System.Int32,System.Random@,System.Int32[]@)">
+            <summary>
+            Проверяет число на простоту
+            </summary>
+            <param name="p"> Проверяемое число </param>
+            <param name="k"> Количество раундов </param>
+            <param name="rnd"></param>
+            <param name="simple_primes"> Массив чисел, для которых будет выполнена тривиальная проверка </param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Generator.IsPrimeByMillerRabin(System.Numerics.BigInteger,System.Int32,System.Random@)">
+            <summary>
+            Проверяет число простоту; количество раундов = длине числа в битах
+            </summary>
+            <param name="p"></param>
+            <param name="rnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Generator.FastPowOnMod(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Алгоритм быстрого возведения числа в степень по модулю
+            </summary>
+            <param name="val"> Возводимое число </param>
+            <param name="deg"> Степень </param>
+            <param name="mod"> Модуль </param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Generator.GenBigRandom(System.Random@,System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Генерирует простое число из полуинтервала (start; end]
+            </summary>
+            <param name="rnd"></param>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Evklid.GetInverseElement(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Находит обратный элемент в поле по модулю mod
+            </summary>      
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Evklid.IsMutuallySimple(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Проверяет числа на взаимную простоту, возвращает true, если взаимно простые
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Evklid.GCD_Extended(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger@,System.Numerics.BigInteger@)">
+            <summary>
+            Расширенный алгоритм Евклида
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Evklid.GCD(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Алгоритм Евклида
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.F_int.GetInverseElement(BigMath.F_int)">
+            <summary>
+            Находит обратный элемент в поле, вернет -1, если обратного нет
+            </summary>      
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.F_int.GetInverseElement(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Находит обратный элемент в поле, вернет -1, если обратного нет
+            </summary>      
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.F_int.Sqrt(BigMath.F_int)">
+            <summary>
+            Вычисляет квадратный корень из числа val по алгоритму Шенкса за O(log^3(a))
+            </summary>      
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.F_int.IsQuadraticResidue(BigMath.F_int)">
+            <summary>
+            Проверяет, является ли число квадратичным вычетом по простому модулю. На основе критерия Эйлера
+            </summary>      
+            <returns> True, если число является квадратичным вычетом </returns>
+        </member>
+        <member name="M:BigMath.F_int.GcdAdvanced(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger@,System.Numerics.BigInteger@)">
+            <summary>
+            Расширенный алгоритм Евклида
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BigMath.Polinomial.Polinom.OutPolinomToConsole(BigMath.Polinomial.Polinom,System.Boolean)">
+            <summary>
+            true - если нужен переход на новую строку
+            </summary>
+            <param name="p"></param>
+            <param name="f"></param>
+        </member>
+        <member name="P:BigMath.Parameter.Name">
+            <summary>
+            Поле, представляющее название параметра
+            </summary>
+        </member>
+        <member name="P:BigMath.Parameter.Value">
+            <summary>
+            Поле, представляющее строковое значение параметра
+            </summary>
+        </member>
+        <member name="M:BigMath.Parameter.#ctor(System.String,System.String)">
+            <summary>
+            Name - название параметра, value - строковое значение параметра
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:BigMath.Parameter.WriteParametrsToFile(System.String,BigMath.Parameter[])">
+            <summary>
+            Записывает параметры в файл с названием "userName.txt" и выводит их на консоль
+            </summary>
+            <param name="userName"> или "общие_параметры", если параметры являются общими </param>
+            <param name="parameters"> список объектов типа Parameter </param>
+        </member>
+        <member name="M:BigMath.Parameter.ReadParametrsInFile(System.String,)">
+            <summary>
+            Считывает параметры с файла с названием "userName.txt" и выводит их на консоль
+            </summary>
+            <param name="userName"></param>
+            <param name="__arglist"> передавать "__arglst(*список объектов типа Parameter*)" </param>
+        </member>
+        <member name="M:BigMath.RandomNumbers.RandomBigInteger.NextBigInteger(System.Int32)">
+            <summary>
+            Generates a random positive BigInteger between 0 and 2^bitLength (non-inclusive).
+            </summary>
+            <param name="bitLength">The number of random bits to generate.</param>
+            <returns>A random positive BigInteger between 0 and 2^bitLength (non-inclusive).</returns>
+        </member>
+        <member name="M:BigMath.RandomNumbers.RandomBigInteger.NextBigInteger(System.Random@,System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Generates a random BigInteger between start and end (non-inclusive).
+            </summary>
+            <param name="start">The lower bound.</param>
+            <param name="end">The upper bound (non-inclusive).</param>
+            <returns>A random BigInteger between start and end (non-inclusive)</returns>
+        </member>
+    </members>
+</doc>
