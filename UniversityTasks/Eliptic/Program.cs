@@ -15,7 +15,7 @@ namespace EllipsCons
             var matrix = GetMatrix(points);
 
             Console.WriteLine("Точки эл. кривой:");
-            Console.WriteLine($"{string.Join(", ", points)}, (0, 0)");
+            Console.WriteLine($"{string.Join(", ", points)}, (0, 0)".Replace("(0, 0)", "0"));
             Console.WriteLine();
 
             Console.WriteLine($"Порядок: {order}");
@@ -24,14 +24,14 @@ namespace EllipsCons
             Console.WriteLine("Генерация точек:");
             foreach (var arr in primitivePoints)
             {
-                Console.WriteLine($"{string.Join(", ", arr)}");
+                Console.WriteLine($"{string.Join(", ", arr)}".Replace("(0, 0)", "0"));
             }
             Console.WriteLine();
 
             Console.WriteLine("Матрица сложения:");
             foreach (var arr in matrix)
             {
-                Console.WriteLine($"{string.Join(", ", arr)}");
+                Console.WriteLine($"{string.Join(", ", arr)}".Replace("(0, 0)", "0"));
             }
             Console.WriteLine();
         }
