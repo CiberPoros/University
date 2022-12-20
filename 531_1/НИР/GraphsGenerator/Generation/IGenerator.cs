@@ -5,6 +5,7 @@ namespace GraphsGenerator
     internal interface IGenerator
     {
         IEnumerable<string> Generate(int vertexCount);
+        IEnumerable<Graph> GenerateGraphFormat(int vertexCount);
 
         public static IGenerator CreateNew(GeneratorType generatorType) => generatorType switch
         {

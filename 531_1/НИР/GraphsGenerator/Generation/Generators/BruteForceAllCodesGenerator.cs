@@ -6,6 +6,14 @@ namespace GraphsGenerator
     {
         public IEnumerable<string> Generate(int vertexCount)
         {
+            foreach (var graph in GenerateGraphFormat(vertexCount))
+            {
+                yield return graph.ToG6();
+            }
+        }
+
+        public IEnumerable<Graph> GenerateGraphFormat(int vertexCount)
+        {
             var bitsCount = (int)(((vertexCount + .0) / 2) * (vertexCount - 1));
 
             HashSet<long> codes = new HashSet<long>();
@@ -35,7 +43,7 @@ namespace GraphsGenerator
                     codes.Add(currentCode);
                 }
 
-                yield return graph.ToG6();
+                yield return graph;
             }
         }
     }

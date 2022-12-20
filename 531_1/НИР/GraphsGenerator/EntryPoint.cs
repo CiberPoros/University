@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using CommandLine;
 using GraphsGenerator.ChromaticNumber;
 using GraphsGenerator.DegreeVector;
@@ -20,52 +19,47 @@ namespace GraphsGenerator
                     IGenerator generator = IGenerator.CreateNew(o.GeneratorType);
                     var startTime = DateTime.Now;
 
-                    var result = generator.Generate(o.VertexCount);
+                    var result = generator.GenerateGraphFormat(o.VertexCount);
 
                     var totalRes = new List<(string graph, string vectorDegree, int chromaticNumber)>();
                     var degreeVectorCalculator = new DegreeVectorCalculator();
                     var chromaticNumberCalculator = new ChromaticNumberCalculator();
 
-                    foreach (var g6 in result)
+                    foreach (var graph in result)
                     {
-                        var graph = Graph.G6ToGraph(g6);
                         var vectorFormated = string.Join("", degreeVectorCalculator.GetDegreeVector(graph));
                         var chromaricNumber = chromaticNumberCalculator.GetChromaticNumber(graph);
-                        totalRes.Add((g6, vectorFormated, chromaricNumber));
+                        totalRes.Add((graph.ToG6(), vectorFormated, chromaricNumber));
                     }
 
                     var grouped = totalRes.GroupBy(x => x.vectorDegree);
 
+                    var resultStrings = new List<string>();
                     foreach (var group in grouped)
                     {
-                        Console.WriteLine($"vector: {group.Key}");
+                        resultStrings.Add($"vector: {group.Key}");
 
                         foreach (var val in group)
                         {
-                            Console.WriteLine($"    graph: {val.graph}; chromatic number: {val.chromaticNumber}");
+                            resultStrings.Add($"    graph: {val.graph}; chromatic number: {val.chromaticNumber}");
                         }
 
-                        Console.WriteLine();
+                        resultStrings.Add(string.Empty);
                     }
-                    
-                    //if (o.WriteGraphsToFile)
-                    //{
-                    //    File.WriteAllLines(o.FileName, result);
-                    //    Console.WriteLine($"Graphs was written to \"{o.FileName}\" file.");
-                    //    return;
-                    //}
 
-                    
-                    //Console.WriteLine("Graphs in g6 format: ");
-                    //foreach (var g6 in result)
-                    //{
-                    //    var graph = Graph.G6ToGraph(g6);
-                    //    var vector = degreeVectorCalculator.GetDegreeVector(graph);
-                    //    var chromaricNumber = chromaticNumberCalculator.GetChromaticNumber(graph);
-                    //    Console.WriteLine($"Graph: {g6}");
-                    //    Console.WriteLine($"Vector: {string.Join(", ", vector)}");
-                    //    Console.WriteLine($"Chromatic number: {chromaricNumber}");
-                    //};
+                    if (o.WriteGraphsToFile)
+                    {
+                        File.WriteAllLines(o.FileName, resultStrings);
+                        Console.WriteLine($"Graphs was written to \"{o.FileName}\" file.");
+                        return;
+                    }
+                    else
+                    {
+                        foreach (var str in resultStrings)
+                        {
+                            Console.WriteLine(str);
+                        }
+                    }
 
                     Console.WriteLine($"Total graphs count: {result.Count()}.");
                     Console.WriteLine($"Total calculating time in seconds: {(DateTime.Now - startTime).TotalSeconds}.");

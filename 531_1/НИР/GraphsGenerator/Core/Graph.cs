@@ -154,6 +154,7 @@ namespace GraphsGenerator
             Console.WriteLine();
         }
 
+        // Это не работает!
         public static Graph G6ToGraph(string s)
         {
             int n = s[0] - '?';

@@ -6,6 +6,14 @@ namespace GraphsGenerator
     {
         public IEnumerable<string> Generate(int vertexCount)
         {
+            foreach (var graph in GenerateGraphFormat(vertexCount))
+            {
+                yield return graph.ToG6();
+            }
+        }
+
+        public IEnumerable<Graph> GenerateGraphFormat(int vertexCount)
+        {
             var bitsCount = (int)(((vertexCount + .0) / 2) * (vertexCount - 1));
             List<Graph> graphs = new List<Graph>();
 
@@ -36,9 +44,9 @@ namespace GraphsGenerator
                 if (isUnique)
                 {
                     graphs.Add(graph);
-                    yield return graph.ToG6();
+                    yield return graph;
                 }
             }
-        }     
+        }
     }
 }
