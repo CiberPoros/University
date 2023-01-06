@@ -37,11 +37,11 @@ namespace GraphsGenerator
                     var resultStrings = new List<string>();
                     foreach (var group in grouped)
                     {
-                        resultStrings.Add($"vector: {group.Key}");
+                        resultStrings.Add($"vec: {group.Key}");
 
                         foreach (var val in group)
                         {
-                            resultStrings.Add($"    graph: {val.graph}; chromatic number: {val.chromaticNumber}");
+                            resultStrings.Add($"    g: {val.graph}; cn: {val.chromaticNumber}");
                         }
 
                         resultStrings.Add(string.Empty);
@@ -51,7 +51,6 @@ namespace GraphsGenerator
                     {
                         File.WriteAllLines(o.FileName, resultStrings);
                         Console.WriteLine($"Graphs was written to \"{o.FileName}\" file.");
-                        return;
                     }
                     else
                     {
@@ -61,7 +60,7 @@ namespace GraphsGenerator
                         }
                     }
 
-                    Console.WriteLine($"Total graphs count: {result.Count()}.");
+                    // Console.WriteLine($"Total graphs count: {result.Count()}.");
                     Console.WriteLine($"Total calculating time in seconds: {(DateTime.Now - startTime).TotalSeconds}.");
                 });
         }
