@@ -5,9 +5,9 @@ namespace GraphsGenerator.ChromaticNumber
 {
     internal class ChromaticNumberCalculator
     {
-        public int GetChromaticNumber(Graph graph)
+        public short GetChromaticNumber(Graph graph)
         {
-            for (var color = 2; ; color++)
+            for (short color = 2; ; color++)
             {
                 if (CanColorize(graph, color))
                 {
