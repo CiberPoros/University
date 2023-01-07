@@ -7,6 +7,7 @@ using GraphsGenerator.DegreeVector;
 using Microsoft.Extensions.Configuration;
 using GraphsGenerator.DataAccess;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace GraphsGenerator
 {
@@ -48,11 +49,15 @@ namespace GraphsGenerator
 
                         graphsPartition.Add(model);
 
-                        if (currentNumber > 0 && currentNumber % 1000 == 0)
+                        if (currentNumber > 0 && currentNumber % 100 == 0)
                         {
                             await dataAccessService.UpsertGraphWithVector(graphsPartition);
                             graphsPartition.Clear();
                         }
+
+                        currentNumber++;
+
+                        Console.WriteLine($"Current graph number: {currentNumber}");
                     }
 
                     await dataAccessService.UpsertGraphWithVector(graphsPartition);
