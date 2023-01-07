@@ -1,0 +1,44 @@
+SET ANSI_NULLS ON;
+GO
+SET QUOTED_IDENTIFIER ON;
+GO
+
+CREATE OR ALTER PROCEDURE usp_UPSERT_GraphsWithDegreeVector
+	@Graphs UT_GraphWithDegreeVectorList READONLY
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	BEGIN TRANSACTION
+
+	INSERT INTO dbo.DegreeVector (
+		[Value]
+	)
+	SELECT DISTINCT
+		G.DegreeVectorValue
+	FROM @Graphs G
+	LEFT JOIN dbo.DegreeVector DV
+	 ON DV.[Value] = G.DegreeVectorValue
+	WHERE DV.Id IS NULL;
+
+	INSERT INTO dbo.Graph (
+		G6,
+		VertexCount,
+		ChromaticNumber,
+		DegreeVectorId
+	)
+	SELECT
+		GInput.G6,
+		GInput.VertexCount,
+		GInput.ChromaticNumber,
+		DV.Id
+	FROM @Graphs GInput
+	LEFT JOIN dbo.Graph G
+	 ON G.G6 = GInput.G6
+	JOIN dbo.DegreeVector DV
+	 ON DV.[Value] = GInput.DegreeVectorValue
+	WHERE G.Id IS NULL;
+
+	COMMIT TRANSACTION
+END
+GO

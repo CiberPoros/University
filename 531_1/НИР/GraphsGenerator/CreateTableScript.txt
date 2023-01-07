@@ -1,0 +1,114 @@
+IF (NOT EXISTS (
+	SELECT * 
+	FROM INFORMATION_SCHEMA.TABLES 
+	WHERE 
+		TABLE_SCHEMA = 'dbo' 
+	AND TABLE_NAME = 'DegreeVector'))
+BEGIN
+	CREATE TABLE DegreeVector (
+	Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	[Value] BIGINT NOT NULL);
+
+	SELECT 'Table dbo.DegreeVector created successfuly';
+END
+ELSE
+BEGIN
+	SELECT 'Table dbo.DegreeVector already exists';
+END
+GO
+
+IF (NOT EXISTS (
+	SELECT * 
+	FROM sys.indexes 
+	WHERE 
+		name = 'UIX_DegreeVector_Value' 
+	AND object_id = OBJECT_ID('dbo.DegreeVector')))
+BEGIN
+	CREATE UNIQUE INDEX UIX_DegreeVector_Value ON DegreeVector ([Value] ASC);
+
+	SELECT 'Index dbo.DegreeVector.UIX_DegreeVector_Value created successfuly';
+END
+ELSE
+BEGIN
+	SELECT 'Index dbo.DegreeVector.UIX_DegreeVector_Value already exists';
+END
+GO
+
+IF (NOT EXISTS (
+	SELECT * 
+	FROM INFORMATION_SCHEMA.TABLES 
+	WHERE 
+		TABLE_SCHEMA = 'dbo' 
+	AND TABLE_NAME = 'Graph'))
+BEGIN
+	CREATE TABLE Graph (
+    Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    G6 NVARCHAR(15) COLLATE Latin1_General_CS_AS NOT NULL,
+	VertexCount SMALLINT NOT NULL,
+    ChromaticNumber SMALLINT NULL,
+	DegreeVectorId INT NULL,
+	CONSTRAINT FK_Graph_DegreeVector FOREIGN KEY (DegreeVectorId)
+        REFERENCES DegreeVector (Id));
+
+	SELECT 'Table dbo.Graph created successfuly';
+END
+ELSE
+BEGIN
+	SELECT 'Table dbo.Graph already exists';
+END
+GO
+
+IF (NOT EXISTS (
+	SELECT * 
+	FROM sys.indexes 
+	WHERE 
+		name = 'UIX_Graph_G6' 
+	AND object_id = OBJECT_ID('dbo.Graph')))
+BEGIN
+	CREATE UNIQUE INDEX UIX_Graph_G6 ON Graph (G6 ASC);
+
+	SELECT 'Index dbo.Graph.UIX_Graph_G6 created successfuly';
+END
+ELSE
+BEGIN
+	SELECT 'Index dbo.Graph.UIX_Graph_G6 already exists';
+END
+GO
+
+IF (NOT EXISTS (
+	SELECT * 
+	FROM sys.indexes 
+	WHERE 
+		name = 'UIX_Graph_ChromaticNumber' 
+	AND object_id = OBJECT_ID('dbo.Graph')))
+BEGIN
+	CREATE UNIQUE INDEX UIX_Graph_ChromaticNumber ON Graph (G6 ASC);
+
+	SELECT 'Index dbo.Graph.UIX_Graph_ChromaticNumber created successfuly';
+END
+ELSE
+BEGIN
+	SELECT 'Index dbo.Graph.UIX_Graph_ChromaticNumber already exists';
+END
+GO
+
+IF TYPE_ID(N'UT_GraphWithDegreeVectorList') IS NULL
+BEGIN
+	CREATE TYPE UT_GraphWithDegreeVectorList AS TABLE  
+	(    
+		G6 NVARCHAR(15) COLLATE Latin1_General_CS_AS NOT NULL,  
+		VertexCount SMALLINT NOT NULL,
+		ChromaticNumber SMALLINT NULL,  
+		DegreeVectorValue BIGINT,
+		INDEX IX_UT_GraphWithDegreeVectorList_G6 (G6 ASC),
+		INDEX IX_UT_GraphWithDegreeVectorList_DegreeVectorValue (DegreeVectorValue ASC)
+	);
+
+	SELECT 'Table type UT_GraphWithDegreeVectorList created successfuly';
+END
+ELSE
+BEGIN
+	SELECT 'Table type UT_GraphWithDegreeVectorList already exists';
+END
+GO
+
