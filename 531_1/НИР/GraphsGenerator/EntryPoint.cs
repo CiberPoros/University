@@ -7,12 +7,13 @@ using GraphsGenerator.DegreeVector;
 using Microsoft.Extensions.Configuration;
 using GraphsGenerator.DataAccess;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace GraphsGenerator
 {
     class EntryPoint
     {
+        private const int _partitionsSize = 100;
+
         static async Task Main(string[] args)
         {
             await Task.CompletedTask;
@@ -37,8 +38,20 @@ namespace GraphsGenerator
 
                     var currentNumber = 0;
                     var graphsPartition = new List<GraphWithVectorModel>();
+                    var skipPartition = false;
                     foreach (var graph in result)
                     {
+                        if (currentNumber % _partitionsSize == 0)
+                        {
+                            var (success, _) = await dataAccessService.TryGetGraphWithVectorModelByG6(graph.ToG6());
+                            skipPartition = success; // если success, то следующие 100 графов уже записаны в базу ранее, можно пропустить
+                        }
+
+                        if (skipPartition)
+                        {
+                            continue;
+                        }
+
                         var model = new GraphWithVectorModel
                         {
                             G6 = graph.ToG6(),
@@ -49,7 +62,7 @@ namespace GraphsGenerator
 
                         graphsPartition.Add(model);
 
-                        if (currentNumber > 0 && currentNumber % 100 == 0)
+                        if (currentNumber > 0 && currentNumber % _partitionsSize == 0)
                         {
                             await dataAccessService.UpsertGraphWithVector(graphsPartition);
                             graphsPartition.Clear();

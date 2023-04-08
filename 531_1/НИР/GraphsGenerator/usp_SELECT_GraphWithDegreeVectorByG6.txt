@@ -1,0 +1,22 @@
+SET ANSI_NULLS ON;
+GO
+SET QUOTED_IDENTIFIER ON;
+GO
+
+CREATE OR ALTER PROCEDURE usp_SELECT_GraphWithDegreeVectorByG6
+	@G6 NVARCHAR(15) READONLY
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT TOP 1
+		G.G6,
+		G.VertexCount,
+		G.ChromaticNumber,
+		DV.[Value]
+	FROM dbo.Graph G
+	LEFT JOIN dbo.DegreeVector DV
+	 ON DV.Id = G.DegreeVectorId
+	WHERE G.G6 = @G6;
+END
+GO
