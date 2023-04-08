@@ -50,6 +50,7 @@ namespace GraphsGenerator
 
                         if (skipPartition)
                         {
+                            currentNumber++;
                             continue;
                         }
 
