@@ -41,6 +41,7 @@ namespace GraphsGenerator
                     var skipPartition = false;
                     foreach (var graph in result)
                     {
+                        Console.WriteLine($"Graph number: {currentNumber}; Time: {DateTime.Now:HH:mm:ss}");
                         if (currentNumber % _partitionsSize == 0)
                         {
                             var (success, _) = await dataAccessService.TryGetGraphWithVectorModelByG6(graph.ToG6());
