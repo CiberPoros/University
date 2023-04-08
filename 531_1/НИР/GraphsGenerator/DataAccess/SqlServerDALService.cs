@@ -32,7 +32,7 @@ namespace GraphsGenerator.DataAccess
 
                 using var reader = cmd.ExecuteReader();
 
-                if (reader.HasRows)
+                if (reader.HasRows && reader.Read())
                 {
                     var graphWithVectorModel = new GraphWithVectorModel()
                     {
